@@ -1,0 +1,18 @@
+Şu anda tıklandığında bir sayfaya yönlendirmeyen veya işlem yapmayan (sadece uyarı veren) butonlar şunlardır:
+
+1.  **Giriş Yap** (App.tsx - Header):
+    *   Masaüstü ve mobil menüdeki "Giriş Yap" butonlarının `onClick` işlevi tanımlı değil. Tıklandığında hiçbir tepki vermiyor.
+
+2.  **Demo Talep Et** (CorporateSolutions.tsx):
+    *   Bu bileşendeki butonun `onClick` özelliği yok, tıklandığında tepki vermiyor.
+
+3.  **Hemen Başlayın** (HowItWorks.tsx):
+    *   Sayfanın sonundaki CTA (Eylem Çağrısı) butonunun herhangi bir işlevi yok.
+
+4.  **İletişime Geçin** (EnterprisePage.tsx):
+    *   Kurumsal sayfadaki alt CTA butonunun `onClick` özelliği yok.
+
+5.  **Direkt Satın Al / Sepete Ekle** (ProductsPage.tsx ve PricingPage.tsx):
+    *   Bu butonlar tıklandığında sadece "ödeme sayfasına yönlendiriliyorsunuz" şeklinde bir `alert` (uyarı) veriyor, gerçek bir yönlendirme yapmıyor.
+
+*Not: `CorporateSolutions` ve `HowItWorks` bileşenlerini manuel düzenlediğinizi belirttiniz ancak şu an `App.tsx` içinde aktif olarak kullanılmıyor (import edilmemiş veya ekrana basılmıyor) görünüyorlar. Eğer kullanacaksanız `App.tsx` içine eklemeniz gerekecektir.*
