@@ -4,7 +4,7 @@ import {
   Sparkles,
   Cloud,
   PackageCheck,
-  Building2, Users, TrendingUp, Zap, Shield, Globe, Award, HeartHandshake, Rocket, Star, GraduationCap, Landmark, Briefcase, Factory, CreditCard
+  Building2, Users, TrendingUp, Zap, Shield, Globe, Award, HeartHandshake, Rocket, Star, GraduationCap, Landmark, Briefcase, Factory
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";

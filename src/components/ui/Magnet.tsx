@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 
 interface MagnetProps {
-  children: React.ReactNode;
+  children: ReactNode;
   padding?: number;
   disabled?: boolean;
   magnetStrength?: number;
