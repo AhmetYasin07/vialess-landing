@@ -12,7 +12,6 @@ import { AppDemo } from './components/AppDemo';
 import { Testimonials } from './components/Testimonials';
 import { HomePricing } from './components/HomePricing';
 import { HomeFaq } from './components/HomeFaq';
-import { AppStoreModal } from './components/AppStoreModal';
 import { TargetAudience } from './components/TargetAudience';
 import { HomeShowroom } from './components/HomeShowroom';
 import { DesignYourCard } from './components/DesignYourCard';
@@ -47,7 +46,6 @@ import GuvenlikKvkkPage from './pages/features/GuvenlikKvkkPage';
 import CokluProfilPage from './pages/features/CokluProfilPage';
 import { Footer } from './components/Footer';
 
-import Icon from './imports/Icon1-83-166';
 import logoImage from 'figma:asset/f174798c21649824956da85056f20677109f585b.png';
 
 import MobileAppPage from './pages/products/MobileAppPage';
