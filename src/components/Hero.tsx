@@ -11,6 +11,7 @@ import { useLanguage } from "../context/LanguageContext";
 import Particles from "./Particles";
 import { motion, useAnimationFrame, useMotionValue, useTransform } from 'motion/react';
 import { useState } from "react";
+import Magnet from "./ui/Magnet";
 
 // Imported images for references
 import imgBAU from 'figma:asset/d2ab04666fdc0a9f5dbb4686856f7b813c60180c.png';
@@ -204,15 +205,17 @@ export function Hero({
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45"></div>
                 </div>
 
-                <a
-                  href="https://dashboard.vialess.me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-lg"
-                >
-                  <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                  Ücretsiz Deneyin
-                </a>
+                <Magnet padding={50} magnetStrength={3}>
+                  <a
+                    href="https://dashboard.vialess.me"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 flex items-center justify-center gap-2 text-lg"
+                  >
+                    <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                    Ücretsiz Deneyin
+                  </a>
+                </Magnet>
               </div>
 
               {/* Sağ Buton: Demo İsteyin */}
