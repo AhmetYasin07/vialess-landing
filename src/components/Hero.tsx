@@ -4,7 +4,7 @@ import {
   Sparkles,
   Cloud,
   PackageCheck,
-  Building2, Users, TrendingUp, Zap, Shield, Globe, Award, HeartHandshake, Rocket, Star, GraduationCap, Landmark, Briefcase, Factory
+  Building2, Users, TrendingUp, Zap, Shield, Globe, Award, HeartHandshake, Rocket, Star, GraduationCap, Landmark, Briefcase, Factory, CreditCard
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
@@ -199,27 +199,31 @@ export function Hero({
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
               {/* Sol Buton: Ücretsiz Deneyin */}
-              <div className="relative group">
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-xl z-20 pointer-events-none">
-                  Kredi kartı gerekmez
-                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45"></div>
-                </div>
-
+              <div className="relative group z-20">
                 <Magnet padding={50} magnetStrength={3}>
-                  <a
-                    href="https://dashboard.vialess.me"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 flex items-center justify-center gap-2 text-lg"
-                  >
-                    <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                    Ücretsiz Deneyin
-                  </a>
+                  <div className="relative group">
+                     {/* Tooltip - Magnet'in içinde olduğu için butonla beraber hareket eder */}
+                     <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-3 py-1.5 bg-white/80 backdrop-blur-md text-gray-800 text-xs font-semibold rounded-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 z-20 pointer-events-none flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                        Kredi kartı gerekmez
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/80 rotate-45 border-r border-b border-white/50"></div>
+                      </div>
+
+                    <a
+                      href="https://dashboard.vialess.me"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 flex items-center justify-center gap-2 text-lg"
+                    >
+                      <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                      Ücretsiz Deneyin
+                    </a>
+                  </div>
                 </Magnet>
               </div>
 
               {/* Sağ Buton: Demo İsteyin */}
-              <div className="relative group">
+              <div className="relative group z-10">
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 text-center px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-xl z-20 pointer-events-none">
                   30 dakikada kurumunuza özel çözümleri keşfedin
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45"></div>

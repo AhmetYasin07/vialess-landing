@@ -691,6 +691,10 @@
     right: -50px;
   }
 
+  .-bottom-1 {
+    bottom: calc(var(--spacing) * -1);
+  }
+
   .-bottom-1\.5 {
     bottom: calc(var(--spacing) * -1.5);
   }
@@ -4661,6 +4665,11 @@
 
   .shadow-\[0_4px_20px_-10px_rgba\(0\,0\,0\,0\.1\)\] {
     --tw-shadow: 0 4px 20px -10px var(--tw-shadow-color, #0000001a);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .shadow-\[0_8px_30px_rgb\(0\,0\,0\,0\.12\)\] {
+    --tw-shadow: 0 8px 30px var(--tw-shadow-color, #0000001f);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
