@@ -20,13 +20,13 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"]
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "vite-env.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/vite-env.d.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }
