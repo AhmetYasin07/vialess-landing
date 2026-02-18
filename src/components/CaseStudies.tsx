@@ -1,5 +1,6 @@
+import { Quote } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Quote, TrendingUp } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 
 const caseStudies = [
@@ -36,6 +37,7 @@ const caseStudies = [
 ];
 
 export function CaseStudies() {
+  const { language } = useLanguage();
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

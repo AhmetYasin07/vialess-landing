@@ -1,4 +1,4 @@
-import { Smartphone, ArrowRight, Apple } from "lucide-react";
+import { Smartphone, ArrowRight, Apple, CheckCircle, User, Camera, Users, Share2, BarChart3, Globe, ShieldCheck, Zap, MapPin, Tag } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
@@ -7,7 +7,116 @@ export default function MobileAppPage() {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
-  const features = [
+  // FEATURES.md'den alınan gerçek özellikler
+  const coreFeatures = [
+    {
+      category: "Hesap ve Oturum",
+      icon: ShieldCheck,
+      items: [
+        "Google / Apple ile giriş",
+        "Bireysel ve kurumsal kullanım senaryoları"
+      ]
+    },
+    {
+      category: "Çoklu Profil",
+      icon: Users,
+      items: [
+        "Birden fazla profil oluşturma ve yönetme",
+        "İş, sosyal, freelance için ayrı profiller",
+        "Anlık profil değiştirme"
+      ]
+    },
+    {
+      category: "Profil İçerikleri",
+      icon: User,
+      items: [
+        "Profil fotoğrafı, temel bilgiler, hakkında",
+        "Telefon, e-posta, WhatsApp, Telegram",
+        "Sosyal medya profilleri (LinkedIn, Instagram, X)",
+        "Her türlü link (web, portföy, CV, katalog)",
+        "Ödeme bilgileri (IBAN)",
+        "Özel profil URL (vialess.me/...)",
+        "Profil bazlı SEO ayarları"
+      ]
+    },
+    {
+      category: "Paylaşım ve Görünürlük",
+      icon: Share2,
+      items: [
+        "Link, QR, WhatsApp, SMS, e-posta paylaşımı",
+        "Tarayıcı üzerinden profil görüntüleme",
+        "Hızlı aksiyonlar (arama, mail, sosyal)",
+        "Rehbere kaydetme (vCard)",
+        "Apple Wallet / Google Wallet ekleme"
+      ]
+    },
+    {
+      category: "Kartvizit Tarama (OCR)",
+      icon: Camera,
+      items: [
+        "Fotoğraftan bilgi çekme ve dijital rehbere ekleme",
+        "Kaydetmeden önce düzenleme",
+        "Kaydettikten sonra da bilgi ekleme/çıkarma"
+      ]
+    },
+    {
+      category: "Tanışma Kayıtları",
+      icon: MapPin,
+      items: [
+        "Tanışma zamanı ve konumu ekleme",
+        "Tanışma notları ekleme",
+        "Sonradan manuel düzenleme"
+      ]
+    },
+    {
+      category: "Akıllı Rehber",
+      icon: Tag,
+      items: [
+        "Akıllı arama (isim, unvan, notlar)",
+        "Konum filtresi (il/ilçe/mahalle)",
+        "Tarih filtresi (tanışma zamanı)",
+        "Etiket (tag) ekleme",
+        "Manuel kişi ekleme",
+        "Fotoğraf ekleme"
+      ]
+    },
+    {
+      category: "Telefon Rehberi Entegrasyonu",
+      icon: Smartphone,
+      items: [
+        "iOS/Android rehberiyle senkronizasyon",
+        "Vialess kişilerini telefon uygulamasında görme"
+      ]
+    },
+    {
+      category: "NFC Kart Yönetimi",
+      icon: Zap,
+      items: [
+        "NFC kartı profille eşleştirme",
+        "NFC olmayan cihazlarda QR ile çalışma",
+        "Güvenli profil eşleştirme",
+        "Tek kartı farklı profillere yönlendirebilme"
+      ]
+    },
+    {
+      category: "Analitik",
+      icon: BarChart3,
+      items: [
+        "Ziyaretçi ve kaydedilme metrikleri",
+        "Günlük, haftalık, aylık kırılımlar",
+        "Gelecek: Tıklanma analizi ve konum verileri"
+      ]
+    },
+    {
+      category: "Çok Dillilik",
+      icon: Globe,
+      items: [
+        "Dil seçeneği desteği"
+      ]
+    }
+  ];
+
+  const relatedFeatures = [
     {
       name: t.menu_feature_digital_profile,
       path: "/ozellikler/dijital-profil",
@@ -88,13 +197,52 @@ export default function MobileAppPage() {
           </div>
         </div>
 
-        {/* Features Section */}
+        {/* Tüm Özellikler - FEATURES.md'den */}
         <section className="py-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            {t.product_features_in}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Mobil Uygulama - Tüm Özellikler
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              FEATURES.md dokümanına göre Vialess mobil uygulamasının sunduğu tüm yetenekler
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {coreFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:border-[#6c63ff] transition-all"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[#6c63ff]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-[#6c63ff]" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-lg">{feature.category}</h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {feature.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* İlgili Özellik Sayfaları */}
+        <section className="py-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Detaylı Özellikler
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
+            {relatedFeatures.map((feature, index) => (
               <Link
                 key={index}
                 to={feature.path}

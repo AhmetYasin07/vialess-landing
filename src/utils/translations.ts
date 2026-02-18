@@ -6,7 +6,7 @@ export const translations = {
     menu_products: "Ürünler",
     menu_group_core: "Temel Ürünler",
     menu_group_advanced: "Gelişmiş",
-    menu_products_digital: "Dijital Kartvizit",
+    menu_products_digital: "Dijital Kimlik",
     menu_products_nfc: "NFC Kartlar",
     menu_products_business: "Kurumsal (Ekipler)",
     menu_products_analytics: "Analitik",
@@ -20,7 +20,7 @@ export const translations = {
     // Product Pages
     product_mobile_hero_title: "Vialess cebinizde hazır",
     product_mobile_hero_sub:
-      "Dijital kartvizit, akıllı rehber ve kartvizit tarayıcı tek uygulamada. iOS ve Android uygulama mağazalarında.",
+      "Dijital kimlik, akıllı rehber ve kartvizit tarayıcı tek uygulamada. iOS ve Android uygulama mağazalarında.",
     product_web_hero_title:
       "Kurumsal Web Paneli ile Ekibinizi Yönetin",
     product_web_hero_sub:
@@ -39,7 +39,7 @@ export const translations = {
     // Feature Hub
     features_hub_title: "Vialess'in Tüm Özellikleri",
     features_hub_sub:
-      "Dijital kartvizit ve kurumsal kimlik yönetimi için güçlü özellikler.",
+      "Dijital kimlik ve kurumsal kimlik yönetimi için güçlü özellikler.",
     features_filter_all: "Tümü",
     features_filter_mobile: "Mobil",
     features_filter_corporate: "Kurumsal",
@@ -102,26 +102,34 @@ export const translations = {
     badge_corporate_feature: "Kurumsal Platform Özelliği",
     badge_all_platforms: "Tüm Platformlarda",
 
+    menu_products_features: "Ürünler ve Özellikler",
     menu_pricing: "Fiyatlar",
     menu_showroom: "Showroom",
     menu_showroom_card: "Showroom",
+    menu_references: "Referanslar",
     menu_contact: "İletişim",
     menu_login: "Giriş Yap",
     menu_try_free: "Ücretsiz Deneyin",
     menu_cta_sub: "Kredi kartı gerekmez",
+    cta_get_started: "Başla",
 
     // Hero
-    hero_badge: "Vialess: Hepsi Bir Arada Platform",
-    hero_title_1: "Kartvizitinizden",
-    hero_title_highlight: "Ötesi",
-    hero_title_2:
-      ": Kişisel ve İş Bağlantılarınızı Vialess ile Yönetin.",
-    hero_desc:
-      "Ekipler için yönetilebilir, bireyler için zahmetsiz networking",
-    hero_cta_create: "Ücretsiz Hesap Oluştur",
+    hero_badge: "Dijital kimlik ve bağlantı platformu",
+    hero_title_1: "Akılda Tutmak ve Akılda Kalmak İçin",
+    hero_title_highlight: "Yeni Nesil Dijital Kimlik",
+    hero_title_2: "*",
+    hero_subtitle:
+      "Bireyler ve şirketler için kapsamlı dijital kimlik ve iş ağı yönetim platformu.",
+    hero_cta_primary: "Ücretsiz Deneyin",
     hero_cta_demo: "Demo İsteyin",
+    hero_tooltip_free: "Kredi kartı gerekmez",
+    hero_tooltip_demo: "30 dakikada kurumunuza özel çözümleri keşfedin",
     hero_trust_kvkk: "KVKK Uyumlu",
     hero_trust_fast: "Hızlı Kurulum",
+    hero_feature1_title: "Kontrol Sizde",
+    hero_feature1_subtitle: "Bulut Tabanlı",
+    hero_feature2_title: "Hızlı Başlangıç",
+    hero_feature2_subtitle: "Kurulum Gerekmez",
     hero_mock_visitor: "Yeni Ziyaretçi",
     hero_mock_time: "Son 24 saat",
     hero_mock_profile: "Yeni Profil",
@@ -136,9 +144,10 @@ export const translations = {
     features_title_2: "Güçlendirin",
     features_desc:
       "Profesyonel yaşamınızda fark yaratacak araçlar tek platformda.",
+    features_subtitle: "Tanışma öncesi, tanışma anı ve sonrasında Vialess yanınızda.",
 
-    feature_1_badge: "Onboarding ve Dijitalleşme",
-    feature_1_title: "Dijital Kartvizitinizi Kolayca Yönetin",
+    feature_1_badge: "Dijital Kimlik Yönetimi",
+    feature_1_title: "Tek Tıkla Profesyonel Kimliğinizi Paylaşın",
     feature_1_desc:
       "Tanıştığınız kişilerin kartlarını tarayıp dijitalleştirin. Kendi kartınızı NFC veya QR kod ile saniyeler içinde paylaşın.",
     feature_1_p1_title: "Bağlantılarınız cebinizde güvende",
@@ -147,6 +156,57 @@ export const translations = {
     feature_1_p2_title: "Anında güncelleme",
     feature_1_p2_desc:
       "Bilgilerinizi değiştirdiğinizde, paylaştığınız tüm kartlar otomatik olarak güncellenir.",
+    
+    // Feature 1 Points (Digital Profile)
+    feature_1_point_1_title: "QR Her An Yanınızda",
+    feature_1_point_1_desc: "Dijital kimliğinizi QR kod ile anında paylaşın. Karşı taraf kamerasıyla okutarak tüm bilgilerinize ulaşabilir, uygulama indirmeye gerek yok.",
+    feature_1_point_2_title: "Dijital Kimlik",
+    feature_1_point_2_desc: "Profesyonel profilinizi dijital ortamda temsil edin. Fotoğraf, iletişim bilgileri, sosyal medya hesapları ve daha fazlası bir arada.",
+    feature_1_point_3_title: "Çoklu Dijital Kimlik",
+    feature_1_point_3_desc: "İş, kişisel veya farklı projeler için birden fazla dijital kimlik oluşturun. Her biri için ayrı QR kod ve bağımsız yönetim.",
+    feature_1_point_4_title: "İstatistik",
+    feature_1_point_4_desc: "Kimliğinizin kaç kez görüntülendiğini, hangi bağlantılara tıklandığını takip edin. Networking performansınızı ölçün ve geliştirin.",
+
+    // Feature 2 Points (Security)
+    feature_2_point_1_title: "Endüstri Standardı Şifreleme",
+    feature_2_point_1_desc: "Tüm verileriniz AES-256 şifreleme ile korunur. İletişim kanalları uçtan uca şifrelidir, üçüncü taraflar erişemez.",
+    feature_2_point_2_title: "Veri Gizliliği Kontrolü",
+    feature_2_point_2_desc: "Hangi bilgilerinizin kimlerle paylaşıldığını tam olarak kontrol edin. İstediğiniz zaman erişimi kaldırabilirsiniz.",
+    feature_2_point_3_title: "Güvenli Bulut Yedekleme",
+    feature_2_point_3_desc: "Verileriniz otomatik olarak güvenli sunucularda yedeklenir. Cihaz değiştirseniz bile tüm bağlantılarınız korunur.",
+
+    // Security Section
+    security_badge: "Güvenlik",
+    security_title: "Bağlantılarınız Cebinizde Güvende",
+
+    // Contacts Section (New Generation Contact Book)
+    contacts_badge: "Yeni Nesil Rehber",
+    contacts_title: "Kart Okuyucu ile Yeni Nesil Rehber",
+    contacts_point_1_title: "Kart Okuyucu",
+    contacts_point_1_desc: "QR veya NFC ile anında kartvizit tarayın. Karşınızdaki kişinin bilgileri otomatik olarak rehberinize kaydedilir, manuel giriş yok.",
+    contacts_point_2_title: "Bağlam Bilgisi",
+    contacts_point_2_desc: "Nerede, ne zaman tanıştığınızı otomatik kaydedin. Toplantı detayları, konum ve zaman damgası rehberde saklanır.",
+    contacts_point_3_title: "Gelişmiş Organizasyon",
+    contacts_point_3_desc: "Not ekleme, özel etiketler, şirket bilgisi düzenleme. Konum ve zaman bazlı akıllı filtreleme ile istediğiniz kişiye anında ulaşın.",
+
+    // Feature 3 Points (Sync)
+    feature_3_point_1_title: "Anlık Güncelleme",
+    feature_3_point_1_desc: "Bilgilerinizi değiştirdiğinizde, paylaştığınız tüm kartlar otomatik güncellenir. Yeni numara veya pozisyon anında yansır.",
+    feature_3_point_2_title: "Çoklu Cihaz Desteği",
+    feature_3_point_2_desc: "Telefon, tablet ve bilgisayarınızda aynı profili kullanın. Tüm cihazlarınız gerçek zamanlı senkronize kalır.",
+    feature_3_point_3_title: "Akıllı Bildirimler",
+    feature_3_point_3_desc: "Kartınız görüntülendiğinde veya rehbere kaydedildiğinde bildirim alın. Networking etkinliğinizi takip edin.",
+
+    // Sync Section
+    sync_badge: "Kurumsal Kimlik Araçları",
+    sync_title: "Her Yerde Güncel Kimliğiniz",
+    sync_point_1_title: "Email İmzası",
+    sync_point_1_desc: "Otomatik güncellenen email imzanızla her zaman güncel bilgilerinizi paylaşın. Bir kez ayarlayın, sürekli güncel kalın.",
+    sync_point_2_title: "Online Toplantı Arkaplanı",
+    sync_point_2_desc: "Zoom, Teams veya Google Meet toplantılarınızda dijital kimliğinizi arka plan olarak kullanın. Profesyonel görünümü her toplantıya taşıyın.",
+
+    // Features CTA
+    features_cta_button: "Tüm Özellikleri Keşfet",
 
     feature_2_badge: "Akıllı Rehber ve Kişisel CRM",
     feature_2_title: "İlişkilerinizi Düzenleyin ve Yönetin",
@@ -170,7 +230,7 @@ export const translations = {
     impact_title_prefix: "İş Ağınızı Büyütürken",
     impact_title_highlight: "Doğayı Koruyun",
     impact_desc:
-      "Dijital kartvizit kullanarak kağıt tüketimini azaltın, profesyonel ağınızı yönetirken karbon ayak izinizi düşürün.",
+      "Dijital kimlik kullanarak kağıt tüketimini azaltın, profesyonel ağınızı yönetirken karbon ayak izinizi düşürün.",
     impact_cta: "Doğayı Koru, Hemen İndir",
     impact_marquee: "Neden biz?",
 
@@ -193,21 +253,39 @@ export const translations = {
     stat_water_sub: "LİTRE / YIL",
 
     // HowItWorks
-    how_title_1: "Nasıl",
-    how_title_highlight: "Çalışır?",
-    how_desc: "Dört adımda dijital kimliğinizi oluşturun.",
-    how_step_1_title: "Hesabınızı Oluşturun",
+    how_title_1: "Ücretsiz Başlayın,",
+    how_title_highlight: "Hemen Keşfedin",
+    how_desc: "Vialess freemium planı ile tüm temel özelliklere sınırsız erişim.",
+    how_step_1_title: "Sınırsız Paylaşım",
     how_step_1_desc:
-      "Bilgilerinizi girin, fotoğrafınızı ekleyin ve profilinizi hazırlayın.",
-    how_step_2_title: "Kartınızı Tasarlayın ve Paylaşın",
+      "Dijital kartınızı istediğiniz kadar paylaşın. QR kod, NFC, link - hiç limit yok.",
+    how_step_1_bullet_1: "Sınırsız QR kod paylaşımı",
+    how_step_1_bullet_2: "NFC kart desteği",
+    how_step_1_bullet_3: "E-posta imzası entegrasyonu",
+    how_step_2_title: "İstediğini Ekle",
     how_step_2_desc:
-      "Dijital veya NFC kartınızı özelleştirin. QR kod veya e-posta imzası ile hemen paylaşın.",
-    how_step_3_title: "Bağlantı Kurun",
+      "Sosyal medya, iletişim, lokasyon - profilinize her şeyi sınırsız ekleyin.",
+    how_step_2_bullet_1: "Sosyal medyalar",
+    how_step_2_bullet_2: "Mail-telefon-telegram iletişim bilgileri",
+    how_step_2_bullet_3: "Sınırsız link",
+    how_step_3_title: "Rehberi Kullan",
     how_step_3_desc:
-      "Rehberinizde arama yapın. Tanıştığınız kişiler için notlar ve hatırlatmalar ekleyin.",
-    how_step_4_title: "Analiz Edin ve Büyüyün",
+      "Tüm bağlantılarınızı yönetin. Her ay 5 kartvizit taraması hediye.",
+    how_step_3_bullet_1: "Sınırsız kişi kaydı",
+    how_step_3_bullet_2: "Akıllı notlar ve etiketler",
+    how_step_3_bullet_3: "5 ücretsiz kartvizit taraması/ay",
+    how_step_4_title: "Premium'u Dene",
     how_step_4_desc:
-      "Ziyaretçi istatistiklerini izleyin. Gelişmiş raporlarla iş ağı stratejinizi verilerle yönetin.",
+      "İstediğin zaman yükselt. 7 gün ücretsiz premium deneme hakkı.",
+    how_step_4_bullet_1: "Gelişmiş analitik raporlar",
+    how_step_4_bullet_2: "Sınırsız kartvizit tarama",
+    how_step_4_bullet_3: "Marka kimliği yönetimi",
+    how_badge_free: "ÜCRETSİZ",
+    how_badge_trial: "7 GÜN DENE",
+    how_cta_title: "Hemen İndirin, Ücretsiz Başlayın",
+    how_cta_desc: "Kredi kartı gerektirmez. 2 dakikada kurulum.",
+    how_cta_button: "Ücretsiz İndir",
+    how_social_proof: "50.000+ profesyonel kullanıyor",
 
     // Testimonials
     testim_trusted_by: "500'den Fazla Kurumsal Firma [DOĞRULA]",
@@ -265,13 +343,15 @@ export const translations = {
     // FAQ
     faq_title: "Sıkça Sorulan Sorular",
     faq_desc: "Aklınıza takılanlar için buradayız.",
+    faq_cat_general: "Genel",
+    faq_cat_product: "Ürün & Kullanım",
     faq_q1: "Profilim ne zaman Google'da görünür?",
     faq_a1:
       "Google algoritmalarına bağlı olarak ortalama 1-2 hafta içinde sonuçlar görünmeye başlar. Profilinizin doluluğu bu süreci hızlandırabilir.",
     faq_q2: "Uygulama izinleri neden isteniyor?",
     faq_a2:
       "Size en iyi deneyimi sunmak için rehber (kayıt), kamera (tarama) ve galeri (yükleme) izinlerine ihtiyaç duyuyoruz. Verileriniz KVKK kapsamında korunur.",
-    faq_q3: "Kartımı geçici olarak dondurabilir miyim?",
+    faq_q3: "Kartımı geici olarak dondurabilir miyim?",
     faq_a3:
       'Evet, uygulamanın Ayarlar veya Kart Ayarları bölümünden kartınızı dilediğiniz zaman "Pasif" moda alabilirsiniz. Bu durumda linkinize tıklayanlar "Bakım Modu" ekranını görür.',
     faq_q4: "Profilimi silersem geri alabilir miyim?",
@@ -306,10 +386,13 @@ export const translations = {
     // Footer
     footer_rights: "Tüm hakları saklıdır.",
     footer_desc:
-      "Dijital kartvizitler, gelişmiş analitikler ve kurumsal kimlik yönetimi sunan kapsamlı platform.",
+      "Dijital kimlik, gelişmiş analitikler ve kurumsal kimlik yönetimi sunan kapsamlı platform.",
     footer_value_prop:
-      "Dijital kartvizitler, akıllı networking ve kurumsal kimlik yönetimi için hepsi bir arada platform.",
+      "Dijital kimlik, akıllı networking ve kurumsal kimlik yönetimi için hepsi bir arada platform.",
     footer_product: "Ürünler",
+    footer_product_mobile_app: "Mobil Uygulama",
+    footer_product_web_panel: "Kurumsal Web Paneli",
+    footer_product_nfc_cards: "NFC Kartlar",
     footer_solutions: "Çözümler",
     footer_sol_sales: "Satış Ekipleri İçin",
     footer_sol_startups: "Girişimler İçin",
@@ -341,7 +424,7 @@ export const translations = {
     sales_hero_title:
       "Satış Ekipleri İçin Daha Akıllı Networking",
     sales_hero_sub:
-      "Dijital kartvizitler, NFC kartlar ve analizlerle satış sürecinizi hızlandırın.",
+      "Dijital kimlik, NFC kartlar ve analizlerle satış sürecinizi hızlandırın.",
     sales_problem_title: "Satış Süreçlerindeki Zorluklar",
     sales_problem_1: "Kartvizitler kaybolur",
     sales_problem_2: "Takip edilemeyen temaslar",
@@ -377,7 +460,7 @@ export const translations = {
     startup_hero_title:
       "Girişimler İçin Profesyonel İlk İzlenim",
     startup_hero_sub:
-      "Büyüyen ekipler için ölçeklenebilir dijital kartvizit ve kimlik yönetimi.",
+      "Büyüyen ekipler için ölçeklenebilir dijital kimlik ve kimlik yönetimi.",
     startup_pain_title: "Girişimlerin Yaşadığı Zorluklar",
     startup_pain_1: "Dağınık iletişim bilgileri",
     startup_pain_2: "Farklı roller / farklı kimlikler",
@@ -445,7 +528,7 @@ export const translations = {
 
     // Individual Solutions Page
     individual_hero_title:
-      "Bireyler İçin Akıllı Dijital Kartvizit",
+      "Bireyler İçin Akıllı Dijital Kimlik",
     individual_hero_sub:
       "Kendinizi tek linkle, her ortamda profesyonel şekilde tanıtın.",
     individual_problem_title:
@@ -496,7 +579,7 @@ export const translations = {
     student_benefit_3:
       "Etkinliklerde ve kariyer fuarlarında hızlı tanışma",
     student_benefit_4: "Güncellenebilir dijital profil",
-    student_features_title: "Öğrenciler İçin Özellikler",
+    student_features_title: "Ö��renciler İçin Özellikler",
     student_feature_1_title: "Kişisel Dijital Profil",
     student_feature_1_desc:
       "Fotoğrafın, bilgilerin ve iletişim detayların bir arada. Tek linkle paylaş.",
@@ -528,16 +611,203 @@ export const translations = {
     student_emotional_desc:
       "Profesyonellik, kağıt CV'lerle başlamıyor. Net, güncel ve erişilebilir bir kimlikle başlıyor.",
     student_cta_title: "Kariyerine Bugünden Başla",
-    student_cta_btn: "Ücretsiz Dene",
+    student_cta_btn: "Try Free",
     student_cta_sub:
       "Öğrenciler için ücretsiz ve hızlı kurulum",
+    
+    // Menu Product Descriptions
+    menu_product_mobile_desc: "Dijital kimlik ve rehber uygulaması",
+    menu_product_web_desc: "Ekip ve envanter yönetim platformu",
+    menu_product_nfc_desc: "Yeni nesil temassız kartvizitler",
+    
+    // Common UI
+    badge_coming_soon: "YAKINDA",
+    menu_solutions_for_you: "Size Özel",
+    menu_solutions_sales: "Satış Ekipleri",
+    menu_solutions_startups: "Girişimler",
+    menu_solutions_enterprises: "Kurumsal Şirketler",
+    menu_solutions_individuals: "Bireysel Kullanıcılar",
+    menu_solutions_students: "Öğrenciler",
+    
+    // Mobile Menu
+    mobile_menu_sales_for: "Satış Ekipleri İçin",
+    mobile_menu_startups_for: "Girişimler İçin",
+    mobile_menu_enterprises_for: "Kurumsal Şirketler İçin",
+    mobile_menu_individuals_for: "Bireysel Kullanıcılar İçin",
+    mobile_menu_students_for: "Öğrenciler İçin",
+    
+    // CTA Banner
+    cta_title_1: "Dijital Kimliğinizi",
+    cta_title_2: "Geleceğe Taşıyın",
+    cta_stat_users: "Aktif Kullanıcı",
+    cta_stat_companies: "Kurumsal Şirket",
+    cta_stat_satisfaction: "Müşteri Memnuniyeti",
+    cta_join_us: "Bize Katılın",
+    cta_be_part: "Ailenin bir parçası olun",
+    cta_badge: "Premium Deneyim",
+    cta_desc: "30.000+ profesyonel Vialess ile networking süreçlerini otomatize etti. Kağıt kartvizitlere veda edin, sürdürülebilir ve ölçülebilir bağlantılar kurun.",
+    cta_start_free: "Ücretsiz Başla",
+    cta_request_demo: "Demo Talep Et",
+    cta_tooltip_start: "Hesap oluşturun ve hemen kullanmaya başlayın",
+    cta_tooltip_demo: "Uzmanlarımızla 30 dakikalık demo görüşmesi ayarlayın",
+    cta_no_credit: "Kredi kartı gerekmez",
+    cta_free_plan: "Ömür boyu ücretsiz plan",
+    
+    // Card Showroom
+    showroom_exclusive: "Vialess Özel",
+    showroom_filter: "Filtrele",
+    showroom_no_results: "Sonuç Bulunamadı",
+    showroom_no_results_desc: "Kriterlerinize uygun kart tasarımı bulunamadı.",
+    showroom_remove_limits: "Sınırları Kaldır.",
+    
+    // Case Studies
+    case_studies_title: "Success Stories",
+    case_study_problem: "Problem",
+    case_study_solution: "Solution",
+    case_study_gain: "Gain",
+    
+    // Design Your Card
+    design_available_this_week: "Bu hafta kapınızda",
+    design_your_logo_title: "Hızlı ve size özel kart baskısı",
+    design_card_type: "Kart Türü",
+    design_vialess: "VIALESS",
+    design_sample_role: "Product Manager @Vialess",
+    design_sample_name: "Ayşe Yılmaz",
+    
+    // DesignYourCard - additional keys
+    design_desc: "Markanıza en uygun rengi seçin, logonuzu ekleyin ve dijital dünyada fark yaratın.",
+    design_cta: "Kartını özelleştir",
+    
+    // HomePricing (NFC Cards Section)
+    hp_section_title: "Fiziksel NFC Kartlar",
+    hp_section_desc: "Dijital kimliğinizi fiziksel karta taşıyın. Dokunarak profil paylaşımının keyfini çıkarın.",
+    hp_classic_name: "Vialess Klasik",
+    hp_classic_desc: "Dayanıklı PVC, renkli baskı",
+    hp_classic_f1: "Sınırsız Paylaşım",
+    hp_classic_f2: "QR Kod Desteği",
+    hp_classic_f3: "iOS & Android Uyumlu",
+    hp_classic_f4: "Ömür Boyu Kullanım",
+    hp_bamboo_name: "Vialess Bambu",
+    hp_bamboo_desc: "Sürdürülebilir bambu, kazıma logo",
+    hp_bamboo_f1: "Doğa Dostu Malzeme",
+    hp_bamboo_f2: "Lazer Kazıma İsim",
+    hp_bamboo_f3: "Premium His",
+    hp_bamboo_f4: "Özel QR Kod",
+    hp_metal_name: "Vialess Metal",
+    hp_metal_desc: "Paslanmaz çelik, lazer kazıma",
+    hp_metal_f1: "Ağır Metal Gövde",
+    hp_metal_f2: "Mat Siyah Bitiş",
+    hp_metal_f3: "Prestijli Görünüm",
+    hp_metal_f4: "VIP Destek",
+    hp_cta_buy: "Satın Alın",
+
+    // TargetAudience
+    ta_badge: "Sektör Çözümleri",
+    ta_title_1: "Her Ekip İçin",
+    ta_title_highlight: "Özelleştirilmiş Deneyim",
+    ta_desc: "Bireyden kurumsal ölçeğe, ihtiyacınıza özel networking ve kimlik yönetim araçları.",
+    ta_sales_title: "Satış Ekipleri İçin",
+    ta_sales_desc: "Toplantılarda tanıştığınız kişileri kaybetmeyin. Ekip rehber havuzunda toplayın, not ekleyin, etiketleyin ve Excel'e aktararak kendi CRM'inize taşıyın.",
+    ta_sales_f1: "Ekip rehber havuzları",
+    ta_sales_f2: "Not ve etiket sistemi",
+    ta_sales_f3: "Excel çıktısı ve detaylı kişi bilgileri",
+    ta_startups_title: "Girişimler İçin",
+    ta_startups_desc: "Hızlı büyüyen ekibiniz için esnek ve ölçeklenebilir dijital kimlik. Marka tutarlılığını koruyun, maliyetleri düşürün.",
+    ta_startups_f1: "Sıfırdan ekip kimliği oluşturun",
+    ta_startups_f2: "Merkezi marka yönetimi",
+    ta_startups_f3: "Ölçeklenebilir yapı",
+    ta_enterprises_title: "Kurumsal Firmalar İçin",
+    ta_enterprises_desc: "Binlerce çalışanı tek panelden yönetin. Rol tabanlı erişim, gelişmiş güvenlik protokolleri ve departman bazlı kontrol.",
+    ta_enterprises_f1: "Excel ile toplu davet ve düzenleme",
+    ta_enterprises_f2: "Departman bazlı yönetim",
+    ta_enterprises_f3: "Networking performans ölçümü",
+    ta_individuals_title: "Bireyler İçin",
+    ta_individuals_desc: "Tek bir linkle tüm profesyonel kimliğiniz. Sosyal medya, portfolyo ve iletişim bilgilerinizi her an güncel tutun.",
+    ta_individuals_f1: "%100 ücretsiz mobil uygulama",
+    ta_individuals_f2: "Sınırsız paylaşım",
+    ta_individuals_f3: "Sınırsız link ve sosyal medya ekleme",
+    ta_students_title: "Öğrenciler İçin",
+    ta_students_desc: "%100 ücretsiz mobil uygulama ile CV'nizi ve bilgilerinizi akılda kalıcı şekilde paylaşın.",
+    ta_students_f1: "Sınırsız paylaşım",
+    ta_students_f2: "CV'nizi akılda kalıcı biçimde paylaşın",
+    ta_students_f3: "Etkinliklerde tanışanları rehberde saklayın",
+    ta_details: "Detayları Gör",
+
+    // HomeShowroom
+    hs_card1_title: "Mat Siyah Premium",
+    hs_card1_type: "Metal",
+    hs_card2_title: "Özel Tasarım",
+    hs_card2_type: "Lüks",
+    hs_card3_title: "Minimal Beyaz",
+    hs_card3_type: "PVC",
+    hs_badge: "Showroom",
+    hs_title_1: "Kusursuz Bir",
+    hs_title_highlight: "İlk İzlenim",
+    hs_desc_1: "Farklı materyaller, dokular ve baskı tekniklerini interaktif showroomumuzda keşfedin. Markanıza en uygun kartı",
+    hs_desc_highlight: "beraber tasarlayalım.",
+    hs_cta: "Showroom'u Keşfet →",
+
+    // AboutPage
+    about_title: "Hakkımızda",
+    about_desc: "Vialess olarak misyonumuz, geleneksel kartvizit deneyimini dijitalleştirerek sürdürülebilir ve yenilikçi bir iletişim platformu sunmaktır",
+    about_story_title: "Hikayemiz",
+    about_story_p1: "2023 yılında kurulan Vialess, dijital kimlik sektöründe Türkiye'nin önde gelen platformlarından biri olma hedefiyle yola çıktı. Kağıt kartvizitlerin çevreye verdiği zararı ve iş dünyasında yaşanan verimsizlikleri gören kurucularımız, modern bir çözüm sunmak için bir araya geldi.",
+    about_story_p2: "Bugün binlerce profesyonel ve yüzlerce şirket Vialess ile networking deneyimini dönüştürüyor. NFC teknolojisi, yapay zeka destekli OCR ve gelişmiş CRM özellikleriyle iş bağlantılarınızı güçlendiriyoruz.",
+    about_team_title: "Ekibimiz",
+    about_values_title: "Değerlerimiz",
+    about_value1_title: "Yenilikçilik",
+    about_value1_desc: "Teknoloji ve yaratıcılığı birleştirerek sürekli yenilik yapıyoruz.",
+    about_value2_title: "Çevre Dostu Yaklaşım",
+    about_value2_desc: "Sürdürülebilir çözümlerle doğaya saygılı iş ağları kuruyoruz.",
+    about_value3_title: "Kullanıcı Odaklı Tasarım",
+    about_value3_desc: "Her kararı kullanıcı deneyimini iyileştirmek için veriyoruz.",
+
+    // BlogPage
+    blog_badge: "Blog & Haberler",
+    blog_title: "Bilgi Merkezi",
+    blog_desc: "Networking, dijital iletişim ve sürdürülebilirlik hakkında en son ipuçları ve sektörel gelişmeler.",
+    blog_read_more: "Devamını Oku",
+    blog_newsletter_title: "Bültenimize Katılın",
+    blog_newsletter_desc: "En yeni dijital trendlerden ve networking ipuçlarından haberdar olun.",
+    blog_email_placeholder: "E-posta adresiniz",
+    blog_subscribe: "Abone Ol",
+    blog_subscribe_success: "adresiyle bültene kayıt oldunuz!",
+    blog_popular_posts: "En Popüler Yazılar",
+    blog_categories_title: "Kategoriler",
+    blog_cat_all: "Tümü",
+    blog_cat_tech: "Teknoloji",
+    blog_cat_networking: "Networking",
+    blog_cat_sustainability: "Sürdürülebilirlik",
+    blog_cat_crm: "CRM",
+    blog_cat_corporate: "Kurumsal",
+    blog_lang_all: "Tümü",
+    blog_lang_tr: "Türkçe",
+    blog_lang_en: "English",
+    blog_lang_filter_title: "Yazı Dili",
+    blog_post_not_found: "Yazı bulunamadı",
+    blog_go_back: "Blog Listesine Dön",
+    blog_back: "Geri Dön",
+    blog_share: "Paylaş",
+    blog_read_time: "dk okuma",
+    blog_related: "İlginizi Çekebilir",
+    blog_see_all: "Tümünü Gör",
+    blog_link_copied: "Bağlantı kopyalandı!",
+    blog_link_copy_fallback: "Bağlantıyı tarayıcı adres çubuğundan kopyalayabilirsiniz.",
+    
+    // Popup
+    popup_mobile_title: "Mobil Uygulamayı İndirin",
+    popup_mobile_desc: "Vialess deneyimini cebinizde yaşayın.",
+    popup_web_note: "Web paneli için bilgisayardan giriş yapın.",
+    popup_app_store: "App Store",
+    popup_play_store: "Google Play",
+    popup_continue_web: "Web sitesine devam et",
   },
   en: {
     // Menu
     menu_products: "Products",
     menu_group_core: "Core Products",
     menu_group_advanced: "Advanced",
-    menu_products_digital: "Digital Business Card",
+    menu_products_digital: "Digital Identity",
     menu_products_nfc: "NFC Cards",
     menu_products_business: "Business (Teams)",
     menu_products_analytics: "Analytics",
@@ -552,7 +822,7 @@ export const translations = {
     product_mobile_hero_title:
       "Always with You with Mobile App",
     product_mobile_hero_sub:
-      "Digital business card, smart directory, and card scanner in one app. Free for iOS and Android.",
+      "Digital identity, smart directory, and card scanner in one app. Free for iOS and Android.",
     product_web_hero_title:
       "Manage Your Team with Corporate Web Panel",
     product_web_hero_sub:
@@ -570,7 +840,7 @@ export const translations = {
     // Feature Hub
     features_hub_title: "All Features of Vialess",
     features_hub_sub:
-      "Powerful features for digital business cards and corporate identity management.",
+      "Powerful features for digital identity and corporate identity management.",
     features_filter_all: "All",
     features_filter_mobile: "Mobile",
     features_filter_corporate: "Corporate",
@@ -634,26 +904,34 @@ export const translations = {
     badge_corporate_feature: "Corporate Platform Feature",
     badge_all_platforms: "All Platforms",
 
+    menu_products_features: "Products & Features",
     menu_pricing: "Pricing",
     menu_showroom: "Card Showroom",
     menu_showroom_card: "Card Showroom",
+    menu_references: "References",
     menu_contact: "Contact",
     menu_login: "Log In",
     menu_try_free: "Try Free",
     menu_cta_sub: "No credit card required",
+    cta_get_started: "Get Started",
 
     // Hero
-    hero_badge: "Vialess: All-in-One Platform",
-    hero_title_1: "Beyond Your",
-    hero_title_highlight: "Business Card",
-    hero_title_2:
-      ": Manage Your Personal and Business Connections with Vialess.",
-    hero_desc:
-      "Manageable for teams, easy networking for individuals.",
-    hero_cta_create: "Create Free Account",
-    hero_cta_demo: "Request Corporate Demo",
+    hero_badge: "Digital identity and connection platform",
+    hero_title_1: "New Generation Digital Identity to",
+    hero_title_highlight: "Stay in Mind",
+    hero_title_2: "and Stay Memorable*",
+    hero_subtitle:
+      "Comprehensive digital identity and business network management platform for individuals and companies.",
+    hero_cta_primary: "Try Free",
+    hero_cta_demo: "Request Demo",
+    hero_tooltip_free: "No credit card required",
+    hero_tooltip_demo: "Discover customized solutions for your organization in 30 minutes",
     hero_trust_kvkk: "GDPR Compliant",
     hero_trust_fast: "Fast Setup",
+    hero_feature1_title: "You're in Control",
+    hero_feature1_subtitle: "Cloud-Based",
+    hero_feature2_title: "Quick Start",
+    hero_feature2_subtitle: "No Setup Required",
     hero_mock_visitor: "New Visitor",
     hero_mock_time: "Last 24 hours",
     hero_mock_profile: "New Profile",
@@ -668,10 +946,11 @@ export const translations = {
     features_title_2: "Experience with Vialess",
     features_desc:
       "All the tools you need to make a difference in the business world in one platform.",
+    features_subtitle: "Vialess is with you before, during and after every meeting.",
 
-    feature_1_badge: "Onboarding & Digitization",
+    feature_1_badge: "Digital Identity Management",
     feature_1_title:
-      "Manage Your Digital Business Cards Fast, Accurately and Reliably",
+      "Share Your Professional Identity with One Tap",
     feature_1_desc:
       "Scan and digitize business cards of people you meet with Vialess. Share your own cards quickly with NFC-enabled products or QR codes and build your connections easily.",
     feature_1_p1_title:
@@ -681,6 +960,57 @@ export const translations = {
     feature_1_p2_title: "Instant update",
     feature_1_p2_desc:
       "When you change your information, all cards you shared are automatically updated.",
+    
+    // Feature 1 Points (Digital Profile)
+    feature_1_point_1_title: "QR Always with You",
+    feature_1_point_1_desc: "Share your digital identity instantly with QR code. Others can access all your information by scanning with their camera, no app download required.",
+    feature_1_point_2_title: "Digital Identity",
+    feature_1_point_2_desc: "Represent your professional profile in the digital space. Photo, contact details, social media accounts and more all in one place.",
+    feature_1_point_3_title: "Multiple Digital Identities",
+    feature_1_point_3_desc: "Create multiple digital identities for work, personal or different projects. Separate QR code and independent management for each.",
+    feature_1_point_4_title: "Statistics",
+    feature_1_point_4_desc: "Track how many times your profile is viewed and which links are clicked. Measure and improve your networking performance.",
+
+    // Feature 2 Points (Security)
+    feature_2_point_1_title: "Industry Standard Encryption",
+    feature_2_point_1_desc: "All your data is protected with AES-256 encryption. Communication channels are end-to-end encrypted, third parties cannot access.",
+    feature_2_point_2_title: "Data Privacy Control",
+    feature_2_point_2_desc: "Fully control which information is shared with whom. You can revoke access at any time.",
+    feature_2_point_3_title: "Secure Cloud Backup",
+    feature_2_point_3_desc: "Your data is automatically backed up on secure servers. All your connections are protected even if you change devices.",
+
+    // Security Section
+    security_badge: "Security",
+    security_title: "Your Connections Are Safe In Your Pocket",
+
+    // Contacts Section (New Generation Contact Book)
+    contacts_badge: "New Generation Contact Book",
+    contacts_title: "Card Reader & Next-Gen Contact Management",
+    contacts_point_1_title: "Card Reader",
+    contacts_point_1_desc: "Instantly scan business cards via QR or NFC. Contact information is automatically saved to your contact book, no manual entry.",
+    contacts_point_2_title: "Context Information",
+    contacts_point_2_desc: "Automatically record where and when you met. Meeting details, location, and timestamp are stored in your contacts.",
+    contacts_point_3_title: "Advanced Organization",
+    contacts_point_3_desc: "Add notes, custom tags, and company information. Smart filtering by location and time lets you find any contact instantly.",
+
+    // Feature 3 Points (Sync)
+    feature_3_point_1_title: "Instant Update",
+    feature_3_point_1_desc: "When you change your information, all shared cards update automatically. New number or position reflects immediately.",
+    feature_3_point_2_title: "Multi Device Support",
+    feature_3_point_2_desc: "Use the same profile on your phone, tablet and computer. All your devices stay synced in real-time.",
+    feature_3_point_3_title: "Smart Notifications",
+    feature_3_point_3_desc: "Get notified when your card is viewed or saved to contacts. Track your networking activity.",
+
+    // Sync Section
+    sync_badge: "Corporate Identity Tools",
+    sync_title: "Your Identity, Always Up-to-Date",
+    sync_point_1_title: "Email Signature",
+    sync_point_1_desc: "Share your always up-to-date information with auto-updating email signature. Set it once, stay current forever.",
+    sync_point_2_title: "Online Meeting Background",
+    sync_point_2_desc: "Use your digital identity as a background in Zoom, Teams, or Google Meet. Bring professional look to every meeting.",
+
+    // Features CTA
+    features_cta_button: "Explore All Features",
 
     feature_2_badge: "Smart Contacts & Personal CRM",
     feature_2_title:
@@ -694,7 +1024,7 @@ export const translations = {
     feature_3_badge: "User Analytics",
     feature_3_title: "Turn Your Connections into Relationships",
     feature_3_desc:
-      "Track the awareness created by your digital business card with numbers. Detect whether relationships are strengthening or weakening with real-time reports. See how much attention you attract.",
+      "Track the awareness created by your digital identity with numbers. Detect whether relationships are strengthening or weakening with real-time reports. See how much attention you attract.",
     feature_3_p1_title: "View statistics",
     feature_3_p2_title: "Click analysis",
     feature_3_p3_title: "Popular content tracking",
@@ -729,22 +1059,39 @@ export const translations = {
     stat_water_sub: "LITERS / YEAR",
 
     // HowItWorks
-    how_title_1: "How It",
-    how_title_highlight: "Works?",
-    how_desc:
-      "Create and manage your professional digital identity in just 4 steps.",
-    how_step_1_title: "Create Account",
+    how_title_1: "Start Free,",
+    how_title_highlight: "Explore Now",
+    how_desc: "Unlimited access to all core features with Vialess freemium plan.",
+    how_step_1_title: "Unlimited Sharing",
     how_step_1_desc:
-      "Enter personal info, add photo and create multiple profiles. Choose unique card link and set SEO settings.",
-    how_step_2_title: "Design & Share Card",
+      "Share your digital card as much as you want. QR code, NFC, link - no limits.",
+    how_step_1_bullet_1: "Unlimited QR code sharing",
+    how_step_1_bullet_2: "NFC card support",
+    how_step_1_bullet_3: "Email signature integration",
+    how_step_2_title: "Add Everything",
     how_step_2_desc:
-      "Design your digital or NFC card. Create email signature, add to Apple/Google Wallet and start sharing with QR code immediately.",
-    how_step_3_title: "Connections & Meetings",
+      "Social media, contact info, location - add unlimited items to your profile.",
+    how_step_2_bullet_1: "Social media accounts",
+    how_step_2_bullet_2: "Email-phone-telegram contact info",
+    how_step_2_bullet_3: "Unlimited links",
+    how_step_3_title: "Use Contacts",
     how_step_3_desc:
-      "Search and filter in your contacts. Organize your network by adding notes, location and date info for people you meet.",
-    how_step_4_title: "Analyze & Grow",
+      "Manage all your connections. Get 5 free business card scans every month.",
+    how_step_3_bullet_1: "Unlimited contact storage",
+    how_step_3_bullet_2: "Smart notes and tags",
+    how_step_3_bullet_3: "5 free card scans/month",
+    how_step_4_title: "Try Premium",
     how_step_4_desc:
-      "Monitor visitor statistics, see connection categories. Manage your networking strategy with data using advanced analytics.",
+      "Upgrade anytime. Get 7 days free premium trial to explore advanced features.",
+    how_step_4_bullet_1: "Advanced analytics reports",
+    how_step_4_bullet_2: "Unlimited card scanning",
+    how_step_4_bullet_3: "Brand identity management",
+    how_badge_free: "FREE",
+    how_badge_trial: "TRY 7 DAYS",
+    how_cta_title: "Download Now, Start Free",
+    how_cta_desc: "No credit card required. Setup in 2 minutes.",
+    how_cta_button: "Download Free",
+    how_social_proof: "50,000+ professionals using",
 
     // Testimonials
     testim_trusted_by: "Trusted by 500+ Corporate Companies",
@@ -801,6 +1148,8 @@ export const translations = {
     // FAQ
     faq_title: "Frequently Asked Questions",
     faq_desc: "We are here for your questions.",
+    faq_cat_general: "General",
+    faq_cat_product: "Product & Usage",
     faq_q1:
       "How long after setting SEO settings will I appear on Google?",
     faq_a1:
@@ -816,37 +1165,40 @@ export const translations = {
       "No, for security reasons, deleted profiles and related data are permanently removed from our servers and cannot be recovered. We recommend backing up your data before deciding.",
 
     // AppDemo
-    demo_title: "Tek Ekosistem:",
-    demo_title_highlight: "Mobil Uygulama + Business Panel",
-    demo_tab_mobile: "Mobil Uygulama",
-    demo_tab_web: "Business Panel",
-    demo_mobile_title: "Mobil Uygulama Deneyimi",
+    demo_title: "Integrated Platform:",
+    demo_title_highlight: "Mobile App & Management Panel",
+    demo_tab_mobile: "Mobile App",
+    demo_tab_web: "Web Panel",
+    demo_mobile_title: "Mobile App Experience",
     demo_mobile_desc:
-      "Vialess mobil uygulaması ile tüm networking işlemleriniz cebinizde. Ziyaretçi istatistikleri, SEO ayarları, rehber yönetimi ve daha fazlası.",
-    demo_mobile_f1: "Ziyaretçi ve Görüntülenme İstatistikleri",
-    demo_mobile_f2: "Kart ve SEO Ayarları",
-    demo_mobile_f3: "Gelişmiş Rehber ve Tanışma Notları",
-    demo_mobile_f4: "QR Kod ve Cüzdan (Wallet) Entegrasyonu",
+      "Your entire business network in your pocket with Vialess mobile app. Visitor statistics, SEO settings, contact management and more.",
+    demo_mobile_f1: "Visitor and View Statistics",
+    demo_mobile_f2: "Card and SEO Settings",
+    demo_mobile_f3: "Advanced Contact Book & Meeting Notes",
+    demo_mobile_f4: "QR Code and Wallet Integration",
     demo_mobile_f5:
-      "Profil Yönetimi (Sosyal Medya, IBAN, Özel Alanlar)",
-    demo_mobile_cta: "Uygulamayı İndir",
-    demo_web_title: "Business Panel Yönetimi",
+      "Profile Management (Social Media, IBAN, Custom Fields)",
+    demo_mobile_cta: "Download App",
+    demo_web_title: "Web Panel Management",
     demo_web_desc:
-      "Kurumsal ihtiyaçlarınız için güçlü bir yönetim paneli. Ekip yönetimi, merkezi kartvizit havuzu ve detaylı analizler.",
-    demo_web_f1: "Şirket Profili ve Canlı Ön İzleme",
-    demo_web_f2: "Çalışan Profili ve İzin Yönetimi",
-    demo_web_f3: "Ekip İstatistikleri ve Raporlama",
-    demo_web_f4: "Kart Durum Yönetimi (Aktif/Pasif)",
-    demo_web_f5: "Toplu Veri İçe/Dışa Aktarma (Excel)",
-    demo_web_cta: "Panel Demosu İste",
+      "A powerful management panel for your corporate needs. Team management, centralized contact pool and detailed analytics.",
+    demo_web_f1: "Company Profile & Live Preview",
+    demo_web_f2: "Employee Profile & Permission Management",
+    demo_web_f3: "Team Statistics & Reporting",
+    demo_web_f4: "Card Status Management (Active/Passive)",
+    demo_web_f5: "Bulk Data Import/Export (Excel)",
+    demo_web_cta: "Request Panel Demo",
 
     // Footer
     footer_rights: "All rights reserved.",
     footer_desc:
-      "All-in-one platform offering digital business cards, advanced analytics, and corporate identity tools.",
+      "All-in-one platform offering digital identity, advanced analytics, and corporate identity tools.",
     footer_value_prop:
-      "All-in-one platform for digital business cards, smart networking, and corporate identity management.",
+      "All-in-one platform for digital identity, smart networking, and corporate identity management.",
     footer_product: "Products",
+    footer_product_mobile_app: "Mobile App",
+    footer_product_web_panel: "Corporate Web Panel",
+    footer_product_nfc_cards: "NFC Cards",
     footer_solutions: "Solutions",
     footer_sol_sales: "For Sales Teams",
     footer_sol_startups: "For Startups",
@@ -877,7 +1229,7 @@ export const translations = {
     // Sales Solutions Page
     sales_hero_title: "Smarter Networking for Sales Teams",
     sales_hero_sub:
-      "Accelerate your sales process with digital business cards, NFC cards, and analytics.",
+      "Accelerate your sales process with digital identity, NFC cards, and analytics.",
     sales_problem_title: "Sales Process Challenges",
     sales_problem_1: "Business cards get lost",
     sales_problem_2: "Untrackable contacts",
@@ -912,7 +1264,7 @@ export const translations = {
     startup_hero_title:
       "Professional First Impression for Startups",
     startup_hero_sub:
-      "Scalable digital business card and identity management for growing teams.",
+      "Scalable digital identity and identity management for growing teams.",
     startup_pain_title: "Challenges Startups Face",
     startup_pain_1: "Scattered contact information",
     startup_pain_2: "Different roles / multiple identities",
@@ -978,7 +1330,7 @@ export const translations = {
 
     // Individual Solutions Page
     individual_hero_title:
-      "Smart Digital Business Card for Individuals",
+      "Smart Digital Identity for Individuals",
     individual_hero_sub:
       "Represent yourself professionally with a single link in any environment.",
     individual_problem_title: "Challenges for Individual Users",
@@ -1061,5 +1413,192 @@ export const translations = {
     student_cta_title: "Start Your Career Today",
     student_cta_btn: "Try Free",
     student_cta_sub: "Free and quick setup for students",
+    
+    // Menu Product Descriptions  
+    menu_product_mobile_desc: "Digital identity and directory app",
+    menu_product_web_desc: "Team and inventory management platform",
+    menu_product_nfc_desc: "Next-generation contactless business cards",
+    
+    // Common UI
+    badge_coming_soon: "COMING SOON",
+    menu_solutions_for_you: "For You",
+    menu_solutions_sales: "Sales Teams",
+    menu_solutions_startups: "Startups",
+    menu_solutions_enterprises: "Corporate Companies",
+    menu_solutions_individuals: "Individual Users",
+    menu_solutions_students: "Students",
+    
+    // Mobile Menu
+    mobile_menu_sales_for: "For Sales Teams",
+    mobile_menu_startups_for: "For Startups",
+    mobile_menu_enterprises_for: "For Corporate Companies",
+    mobile_menu_individuals_for: "For Individuals",
+    mobile_menu_students_for: "For Students",
+    
+    // CTA Banner
+    cta_title_1: "Take Your Digital Identity",
+    cta_title_2: "To the Future",
+    cta_stat_users: "Active Users",
+    cta_stat_companies: "Corporate Companies",
+    cta_stat_satisfaction: "Customer Satisfaction",
+    cta_join_us: "Join Us",
+    cta_be_part: "Be part of the family",
+    cta_badge: "Premium Experience",
+    cta_desc: "30,000+ professionals automated their networking with Vialess. Say goodbye to paper business cards, build sustainable and measurable connections.",
+    cta_start_free: "Start Free",
+    cta_request_demo: "Request Demo",
+    cta_tooltip_start: "Create an account and start using immediately",
+    cta_tooltip_demo: "Schedule a 30-minute demo call with our experts",
+    cta_no_credit: "No credit card required",
+    cta_free_plan: "Free plan forever",
+    
+    // Card Showroom
+    showroom_exclusive: "Vialess Exclusive",
+    showroom_filter: "Filter",
+    showroom_no_results: "No Results Found",
+    showroom_no_results_desc: "No card design matching your criteria is available.",
+    showroom_remove_limits: "Remove Limits.",
+    
+    // Case Studies
+    case_studies_title: "Success Stories",
+    case_study_problem: "Problem",
+    case_study_solution: "Solution",
+    case_study_gain: "Gain",
+    
+    // Design Your Card
+    design_available_this_week: "At your door this week",
+    design_your_logo_title: "Fast and personalized card printing",
+    design_card_type: "Card Type",
+    design_vialess: "VIALESS",
+    design_sample_role: "Product Manager @Vialess",
+    design_sample_name: "Ayşe Yılmaz",
+
+    // DesignYourCard - additional keys
+    design_desc: "Choose the color that best fits your brand, add your logo, and make a difference in the digital world.",
+    design_cta: "Customize Your Card",
+
+    // HomePricing (NFC Cards Section)
+    hp_section_title: "Physical NFC Cards",
+    hp_section_desc: "Bring your digital identity to a physical card. Enjoy sharing your profile with a single touch.",
+    hp_classic_name: "Vialess Classic",
+    hp_classic_desc: "Durable PVC, color printing",
+    hp_classic_f1: "Unlimited Sharing",
+    hp_classic_f2: "QR Code Support",
+    hp_classic_f3: "iOS & Android Compatible",
+    hp_classic_f4: "Lifetime Use",
+    hp_bamboo_name: "Vialess Bamboo",
+    hp_bamboo_desc: "Sustainable bamboo, engraved logo",
+    hp_bamboo_f1: "Eco-Friendly Material",
+    hp_bamboo_f2: "Laser Engraved Name",
+    hp_bamboo_f3: "Premium Feel",
+    hp_bamboo_f4: "Custom QR Code",
+    hp_metal_name: "Vialess Metal",
+    hp_metal_desc: "Stainless steel, laser engraving",
+    hp_metal_f1: "Heavy Metal Body",
+    hp_metal_f2: "Matte Black Finish",
+    hp_metal_f3: "Prestigious Look",
+    hp_metal_f4: "VIP Support",
+    hp_cta_buy: "Buy Now",
+
+    // TargetAudience
+    ta_badge: "Industry Solutions",
+    ta_title_1: "Tailored Experience for",
+    ta_title_highlight: "Every Team",
+    ta_desc: "From individual to enterprise scale, networking and identity management tools customized for your needs.",
+    ta_sales_title: "For Sales Teams",
+    ta_sales_desc: "Never lose contacts from meetings. Collect them in team contact pools, add notes, tag them, and export to Excel to transfer to your own CRM.",
+    ta_sales_f1: "Team contact pools",
+    ta_sales_f2: "Note and tag system",
+    ta_sales_f3: "Excel export and detailed contact info",
+    ta_startups_title: "For Startups",
+    ta_startups_desc: "Flexible and scalable digital identity for your fast-growing team. Maintain brand consistency, reduce costs.",
+    ta_startups_f1: "Build team identity from scratch",
+    ta_startups_f2: "Centralized brand management",
+    ta_startups_f3: "Scalable infrastructure",
+    ta_enterprises_title: "For Enterprises",
+    ta_enterprises_desc: "Manage thousands of employees from a single panel. Role-based access, advanced security protocols, and department-level control.",
+    ta_enterprises_f1: "Bulk invite and edit via Excel",
+    ta_enterprises_f2: "Department-based management",
+    ta_enterprises_f3: "Networking performance tracking",
+    ta_individuals_title: "For Individuals",
+    ta_individuals_desc: "Your entire professional identity with a single link. Keep your social media, portfolio, and contact information always up to date.",
+    ta_individuals_f1: "100% free mobile app",
+    ta_individuals_f2: "Unlimited sharing",
+    ta_individuals_f3: "Unlimited links and social media",
+    ta_students_title: "For Students",
+    ta_students_desc: "Share your CV and info memorably with a 100% free mobile app.",
+    ta_students_f1: "Unlimited sharing",
+    ta_students_f2: "Share your CV memorably",
+    ta_students_f3: "Save event contacts in your directory",
+    ta_details: "View Details",
+
+    // HomeShowroom
+    hs_card1_title: "Matte Black Premium",
+    hs_card1_type: "Metal",
+    hs_card2_title: "Custom Design",
+    hs_card2_type: "Luxury",
+    hs_card3_title: "Minimal White",
+    hs_card3_type: "PVC",
+    hs_badge: "Showroom",
+    hs_title_1: "A Flawless",
+    hs_title_highlight: "First Impression",
+    hs_desc_1: "Explore different materials, textures, and printing techniques in our interactive showroom. Let's find the perfect card for your brand",
+    hs_desc_highlight: "together.",
+    hs_cta: "Explore Showroom →",
+
+    // AboutPage
+    about_title: "About Us",
+    about_desc: "Our mission at Vialess is to digitize the traditional business card experience and provide a sustainable and innovative communication platform",
+    about_story_title: "Our Story",
+    about_story_p1: "Founded in 2023, Vialess set out with the goal of becoming one of Turkey's leading platforms in the digital identity industry. Our founders came together to offer a modern solution, seeing the environmental damage caused by paper business cards and the inefficiencies in the business world.",
+    about_story_p2: "Today, thousands of professionals and hundreds of companies are transforming their networking experience with Vialess. We strengthen your business connections with NFC technology, AI-powered OCR, and advanced CRM features.",
+    about_team_title: "Our Team",
+    about_values_title: "Our Values",
+    about_value1_title: "Innovation",
+    about_value1_desc: "We continuously innovate by combining technology and creativity.",
+    about_value2_title: "Eco-Friendly Approach",
+    about_value2_desc: "We build environmentally respectful networks with sustainable solutions.",
+    about_value3_title: "User-Centered Design",
+    about_value3_desc: "Every decision we make is to improve the user experience.",
+
+    // BlogPage
+    blog_badge: "Blog & News",
+    blog_title: "Knowledge Hub",
+    blog_desc: "Latest tips and industry developments on networking, digital communication, and sustainability.",
+    blog_read_more: "Read More",
+    blog_newsletter_title: "Join Our Newsletter",
+    blog_newsletter_desc: "Stay informed about the latest digital trends and networking tips.",
+    blog_email_placeholder: "Your email address",
+    blog_subscribe: "Subscribe",
+    blog_subscribe_success: "has been subscribed to the newsletter!",
+    blog_popular_posts: "Most Popular Posts",
+    blog_categories_title: "Categories",
+    blog_cat_all: "All",
+    blog_cat_tech: "Technology",
+    blog_cat_networking: "Networking",
+    blog_cat_sustainability: "Sustainability",
+    blog_cat_crm: "CRM",
+    blog_cat_corporate: "Corporate",
+    blog_lang_all: "All",
+    blog_lang_tr: "Türkçe",
+    blog_lang_en: "English",
+    blog_lang_filter_title: "Post Language",
+    blog_post_not_found: "Post not found",
+    blog_go_back: "Back to Blog",
+    blog_back: "Go Back",
+    blog_share: "Share",
+    blog_read_time: "min read",
+    blog_related: "You May Also Like",
+    blog_see_all: "See All",
+    blog_link_copied: "Link copied!",
+    blog_link_copy_fallback: "You can copy the link from the browser address bar.",
+    
+    // Popup
+    popup_mobile_title: "Download Mobile App",
+    popup_mobile_desc: "Experience Vialess in your pocket.",
+    popup_web_note: "For the web panel, please log in from a computer.",
+    popup_app_store: "App Store",
+    popup_play_store: "Google Play",
+    popup_continue_web: "Continue to website",
   },
 };
