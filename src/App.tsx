@@ -1,3 +1,7 @@
+import { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router';
+import { Menu, X, Globe, ChevronDown, Building2, UserCircle2, Scan, Users2, ShieldCheck, Contact, Mail, Video, Workflow, TrendingUp, GraduationCap, CreditCard, Smartphone, Zap, BarChart3 } from 'lucide-react';
+import PngLogo from './imports/PngLogo';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { ImpactStats } from './components/ImpactStats';

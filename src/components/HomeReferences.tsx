@@ -48,8 +48,9 @@ function Marquee({ children, baseVelocity = 0.3 }: MarqueeProps) {
   useAnimationFrame((t, delta) => {
     const timeDelta = delta / 1000;
     const hoverFactor = isHovered ? 0.05 : 1;
+    // Changed sign to positive to make it move right
     const moveBy = baseVelocity * hoverFactor * timeDelta;
-    baseX.set(baseX.get() - moveBy);
+    baseX.set(baseX.get() + moveBy);
   });
 
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
@@ -73,12 +74,12 @@ interface CompanyLogoProps {
 
 function CompanyLogo({ company }: CompanyLogoProps) {
   return (
-    <div className="group flex-shrink-0 mx-6 h-16 flex items-center justify-center">
-      <div className="relative w-32 h-16 flex items-center justify-center">
+    <div className="group flex-shrink-0 mx-8 h-20 flex items-center justify-center">
+      <div className="relative w-40 h-20 flex items-center justify-center">
         <img 
           src={company.image} 
           alt={company.name}
-          className="max-w-full max-h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+          className="max-w-full max-h-full object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
         />
       </div>
     </div>
@@ -91,11 +92,8 @@ export function HomeReferences() {
       <div className="w-full">
         {/* Title */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
-            Güvenilir Partnerler
-          </p>
-          <h3 className="text-gray-900">
-            Bize Güvenen Kurumlar
+          <h3 className="text-xs uppercase tracking-widest font-normal text-gray-400">
+            Referanslarımız
           </h3>
         </div>
 
