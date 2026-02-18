@@ -2,6 +2,7 @@ import { InteractiveShowroomCard } from './InteractiveShowroomCard';
 import { Smartphone, Droplet, Leaf, Filter } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
+import { useLanguage } from '../context/LanguageContext';
 
 const cards = [
   {
@@ -63,6 +64,8 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
     });
   }, [selectedMaterial, selectedSector]);
 
+  const { language } = useLanguage();
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,50 +90,7 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
         </div>
 
         {/* Minimalist Filter Bar */}
-        <div className="flex justify-center mb-20">
-          <div className="inline-flex flex-wrap items-center justify-center p-2 bg-white rounded-full shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] border border-gray-100 gap-2">
-            <div className="flex items-center px-4 py-2 gap-2 text-gray-400 border-r border-gray-100 pr-4 hidden sm:flex">
-               <Filter className="w-4 h-4" />
-               <span className="text-sm font-medium">Filtrele</span>
-            </div>
-            
-            {/* Custom Select Wrapper for Material */}
-            <div className="relative group">
-              <select 
-                  className="appearance-none bg-transparent pl-4 pr-10 py-2.5 rounded-full text-sm font-medium text-gray-600 focus:outline-none focus:bg-gray-50 cursor-pointer hover:text-gray-900 transition-colors"
-                  value={selectedMaterial}
-                  onChange={(e) => setSelectedMaterial(e.target.value)}
-              >
-                  <option value="Tümü">Materyal: Tümü</option>
-                  {materials.filter(m => m !== 'Tümü').map(m => (
-                      <option key={m} value={m}>{m}</option>
-                  ))}
-              </select>
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-hover:text-[#6c63ff] transition-colors">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              </div>
-            </div>
-
-            <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
-
-            {/* Custom Select Wrapper for Sector */}
-            <div className="relative group">
-               <select 
-                  className="appearance-none bg-transparent pl-4 pr-10 py-2.5 rounded-full text-sm font-medium text-gray-600 focus:outline-none focus:bg-gray-50 cursor-pointer hover:text-gray-900 transition-colors"
-                  value={selectedSector}
-                  onChange={(e) => setSelectedSector(e.target.value)}
-              >
-                  <option value="Tümü">Sektör: Tümü</option>
-                  {sectors.filter(s => s !== 'Tümü').map(s => (
-                      <option key={s} value={s}>{s}</option>
-                  ))}
-              </select>
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-hover:text-[#6c63ff] transition-colors">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Removed filter section as requested */}
 
         {/* Kart Galerisi - Spacious Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-32">
@@ -183,27 +143,31 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
               Sınırları <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a7a2ff] to-white">Kaldırın.</span>
             </h3>
             
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 leading-relaxed max-w-2xl font-light">
+            <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl font-light">
               Standartların ötesine geçin. Markanızın prestijini yansıtan, 
               size özel tasarlanmış premium NFC kartlarla tanışın.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-              <button 
-                onClick={onNavigateToProducts}
+              <a 
+                href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]"
               >
-                Tasarım Talep Edin
+                Toplantı Talep Edin
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </button>
-              <button 
-                onClick={onNavigateToProducts} 
+              </a>
+              <a 
+                href="https://vialess.me/tr/company/vialess"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-lg text-white border border-white/10 hover:bg-white/5 transition-colors backdrop-blur-sm"
               >
-                Tüm Tasarımları Görün
-              </button>
+                Bize ulaşın
+              </a>
             </div>
           </div>
         </div>

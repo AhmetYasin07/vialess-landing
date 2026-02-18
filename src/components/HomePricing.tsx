@@ -34,7 +34,7 @@ function PricingCard3D({ image, title, accentColor, texture = false }: { image: 
   return (
     <div className="w-full flex justify-center items-center">
       <div className={`relative w-full max-w-[300px] aspect-[1.586/1] rounded-xl overflow-hidden shadow-sm border border-black/5 ${accentColor}`}>
-          {texture || title === 'Vialess Klasik' ? (
+          {texture || !image ? (
              <div 
                 className={`w-full h-full bg-cover bg-center ${!texture ? 'bg-white' : ''}`}
                 style={texture ? { backgroundImage: `url(${image})` } : {}}
@@ -61,36 +61,33 @@ export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () =
   const plans = [
     {
       id: 'classic',
-      name: 'Vialess Klasik',
+      name: t.hp_classic_name,
       price: '₺1.100',
-      description: 'Dayanıklı PVC, renkli baskı',
-      features: ['Sınırsız Paylaşım', 'QR Kod Desteği', 'iOS & Android Uyumlu', 'Ömür Boyu Kullanım'],
-      image: '', // No image needed for pure CSS white card
+      description: t.hp_classic_desc,
+      features: [t.hp_classic_f1, t.hp_classic_f2, t.hp_classic_f3, t.hp_classic_f4],
+      image: '',
       accentColor: 'bg-white border border-gray-200',
-      texture: false, // We handle Classic specially now
-      ctaValues: 'Direkt Satın Al'
+      texture: false,
     },
     {
       id: 'bamboo',
-      name: 'Vialess Bambu',
+      name: t.hp_bamboo_name,
       price: '₺1.350',
-      description: 'Sürdürülebilir bambu, kazıma logo',
-      features: ['Doğa Dostu Malzeme', 'Lazer Kazıma İsim', 'Premium His', 'Özel QR Kod'],
+      description: t.hp_bamboo_desc,
+      features: [t.hp_bamboo_f1, t.hp_bamboo_f2, t.hp_bamboo_f3, t.hp_bamboo_f4],
       image: bambooTexture,
       accentColor: 'bg-amber-50 border border-amber-100',
       texture: true,
-      ctaValues: 'Direkt Satın Al'
     },
     {
       id: 'metal',
-      name: 'Vialess Metal',
+      name: t.hp_metal_name,
       price: '₺2.500',
-      description: 'Paslanmaz çelik, lazer kazıma',
-      features: ['Ağır Metal Gövde', 'Mat Siyah Bitiş', 'Prestijli Görünüm', 'VIP Destek'],
-      image: cardErigo, // Using the dark card image
+      description: t.hp_metal_desc,
+      features: [t.hp_metal_f1, t.hp_metal_f2, t.hp_metal_f3, t.hp_metal_f4],
+      image: cardErigo,
       accentColor: 'bg-gray-900 border border-gray-800',
       texture: false,
-      ctaValues: 'Direkt Satın Al'
     }
   ];
 
@@ -102,9 +99,9 @@ export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () =
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Fiziksel NFC Kartlar</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.hp_section_title}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Dijital kartvizitinizi fiziksel karta taşıyın. Dokunarak profil paylaşımının keyfini çıkarın.
+            {t.hp_section_desc}
           </p>
         </div>
 
@@ -154,7 +151,7 @@ export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () =
                 className="w-full py-4 rounded-2xl font-medium text-sm bg-gray-50 text-gray-900 hover:bg-[#6c63ff] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                 onClick={onNavigateToPricing}
               >
-                Satın Alın
+                {t.hp_cta_buy}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

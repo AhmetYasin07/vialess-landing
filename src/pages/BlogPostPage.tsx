@@ -2,9 +2,9 @@ import { ArrowLeft, Calendar, User, Clock, Share2, ArrowRight } from 'lucide-rea
 import { useParams } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Badge } from '../components/ui/badge';
-import { Separator } from '../components/ui/separator';
 import { blogPosts } from '../data/blog-posts';
 import { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface BlogPostPageProps {
   onBack: () => void;
@@ -13,7 +13,17 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageProps) {
   const { postId } = useParams<{ postId: string }>();
+  const { t } = useLanguage();
   const post = blogPosts.find(p => p.slug === postId);
+
+  // Category display translation map
+  const categoryDisplayMap: Record<string, string> = {
+    'Teknoloji': t.blog_cat_tech,
+    'Networking': t.blog_cat_networking,
+    'Sürdürülebilirlik': t.blog_cat_sustainability,
+    'CRM': t.blog_cat_crm,
+    'Kurumsal': t.blog_cat_corporate,
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,12 +33,12 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900">Yazı bulunamadı</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">{t.blog_post_not_found}</h2>
           <button 
             onClick={onBack} 
             className="px-6 py-2 bg-[#6c63ff] text-white rounded-lg hover:bg-[#5a52d5] transition-colors"
           >
-            Blog Listesine Dön
+            {t.blog_go_back}
           </button>
         </div>
       </div>
@@ -56,17 +66,37 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
       // Try/catch for clipboard API which might be blocked in iframes
       try {
         navigator.clipboard.writeText(window.location.href)
-          .then(() => alert('Bağlantı kopyalandı!'))
+          .then(() => alert(t.blog_link_copied))
           .catch((err) => {
             console.error('Clipboard write failed:', err);
-            // Fallback for blocked permission
-            alert('Bağlantıyı tarayıcı adres çubuğundan kopyalayabilirsiniz.');
+            alert(t.blog_link_copy_fallback);
           });
       } catch (err) {
         console.error('Clipboard API error:', err);
-        alert('Bağlantıyı tarayıcı adres çubuğundan kopyalayabilirsiniz.');
+        alert(t.blog_link_copy_fallback);
       }
     }
+  };
+
+  const getLangBadge = (lang: 'tr' | 'en', size: 'sm' | 'md' = 'sm') => {
+    const sizeClasses = size === 'md' 
+      ? 'px-2.5 py-1 text-xs gap-1.5' 
+      : 'px-2 py-0.5 text-[10px] gap-1';
+    
+    if (lang === 'tr') {
+      return (
+        <span className={`inline-flex items-center bg-red-50 text-red-700 border border-red-200/60 rounded-full font-bold tracking-wide uppercase ${sizeClasses}`}>
+          <span>🇹🇷</span>
+          <span>TR</span>
+        </span>
+      );
+    }
+    return (
+      <span className={`inline-flex items-center bg-blue-50 text-blue-700 border border-blue-200/60 rounded-full font-bold tracking-wide uppercase ${sizeClasses}`}>
+        <span>🇬🇧</span>
+        <span>EN</span>
+      </span>
+    );
   };
 
   return (
@@ -87,12 +117,15 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
               className="mb-8 flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 hover:bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full w-fit"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Geri Dön</span>
+              <span>{t.blog_back}</span>
             </button>
 
-            <Badge className="bg-[#6c63ff] hover:bg-[#5a52d5] text-white border-none mb-4 text-sm px-3 py-1">
-              {post.category}
-            </Badge>
+            <div className="flex items-center gap-3 mb-4">
+              <Badge className="bg-[#6c63ff] hover:bg-[#5a52d5] text-white border-none text-sm px-3 py-1">
+                {categoryDisplayMap[post.category] || post.category}
+              </Badge>
+              {getLangBadge(post.lang, 'md')}
+            </div>
             
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
               {post.title}
@@ -109,7 +142,7 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />
-                <span>5 dk okuma</span>
+                <span>5 {t.blog_read_time}</span>
               </div>
             </div>
           </div>
@@ -136,10 +169,10 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
 
           <div className="mt-12 pt-8 border-t border-gray-100">
              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-bold text-gray-900">Paylaş</h3>
+                <h3 className="text-lg font-bold text-gray-900">{t.blog_share}</h3>
                 <div className="flex gap-2">
                   <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 transition-colors font-medium text-sm">
-                    <Share2 className="w-4 h-4" /> Paylaş
+                    <Share2 className="w-4 h-4" /> {t.blog_share}
                   </button>
                 </div>
              </div>
@@ -149,8 +182,8 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
         {/* Related Posts */}
         <div className="mt-20">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">İlginizi Çekebilir</h2>
-            <button onClick={onBack} className="text-[#6c63ff] font-medium hover:underline">Tümünü Gör</button>
+            <h2 className="text-2xl font-bold text-gray-900">{t.blog_related}</h2>
+            <button onClick={onBack} className="text-[#6c63ff] font-medium hover:underline">{t.blog_see_all}</button>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -167,7 +200,10 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-2 left-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded text-gray-900">
-                    {otherPost.category}
+                    {categoryDisplayMap[otherPost.category] || otherPost.category}
+                  </div>
+                  <div className="absolute top-2 right-2">
+                    {getLangBadge(otherPost.lang)}
                   </div>
                 </div>
                 <h3 className="font-bold text-gray-900 group-hover:text-[#6c63ff] transition-colors mb-2 line-clamp-2">
@@ -177,7 +213,7 @@ export default function BlogPostPage({ onBack, onNavigateToPost }: BlogPostPageP
                   {otherPost.excerpt}
                 </p>
                 <span className="text-xs font-semibold text-[#6c63ff] flex items-center gap-1">
-                  Devamını Oku <ArrowRight className="w-3 h-3" />
+                  {t.blog_read_more} <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
             ))}

@@ -2,18 +2,21 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDCard } from './ThreeDCard';
+import { useLanguage } from '../context/LanguageContext';
 import cardErigo from 'figma:asset/8a8785b99ff04d445dc392dd55c6829b81277634.png';
 import cardTerCup from 'figma:asset/2bb7ba7d32bfc35aae0d617e2d8aea930d4fb748.png';
+import ozulesCard from 'figma:asset/53d4e2aca8b41db44d9bc742eedcbd4fa4d4e3c5.png';
 
 export function HomeShowroom() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [activeCard, setActiveCard] = useState(0);
 
   const showcaseCards = [
     {
       id: 1,
-      title: 'Mat Siyah Premium',
-      type: 'Metal',
+      title: t.hs_card1_title,
+      type: t.hs_card1_type,
       image: cardErigo,
       color: '',
       textColor: '',
@@ -22,8 +25,8 @@ export function HomeShowroom() {
     },
     {
       id: 2,
-      title: 'Özel Tasarım',
-      type: 'Lüks',
+      title: t.hs_card2_title,
+      type: t.hs_card2_type,
       image: cardTerCup,
       color: '',
       textColor: '',
@@ -32,9 +35,9 @@ export function HomeShowroom() {
     },
     {
       id: 3,
-      title: 'Minimal Beyaz',
-      type: 'PVC',
-      image: 'https://images.unsplash.com/photo-1692538643781-96a38f4bb91e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMG1pbmltYWwlMjBjbGVhbiUyMHRleHR1cmUlMjBhYnN0cmFjdHxlbnwxfHx8fDE3NjcwMTM3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.hs_card3_title,
+      type: t.hs_card3_type,
+      image: ozulesCard,
       color: '',
       textColor: '',
       accentColor: 'border-gray-200',
@@ -64,12 +67,12 @@ export function HomeShowroom() {
           {/* Text Content */}
           <div className="lg:w-1/2">
             <motion.span 
-              className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-purple-300 text-sm font-medium mb-6 backdrop-blur-sm border border-white/10"
+              className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium mb-6 backdrop-blur-sm border border-white/10"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              Showroom
+              {t.hs_badge}
             </motion.span>
             <motion.h2 
               className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
@@ -78,17 +81,17 @@ export function HomeShowroom() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              Kusursuz Bir <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">İlk İzlenim</span>
+              {t.hs_title_1} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.hs_title_highlight}</span>
             </motion.h2>
             <motion.p 
-              className="text-gray-400 text-lg mb-8 max-w-lg"
+              className="text-white/90 text-lg mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Farklı materyaller, dokular ve baskı tekniklerini interaktif showroomumuzda keşfedin. Markanıza en uygun kartı <span className="text-purple-400 font-bold">beraber tasarlayalım.</span>
+              {t.hs_desc_1} <span className="text-white font-bold">{t.hs_desc_highlight}</span>
             </motion.p>
             
             <motion.button
@@ -99,7 +102,7 @@ export function HomeShowroom() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Showroom'u Keşfet →
+              {t.hs_cta}
             </motion.button>
           </div>
 

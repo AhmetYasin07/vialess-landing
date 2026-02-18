@@ -18,7 +18,7 @@ export function AppDemo() {
         t.demo_mobile_f4,
         t.demo_mobile_f5
       ],
-      image: 'https://images.unsplash.com/photo-1616469829581-73993eb86b02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY1ODg0NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://images.unsplash.com/photo-1759505017950-25e0733b9e68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2UlMjBtb2Rlcm4lMjBjbGVhbnxlbnwxfHx8fDE3NzE0MDI3NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       cta: t.demo_mobile_cta
     },
     web: {
@@ -31,7 +31,7 @@ export function AppDemo() {
         t.demo_web_f4,
         t.demo_web_f5
       ],
-      image: 'https://images.unsplash.com/photo-1624526808886-66d692cad486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkYXNoYm9hcmQlMjB1aSUyMHB1cnBsZSUyMGxpZ2h0JTIwbW9kZXJufGVufDF8fHx8MTc2NTk3MzI1Mnww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://images.unsplash.com/photo-1699040309386-11c615ed64d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBwdXJwbGUlMjBtb2Rlcm58ZW58MXx8fHwxNzcxNDAyNzU0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       cta: t.demo_web_cta
     }
   };

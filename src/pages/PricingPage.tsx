@@ -1,5 +1,6 @@
 import { CheckCircle, X, HelpCircle, ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
+import { FaqSection } from '../components/FaqSection';
 
 const plans = [
   {
@@ -125,7 +126,6 @@ const pricingFaqs = [
 ];
 
 export default function PricingPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   
   const handleAddToCart = (product: any) => {
@@ -333,46 +333,16 @@ export default function PricingPage() {
       </section>
 
       {/* SSS */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
-            <p className="text-gray-600">
-              Abonelikler ve fiyatlandırma hakkında merak ettikleriniz
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {pricingFaqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors group"
-                >
-                  <h3 className="text-gray-900 pr-8 font-medium">{faq.question}</h3>
-                  <svg 
-                    className={`w-5 h-5 text-[#6c63ff] flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div 
-                  className={`transition-all duration-300 ease-in-out ${
-                    openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  } overflow-hidden`}
-                >
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        title="Sıkça Sorulan Sorular"
+        subtitle="Abonelikler ve fiyatlandırma hakkında merak ettikleriniz"
+        categories={[
+          {
+            title: "Ödeme & Abonelik",
+            items: pricingFaqs
+          }
+        ]}
+      />
     </div>
   );
 }

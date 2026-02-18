@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { translations, Language } from '../utils/translations';
 
 type LanguageContextType = {
@@ -7,22 +7,38 @@ type LanguageContextType = {
   t: typeof translations['tr'];
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+// Create context with a default value to prevent undefined issues
+const LanguageContext = createContext<LanguageContextType>({
+  language: 'tr',
+  setLanguage: () => {},
+  t: translations['tr']
+});
+
+// Helper function to get initial language from localStorage
+const getStoredLanguage = (): Language => {
+  if (typeof window === 'undefined') return 'tr';
+  
+  try {
+    const stored = localStorage.getItem('language');
+    if (stored === 'tr' || stored === 'en') {
+      return stored;
+    }
+  } catch (e) {
+    // localStorage not available
+  }
+  return 'tr';
+};
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Try to get from localStorage, default to 'tr'
-  const [language, setLanguageState] = useState<Language>('tr');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('language') as Language;
-    if (saved && (saved === 'tr' || saved === 'en')) {
-      setLanguageState(saved);
-    }
-  }, []);
+  const [language, setLanguageState] = useState<Language>(() => getStoredLanguage());
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    try {
+      localStorage.setItem('language', lang);
+    } catch (e) {
+      // Ignore localStorage errors
+    }
   };
 
   const t = translations[language];
@@ -36,8 +52,5 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
   return context;
 }

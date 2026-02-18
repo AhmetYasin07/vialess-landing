@@ -145,25 +145,40 @@ export default function SupportPage() {
                 </div>
               ) : (
                 filteredFaqs.map((category, catIndex) => (
-                  <div key={catIndex} className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-[#6c63ff] mb-4 font-bold">{category.name}</h3>
+                  <div key={catIndex} className="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <h3 className="text-lg font-bold text-gray-900 mb-5 pl-4 border-l-[3px] border-[#6c63ff]">
+                      <span className="text-[#6c63ff]">{category.name}</span>
+                    </h3>
                     <div className="space-y-3">
                       {category.faqs.map((faq, faqIndex) => {
                         const faqId = `${catIndex}-${faqIndex}`;
+                        const isOpen = openFaq === faqId;
                         return (
-                          <div key={faqIndex} className="bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
+                          <div key={faqIndex} className="bg-gray-50 rounded-xl overflow-hidden">
                             <button
-                              onClick={() => setOpenFaq(openFaq === faqId ? null : faqId)}
-                              className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
+                              onClick={() => setOpenFaq(isOpen ? null : faqId)}
+                              className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100/80 transition-colors"
                             >
-                              <span className="text-gray-900 font-medium">{faq.q}</span>
-                              <ChevronDown className={`w-5 h-5 text-[#6c63ff] transition-transform ${openFaq === faqId ? 'rotate-180' : ''}`} />
+                              <span className="font-medium text-gray-900 pr-6">{faq.q}</span>
+                              <span
+                                className={`text-[#6c63ff] text-xl flex-shrink-0 transition-transform duration-300 select-none ${
+                                  isOpen ? 'rotate-45' : ''
+                                }`}
+                              >
+                                +
+                              </span>
                             </button>
-                            {openFaq === faqId && (
-                              <div className="px-6 pb-4">
-                                <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                            <div
+                              className={`grid transition-all duration-300 ease-in-out ${
+                                isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                              }`}
+                            >
+                              <div className="overflow-hidden">
+                                <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+                                  {faq.a}
+                                </div>
                               </div>
-                            )}
+                            </div>
                           </div>
                         );
                       })}

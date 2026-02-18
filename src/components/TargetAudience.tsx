@@ -1,72 +1,75 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Check, TrendingUp, Zap, Building2, UserCircle2, GraduationCap, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export function TargetAudience() {
+  const { t } = useLanguage();
+
   const segments = [
     {
       id: 'sales',
-      title: 'Satış Ekipleri İçin',
-      description: 'Potansiyel müşterileri kaçırmayın, toplantı sonrası anında paylaşın. CRM entegrasyonu ile satış huninizi hızlandırın.',
-      image: 'https://images.unsplash.com/photo-1590649849991-e9af438ea77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYWxlcyUyMHRlYW0lMjBidXNpbmVzcyUyMG1lZXRpbmd8ZW58MXx8fHwxNzY3MDEyODEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.ta_sales_title,
+      description: t.ta_sales_desc,
+      image: 'https://images.unsplash.com/photo-1758691736764-2a88e313b1f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYWxlcyUyMHRlYW0lMjBidXNpbmVzcyUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcxNDAyNzU3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       icon: TrendingUp,
       link: '/solutions/sales',
       features: [
-        'Hızlı lead yakalama',
-        'CRM entegrasyonları',
-        'Ekip performans analitiği'
+        t.ta_sales_f1,
+        t.ta_sales_f2,
+        t.ta_sales_f3
       ]
     },
     {
       id: 'startups',
-      title: 'Girişimler İçin',
-      description: 'Hızlı büyüyen ekibiniz için esnek ve ölçeklenebilir dijital kimlik. Marka tutarlılığını koruyun, maliyetleri düşürün.',
-      image: 'https://images.unsplash.com/photo-1559136560-16ad036d85d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwbW9kZXJuJTIwb2ZmaWNlJTIwdGVhbXxlbnwxfHx8fDE3NjcwMTI4MTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.ta_startups_title,
+      description: t.ta_startups_desc,
+      image: 'https://images.unsplash.com/photo-1758873268663-5a362616b5a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwbW9kZXJuJTIwb2ZmaWNlJTIwdGVhbSUyMGNvbGxhYm9yYXRpb258ZW58MXx8fHwxNzcxNDAyNzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       icon: Zap,
       link: '/solutions/startups',
       features: [
-        'Dakikalar içinde kurulum',
-        'Merkezi marka yönetimi',
-        'Ölçeklenebilir yapı'
+        t.ta_startups_f1,
+        t.ta_startups_f2,
+        t.ta_startups_f3
       ]
     },
     {
       id: 'enterprises',
-      title: 'Kurumsal Firmalar İçin',
-      description: 'Binlerce çalışanı tek panelden yönetin. Rol tabanlı erişim, gelişmiş güvenlik protokolleri ve departman bazlı kontrol.',
-      image: 'https://images.unsplash.com/photo-1758691736493-aa6d22c0f8a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGJvYXJkcm9vbXxlbnwxfHx8fDE3NjcwMTI4MTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.ta_enterprises_title,
+      description: t.ta_enterprises_desc,
+      image: 'https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBib2FyZHJvb20lMjBtZWV0aW5nJTIwYnVzaW5lc3N8ZW58MXx8fHwxNzcxNDAyNzY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       icon: Building2,
       link: '/solutions/enterprises',
       features: [
-        'SSO ve Active Directory',
-        'Departman bazlı yönetim',
-        'KVKK uyumlu altyapı'
+        t.ta_enterprises_f1,
+        t.ta_enterprises_f2,
+        t.ta_enterprises_f3
       ]
     },
     {
       id: 'individuals',
-      title: 'Bireyler İçin',
-      description: 'Tek bir linkle tüm profesyonel kimliğiniz. Sosyal medya, portfolyo ve iletişim bilgilerinizi her an güncel tutun.',
-      image: 'https://images.unsplash.com/photo-1765648580890-732fa6d769c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBmcmVlbGFuY2VyJTIwd29ya2luZyUyMGNhZmV8ZW58MXx8fHwxNzY3MDEyODEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.ta_individuals_title,
+      description: t.ta_individuals_desc,
+      image: 'https://images.unsplash.com/photo-1765648580890-732fa6d769c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcmVlbGFuY2VyJTIwd29ya2luZyUyMGxhcHRvcCUyMGNhZmUlMjBtb2Rlcm58ZW58MXx8fHwxNzcxNDAyNzcwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       icon: UserCircle2,
       link: '/solutions/individuals',
       features: [
-        'Kişisel marka oluşturma',
-        'Sınırsız güncelleme',
-        'İletişim bilgisi paylaşımı'
+        t.ta_individuals_f1,
+        t.ta_individuals_f2,
+        t.ta_individuals_f3
       ]
     },
     {
       id: 'students',
-      title: 'Öğrenciler İçin',
-      description: 'Kariyer yolculuğunuza profesyonel başlayın. Staj ve iş başvurularında CV\'nizin yanına dijital vizyonunuzu ekleyin.',
-      image: 'https://images.unsplash.com/photo-1718327453695-4d32b94c90a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudCUyMHN0dWR5aW5nJTIwbGlicmFyeXxlbnwxfHx8fDE3NjcwMTI4MTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t.ta_students_title,
+      description: t.ta_students_desc,
+      image: 'https://images.unsplash.com/photo-1762512346990-22d810fe4252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudCUyMHN0dWR5aW5nJTIwbGlicmFyeSUyMG1vZGVybnxlbnwxfHx8fDE3NzE0MDI3NzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       icon: GraduationCap,
       link: '/solutions/students',
       features: [
-        'Portfolyo sunumu',
-        'QR kodlu paylaşım',
-        'Profesyonel ilk izlenim'
+        t.ta_students_f1,
+        t.ta_students_f2,
+        t.ta_students_f3
       ]
     }
   ];
@@ -80,12 +83,12 @@ export function TargetAudience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-[#6c63ff] font-semibold tracking-wider uppercase text-sm">Çözümler</span>
+          <span className="text-[#6c63ff] font-semibold tracking-wider uppercase text-sm">{t.ta_badge}</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-gray-900">
-            Her İhtiyaca Uygun <span className="text-[#6c63ff]">Profesyonel Çözümler</span>
+            {t.ta_title_1} <span className="text-[#6c63ff]">{t.ta_title_highlight}</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            İster bireysel kullanım, ister kurumsal yönetim. Vialess size özel çözümler sunar.
+            {t.ta_desc}
           </p>
         </motion.div>
 
@@ -142,7 +145,7 @@ export function TargetAudience() {
 
                     <div className="pt-4 border-t border-gray-100 mt-auto">
                       <span className="flex items-center text-[#6c63ff] font-semibold text-sm group-hover:gap-2 transition-all duration-300">
-                        Detayları Gör
+                        {t.ta_details}
                         <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </div>
