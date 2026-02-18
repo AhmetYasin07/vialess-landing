@@ -37,7 +37,7 @@ export function Footer({ onNavigateToShowroom, onNavigateTo }: FooterProps) {
              </div>
 
              {/* İletişim Bilgileri - Modern Card Style */}
-             <div className="inline-flex items-center gap-3 px-5 py-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#6c63ff]/50 transition-all duration-300 hover:bg-white/10 group">
+             <div className="inline-flex items-center gap-3 px-5 py-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#6c63ff]/50 transition-all duration-300 hover:bg-white/10 group cursor-pointer">
                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#6c63ff]/10 group-hover:bg-[#6c63ff]/20 transition-colors">
                  <MessageCircle className="w-4 h-4 text-[#6c63ff]" />
                </div>

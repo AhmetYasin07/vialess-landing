@@ -148,7 +148,7 @@ export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () =
 
               {/* Button - Minimal, solid */}
               <button 
-                className="w-full py-4 rounded-2xl font-medium text-sm bg-gray-50 text-gray-900 hover:bg-[#6c63ff] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl font-medium text-sm bg-gray-50 text-gray-900 hover:bg-[#6c63ff] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 onClick={onNavigateToPricing}
               >
                 {t.hp_cta_buy}

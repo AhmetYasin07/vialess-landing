@@ -21,6 +21,18 @@ html {
   overflow-x: hidden;
 }
 
+/* Ensure all interactive elements show pointer cursor */
+button,
+[role="button"],
+a,
+summary,
+select,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  cursor: pointer;
+}
+
 h1 {
   font-size: 3.5rem;
   font-weight: 800;

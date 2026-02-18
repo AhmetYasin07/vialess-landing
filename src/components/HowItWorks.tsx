@@ -222,7 +222,7 @@ export function HowItWorks() {
         >
           <div className="bg-gradient-to-br from-[#5b54d6] via-[#6c63ff] to-[#4a47b8] rounded-2xl p-8 shadow-2xl relative overflow-hidden">
             <div className="relative z-10">
-              <button className="bg-white text-[#6c63ff] px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 group">
+              <button className="bg-white text-[#6c63ff] px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 group cursor-pointer">
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 {t.how_cta_button}
               </button>

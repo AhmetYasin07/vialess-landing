@@ -70,7 +70,7 @@ export function DesignYourCard() {
               <p className="mt-3 text-sm text-gray-500 font-medium">{activeColor.name}</p>
             </div>
 
-            <button className="px-8 py-3 bg-[#6c63ff] text-white rounded-lg font-semibold hover:bg-[#5a52d5] transition-colors shadow-lg shadow-[#6c63ff]/20">
+            <button className="px-8 py-3 bg-[#6c63ff] text-white rounded-lg font-semibold hover:bg-[#5a52d5] transition-colors shadow-lg shadow-[#6c63ff]/20 cursor-pointer">
               {t.design_cta}
             </button>
           </div>

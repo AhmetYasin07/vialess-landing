@@ -139,7 +139,7 @@ export function ImpactStats() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <button className="px-8 py-4 bg-[#6c63ff] text-white rounded-full font-bold text-lg hover:bg-[#5a52d5] transition-all hover:shadow-lg hover:shadow-[#6c63ff]/30 hover:-translate-y-1 inline-flex items-center gap-2">
+          <button className="px-8 py-4 bg-[#6c63ff] text-white rounded-full font-bold text-lg hover:bg-[#5a52d5] transition-all hover:shadow-lg hover:shadow-[#6c63ff]/30 hover:-translate-y-1 inline-flex items-center gap-2 cursor-pointer">
             {t.impact_cta}
             <ArrowRight className="w-5 h-5" />
           </button>

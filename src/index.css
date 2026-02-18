@@ -902,6 +902,10 @@
     margin-inline: calc(var(--spacing) * 2);
   }
 
+  .mx-6 {
+    margin-inline: calc(var(--spacing) * 6);
+  }
+
   .mx-auto {
     margin-inline: auto;
   }
@@ -5411,6 +5415,13 @@
   }
 
   @media (hover: hover) {
+    .group-hover\:grayscale-0:is(:where(.group):hover *) {
+      --tw-grayscale: grayscale(0%);
+      filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+    }
+  }
+
+  @media (hover: hover) {
     .group-hover\/badge\:translate-x-\[200\%\]:is(:where(.group\/badge):hover *) {
       --tw-translate-x: 200%;
       translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -6909,6 +6920,10 @@ body {
 
 html {
   overflow-x: hidden;
+}
+
+button, [role="button"], a, summary, select, [type="button"], [type="submit"], [type="reset"] {
+  cursor: pointer;
 }
 
 h1 {

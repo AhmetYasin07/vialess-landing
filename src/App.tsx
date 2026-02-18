@@ -1,7 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Globe, ChevronDown, Building2, UserCircle2, Scan, Users2, ShieldCheck, Contact, Mail, Video, Workflow, TrendingUp, GraduationCap, CreditCard, Smartphone, Zap, BarChart3 } from 'lucide-react';
-import PngLogo from './imports/PngLogo';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { ImpactStats } from './components/ImpactStats';
@@ -14,6 +10,7 @@ import { HomeShowroom } from './components/HomeShowroom';
 import { DesignYourCard } from './components/DesignYourCard';
 import { CTABanner } from './components/CTABanner';
 import { MobileStartModal } from './components/MobileStartModal';
+import { HomeReferences } from './components/HomeReferences';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Toaster } from 'sonner';
 
@@ -104,7 +101,7 @@ function AppContent() {
     setIsSolutionsOpen(false);
   };
 
-  const navLinkClass = "text-gray-600 hover:text-[#6c63ff] font-medium transition-colors relative group py-2 flex items-center gap-1";
+  const navLinkClass = "text-gray-600 hover:text-[#6c63ff] font-medium transition-colors relative group py-2 flex items-center gap-1 cursor-pointer";
   
   return (
     <div className="min-h-screen font-sans text-gray-900 bg-[#f5f5f5]">
@@ -581,6 +578,7 @@ function AppContent() {
                 onNavigateToPricing={() => navigate('/pricing')}
                 onOpenMobilePopup={() => setShowMobileStartPopup(true)}
               />
+              <HomeReferences />
               <Features />
               <TargetAudience />
               <HomeShowroom />

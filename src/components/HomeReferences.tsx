@@ -1,0 +1,118 @@
+import { motion, useAnimationFrame, useMotionValue, useTransform } from 'motion/react';
+import { useState } from 'react';
+
+// Imported images - 12 selected companies
+import imgOzyegin from 'figma:asset/88b0d1522deb05af13256bcf59412fed2caec3ef.png';
+import imgGalatasaray from 'figma:asset/f4a2b725d530ff8fc40d6b218d25befd47d9ced0.png';
+import imgMarmara from 'figma:asset/a37dea40bd4f979ebf2657026961207873d68bec.png';
+import imgYapiKredi from 'figma:asset/9eba754e1cee932b8d89cd4737d7f68d84e97be7.png';
+import imgSanayi from 'figma:asset/53daf6c562dfb2b6d0e53d98a12f4472b4b6b5d9.png';
+import imgNova from 'figma:asset/618b5259c623e7db8d0eca5a8af600ad402d5e99.png';
+import imgExperify from 'figma:asset/749ccf436e9f210b34064ef8f47301a414b5f640.png';
+import imgDetech from 'figma:asset/b1562d62611b94f117452fa0feb31b700487f3c2.png';
+import imgNuanslab from 'figma:asset/57f9741f980bbe56fba9c6698f983cff387ee1c2.png';
+import imgErigo from 'figma:asset/d649714f8c0c637ba1592d00b17aad52801e9854.png';
+import imgPegaSeramik from 'figma:asset/c91f19e6d773f3b55ab5cdbabed4301b4463981a.png';
+import imgSancaktepe from 'figma:asset/556084bf263e5264c598fc265fdfc896ef28a102.png';
+
+const companies = [
+  { name: 'Özyeğin Üniversitesi', image: imgOzyegin },
+  { name: 'Galatasaray Üniversitesi', image: imgGalatasaray },
+  { name: 'Marmara Üniversitesi', image: imgMarmara },
+  { name: 'YapıKredi Portföy Yönetimi', image: imgYapiKredi },
+  { name: 'T.C. Sanayi ve Teknoloji Bakanlığı', image: imgSanayi },
+  { name: 'Nova Solutions', image: imgNova },
+  { name: 'Experify', image: imgExperify },
+  { name: 'Detech', image: imgDetech },
+  { name: 'Nuanslab', image: imgNuanslab },
+  { name: 'ERİGO', image: imgErigo },
+  { name: 'Pega Seramik', image: imgPegaSeramik },
+  { name: 'Sancaktepe Belediyesi', image: imgSancaktepe },
+];
+
+// Marquee Helper Logic
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
+interface MarqueeProps {
+  children: React.ReactNode;
+  baseVelocity?: number;
+}
+
+function Marquee({ children, baseVelocity = 0.3 }: MarqueeProps) {
+  const baseX = useMotionValue(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useAnimationFrame((t, delta) => {
+    const timeDelta = delta / 1000;
+    const hoverFactor = isHovered ? 0.05 : 1;
+    const moveBy = baseVelocity * hoverFactor * timeDelta;
+    baseX.set(baseX.get() - moveBy);
+  });
+
+  const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
+
+  return (
+    <div 
+      className="flex overflow-hidden w-full cursor-default"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div className="flex flex-shrink-0" style={{ x }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+interface CompanyLogoProps {
+  company: typeof companies[0];
+}
+
+function CompanyLogo({ company }: CompanyLogoProps) {
+  return (
+    <div className="group flex-shrink-0 mx-6 h-16 flex items-center justify-center">
+      <div className="relative w-32 h-16 flex items-center justify-center">
+        <img 
+          src={company.image} 
+          alt={company.name}
+          className="max-w-full max-h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+        />
+      </div>
+    </div>
+  );
+}
+
+export function HomeReferences() {
+  return (
+    <section className="py-16 bg-white border-b border-gray-100">
+      <div className="w-full">
+        {/* Title */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
+            Güvenilir Partnerler
+          </p>
+          <h3 className="text-gray-900">
+            Bize Güvenen Kurumlar
+          </h3>
+        </div>
+
+        {/* Marquee */}
+        <div className="relative">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          
+          <Marquee baseVelocity={0.3}>
+            {/* Duplicate companies 4 times for seamless loop */}
+            {[...companies, ...companies, ...companies, ...companies].map((company, idx) => (
+              <CompanyLogo key={idx} company={company} />
+            ))}
+          </Marquee>
+        </div>
+      </div>
+    </section>
+  );
+}
