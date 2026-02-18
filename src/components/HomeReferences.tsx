@@ -88,8 +88,11 @@ function CompanyLogo({ company }: CompanyLogoProps) {
 
 export function HomeReferences() {
   return (
-    <section className="py-16 bg-white border-b border-gray-100">
+    <section className="pt-16 pb-8">
       <div className="w-full">
+        {/* Divider */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-12"></div>
+        
         {/* Title */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <h3 className="text-xs uppercase tracking-widest font-normal text-gray-400">

@@ -10,6 +10,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
 import Particles from "./Particles";
 import Magnet from "./ui/Magnet";
+import { HomeReferences } from "./HomeReferences";
 
 import heroImage from 'figma:asset/2660b975765c865fb3b9e71e114543662848f949.png';
 import qrImage from 'figma:asset/390f6f8e04a864f972e8e27b6cf88d0e64fec1d0.png';
@@ -286,7 +287,8 @@ export function Hero({
           </div>
         </div>
 
-        {/* References Section - REMOVED */}
+        {/* References Section */}
+        <HomeReferences />
       </div>
     </div>
   );

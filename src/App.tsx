@@ -582,7 +582,6 @@ function AppContent() {
                 onNavigateToPricing={() => navigate('/pricing')}
                 onOpenMobilePopup={() => setShowMobileStartPopup(true)}
               />
-              <HomeReferences />
               <Features />
               <TargetAudience />
               <HomeShowroom />
