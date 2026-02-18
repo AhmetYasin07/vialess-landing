@@ -149,21 +149,25 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-              <button 
-                onClick={onNavigateToProducts}
+              <a 
+                href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]"
               >
-                Tasarım Talep Edin
+                Toplantı Talep Edin
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </button>
-              <button 
-                onClick={onNavigateToProducts} 
+              </a>
+              <a 
+                href="https://vialess.me/tr/company/vialess"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-lg text-white border border-white/10 hover:bg-white/5 transition-colors backdrop-blur-sm"
               >
-                Tüm Tasarımları Görün
-              </button>
+                Bize ulaşın
+              </a>
             </div>
           </div>
         </div>

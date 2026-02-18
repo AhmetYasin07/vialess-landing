@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Smartphone,
   Sparkles,
@@ -11,9 +12,8 @@ import Particles from "./Particles";
 import Magnet from "./ui/Magnet";
 
 import heroImage from 'figma:asset/2660b975765c865fb3b9e71e114543662848f949.png';
-import qrImage from 'figma:asset/5305727235e576ef3058ad22eb1085a4e9dcf3ae.png';
-import analyticsImage from 'figma:asset/0a77b610f673ecf45babdc081ad28174847ec059.png';
-import arImage from 'figma:asset/3040cf8c76136f10f05e26ee58b002de7e6ac1c9.png';
+import qrImage from 'figma:asset/390f6f8e04a864f972e8e27b6cf88d0e64fec1d0.png';
+import connectionsImage from 'figma:asset/262849954bc8b4d3b09d1e8d512b2a9042423ecd.png';
 
 interface HeroProps {
   onNavigateToProducts: () => void;
@@ -27,6 +27,47 @@ export function Hero({
   onOpenMobilePopup,
 }: HeroProps) {
   const { t, language } = useLanguage();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-rotate every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const phones = [
+    {
+      id: "profile",
+      image: heroImage,
+      alt: "Vialess Digital Platform",
+      badge: true,
+      shadowColor: "rgba(108,99,255,0.4)"
+    },
+    {
+      id: "connections",
+      image: connectionsImage,
+      alt: "Vialess Connections",
+      badge: false,
+      shadowColor: "rgba(99,102,241,0.3)" 
+    },
+    {
+      id: "qr",
+      image: qrImage,
+      alt: "Vialess Sharing",
+      badge: false,
+      shadowColor: "rgba(168,85,247,0.3)"
+    }
+  ];
+
+  const getPosition = (index: number) => {
+    // 0 = center, 1 = right, 2 = left (relative to active)
+    const relativeIndex = (index - activeIndex + 3) % 3;
+    if (relativeIndex === 0) return "center";
+    if (relativeIndex === 1) return "right";
+    return "left";
+  };
 
   return (
     <div className="relative overflow-hidden bg-white min-h-[90vh] flex items-center">
@@ -165,109 +206,82 @@ export function Hero({
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#6c63ff]/20 to-[#8780fd]/20 rounded-full blur-3xl animate-pulse-slow"></div>
 
             {/* 3D Floating Phones Composition */}
-            <div className="relative w-full h-[500px] lg:h-[700px] flex items-center justify-center perspective-1000">
+            <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center">
+              <AnimatePresence initial={false} mode="popLayout">
+                {phones.map((phone, index) => {
+                  const position = getPosition(index);
+                  const isCenter = position === "center";
+                  const isLeft = position === "left";
+                  const isRight = position === "right";
+
+                  return (
+                    <motion.div
+                      key={phone.id}
+                      layout
+                      onClick={() => setActiveIndex(index)}
+                      initial={false}
+                      animate={{
+                        x: isCenter ? 0 : isLeft ? -140 : 140,
+                        y: isCenter ? 0 : 20,
+                        scale: isCenter ? 1 : 0.85,
+                        opacity: isCenter ? 1 : 0.6,
+                        rotate: isCenter ? 0 : isLeft ? -12 : 12,
+                        zIndex: isCenter ? 20 : 10,
+                        filter: isCenter ? "blur(0px)" : "blur(1px)",
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30
+                      }}
+                      className={`absolute cursor-pointer w-[260px] lg:w-[320px] ${
+                        isCenter ? "z-20" : "z-10 hidden md:block" // Hide side phones on mobile
+                      }`}
+                    >
+                      {/* Floating Animation Container */}
+                      <motion.div
+                        animate={{
+                          y: isCenter ? [0, -15, 0] : isLeft ? [20, 0, 20] : [40, 20, 40]
+                        }}
+                        transition={{
+                          duration: isCenter ? 5 : isLeft ? 6 : 7,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: isCenter ? 0 : isLeft ? 1 : 0
+                        }}
+                      >
+                        <ImageWithFallback
+                          src={phone.image}
+                          alt={phone.alt}
+                          className={`w-full h-auto object-contain transition-shadow duration-500`}
+                          style={{ 
+                            filter: isCenter ? `drop-shadow(0 20px 50px ${phone.shadowColor})` : 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))'
+                          }}
+                        />
+
+                        {/* Floating Badge (Only for Profile/Center) */}
+                        {phone.badge && isCenter && (
+                          null
+                        )}
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
               
-              {/* AR Scan Phone (Landscape - Background/Bottom) */}
-              <motion.div
-                initial={{ opacity: 0, y: 100, rotateX: 20 }}
-                animate={{ 
-                  opacity: 1, 
-                  y: 180, // Positioned lower
-                  rotateX: 10,
-                }}
-                transition={{ 
-                  duration: 1, 
-                  delay: 0.6,
-                  y: { duration: 8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
-                }}
-                className="absolute z-30 w-[280px] lg:w-[340px] hidden md:block"
-                style={{ translateX: '0%' }}
-              >
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-[30px] blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <ImageWithFallback
-                    src={arImage}
-                    alt="AR Scanning Feature"
-                    className="relative w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] rounded-[30px] border-[6px] border-gray-900/90"
+              {/* Mobile Controls (Dots) */}
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 md:hidden z-30">
+                {phones.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+                      index === activeIndex ? "bg-[#6c63ff]" : "bg-gray-300"
+                    }`}
+                    aria-label={`Show slide ${index + 1}`}
                   />
-                  {/* Scanning Line Animation */}
-                  <motion.div 
-                    animate={{ top: ["10%", "90%", "10%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute left-[10%] right-[10%] h-[2px] bg-blue-400/80 shadow-[0_0_10px_rgba(96,165,250,0.8)] z-40 pointer-events-none rounded-full"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Left Phone (Analytics) */}
-              <motion.div
-                initial={{ opacity: 0, x: -100, rotate: -20 }}
-                animate={{ 
-                  opacity: 0.8, 
-                  x: -180, 
-                  y: -20,
-                  rotate: -15,
-                }}
-                whileHover={{ opacity: 1, scale: 1.05, rotate: -10, zIndex: 25 }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 0.2,
-                  y: { duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 } 
-                }}
-                className="absolute z-10 w-[180px] lg:w-[220px] hidden md:block origin-bottom-right"
-              >
-                <ImageWithFallback
-                  src={analyticsImage}
-                  alt="Advanced Analytics"
-                  className="w-full h-auto object-contain drop-shadow-2xl rounded-[32px]"
-                />
-              </motion.div>
-
-              {/* Right Phone (QR/Share) */}
-              <motion.div
-                 initial={{ opacity: 0, x: 100, rotate: 20 }}
-                 animate={{ 
-                   opacity: 0.8, 
-                   x: 180, 
-                   y: -40,
-                   rotate: 15,
-                 }}
-                 whileHover={{ opacity: 1, scale: 1.05, rotate: 10, zIndex: 25 }}
-                 transition={{ 
-                   duration: 0.8, 
-                   delay: 0.4,
-                   y: { duration: 7, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 0 } 
-                 }}
-                className="absolute z-10 w-[180px] lg:w-[220px] hidden md:block origin-bottom-left"
-              >
-                <ImageWithFallback
-                  src={qrImage}
-                  alt="QR Sharing"
-                  className="w-full h-auto object-contain drop-shadow-2xl rounded-[32px]"
-                />
-              </motion.div>
-
-              {/* Center Phone (Profile - Main) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 100 }}
-                animate={{ 
-                  opacity: 1, 
-                  scale: 1, 
-                  y: -40 // Lifted up to make room for bottom phone
-                }}
-                transition={{ 
-                  duration: 0.8,
-                  y: { duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
-                }}
-                className="relative z-20 w-[240px] lg:w-[280px]"
-              >
-                <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full -z-10"></div>
-                <ImageWithFallback
-                  src={heroImage}
-                  alt="Digital Identity Profile"
-                  className="w-full h-auto object-contain drop-shadow-[0_30px_60px_rgba(108,99,255,0.5)]"
-                />
-              </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
