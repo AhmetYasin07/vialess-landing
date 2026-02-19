@@ -1,7 +1,7 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Camera, BarChart3, Users, Scan, CreditCard, CheckCircle, Smartphone, Droplet, Leaf, ShoppingBag, Globe, Shield, Zap, Building2 } from 'lucide-react';
 import { FaqSection } from '../components/FaqSection';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 // 3 Ana Ürün
 const mainProducts = [

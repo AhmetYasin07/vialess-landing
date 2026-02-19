@@ -15,6 +15,10 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  /* Smooth font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
 html {
@@ -79,4 +83,63 @@ p {
   p {
     font-size: 1rem;
   }
+}
+
+/* ===== GPU-Friendly Floating Animations (Hero Phones) ===== */
+@keyframes float-center {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -15px, 0); }
+}
+
+@keyframes float-left {
+  0%, 100% { transform: translate3d(0, 20px, 0); }
+  50% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes float-right {
+  0%, 100% { transform: translate3d(0, 40px, 0); }
+  50% { transform: translate3d(0, 20px, 0); }
+}
+
+.animate-float-center {
+  animation: float-center 5s ease-in-out infinite;
+}
+
+.animate-float-left {
+  animation: float-left 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-right {
+  animation: float-right 7s ease-in-out infinite;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-center,
+  .animate-float-left,
+  .animate-float-right,
+  .refs-marquee,
+  .animate-marquee {
+    animation: none !important;
+  }
+  
+  /* Disable Motion/Framer Motion transitions */
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Performance: GPU layer hints for heavy elements ===== */
+.blur-2xl,
+.blur-3xl {
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+/* ===== content-visibility: skip layout/paint for off-screen sections ===== */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }

@@ -1,7 +1,7 @@
 export const blogPosts = [
   {
     slug: '2026-dijital-kimlik-trendleri',
-    image: 'https://images.unsplash.com/photo-1685575112968-7dd67bc447b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxRUiUyMGNvZGUlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NTgwMTU0MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'QR kodlu dijital kimlikle networking etkinliği',
     category: 'Teknoloji',
     lang: 'tr' as const,
@@ -24,7 +24,7 @@ export const blogPosts = [
   },
   {
     slug: 'networking-etkinliklerinde-qr-kod-kullanimi',
-    image: 'https://images.unsplash.com/photo-1675716921224-e087a0cca69a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXR3b3JraW5nJTIwZXZlbnQlMjBidXNpbmVzc3xlbnwxfHx8fDE3NjU3MDY1MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'İş networking etkinliğinde profesyoneller',
     category: 'Networking',
     lang: 'tr' as const,
@@ -44,7 +44,7 @@ export const blogPosts = [
   },
   {
     slug: 'surdurulebilir-is-aglari-icin-ipuclari',
-    image: 'https://images.unsplash.com/photo-1569227997603-33b9f12af927?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZSUyMGJ1c2luZXNzfGVufDF8fHx8MTc2NTcxODM3OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Sürdürülebilir iş uygulamaları ve yeşil teknoloji',
     category: 'Sürdürülebilirlik',
     lang: 'tr' as const,
@@ -64,7 +64,7 @@ export const blogPosts = [
   },
   {
     slug: 'nfc-teknolojisi-ile-kartvizit-paylasimi',
-    image: 'https://images.unsplash.com/photo-1728044849242-516700295875?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMENFTyUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NTgwMTE2MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Mobil cihazda dijital kimlik uygulaması',
     category: 'Teknoloji',
     lang: 'tr' as const,
@@ -84,7 +84,7 @@ export const blogPosts = [
   },
   {
     slug: 'dijital-kimlik-analitikleri',
-    image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmFseXRpY3MlMjBkYXNoYm9hcmR8ZW58MXx8fHwxNzY1NzM2ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'CRM ve analitik dashboard ekranı',
     category: 'CRM',
     lang: 'tr' as const,
@@ -104,7 +104,7 @@ export const blogPosts = [
   },
   {
     slug: 'ocr-ile-kartvizit-tarama',
-    image: 'https://images.unsplash.com/photo-1663153203126-08bbadc178ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwYXBwJTIwc2Nhbm5pbmd8ZW58MXx8fHwxNzY1ODAxNTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Kartvizit tarama ve OCR teknolojisi',
     category: 'Teknoloji',
     lang: 'tr' as const,
@@ -121,7 +121,7 @@ export const blogPosts = [
   },
   {
     slug: 'kurumsal-vialess-business',
-    image: 'https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3NjU3NzIzMjN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Ekip çalışması ve işbirliği',
     category: 'Kurumsal',
     lang: 'tr' as const,
@@ -138,7 +138,7 @@ export const blogPosts = [
   },
   {
     slug: 'etkili-networking-icin-10-altin-kural',
-    image: 'https://images.unsplash.com/photo-1675716921224-e087a0cca69a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXR3b3JraW5nJTIwZXZlbnQlMjBidXNpbmVzc3xlbnwxfHx8fDE3NjU3MDY1MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Networking etkinliği ve iş bağlantıları',
     category: 'Networking',
     lang: 'tr' as const,
@@ -160,7 +160,7 @@ export const blogPosts = [
   // English Blog Posts
   {
     slug: 'digital-business-cards-ultimate-guide',
-    image: 'https://images.unsplash.com/photo-1726607962647-84ec2451d553?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwYnVzaW5lc3MlMjBjYXJkJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzA4MTE2ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Digital business card technology',
     category: 'Teknoloji',
     lang: 'en' as const,
@@ -183,7 +183,7 @@ export const blogPosts = [
   },
   {
     slug: 'enterprise-team-card-management',
-    image: 'https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB0ZWFtJTIwbWVldGluZyUyMG1vZGVybnxlbnwxfHx8fDE3NzA4MTE2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Corporate team meeting',
     category: 'Kurumsal',
     lang: 'en' as const,
@@ -203,7 +203,7 @@ export const blogPosts = [
   },
   {
     slug: 'personal-branding-digital-networking',
-    image: 'https://images.unsplash.com/photo-1759215524472-1b0686fdbd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb25hbCUyMGJyYW5kaW5nJTIwc29jaWFsJTIwbWVkaWF8ZW58MXx8fHwxNzcwODExNjg3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Personal branding and social media',
     category: 'Networking',
     lang: 'en' as const,

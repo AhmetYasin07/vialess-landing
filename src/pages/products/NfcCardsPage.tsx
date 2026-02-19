@@ -1,5 +1,5 @@
 import { CreditCard, ArrowRight, CheckCircle, Zap, Shield, Smartphone, QrCode, Settings, RefreshCw } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { useLanguage } from '../../context/LanguageContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 

@@ -59,18 +59,19 @@ export function ThreeDCard({ card, activeIndex, totalCards, onSelectIndex }: Thr
   return (
     <div className="relative w-80 h-48 md:w-96 md:h-60 mx-auto" style={{ perspective: "1000px" }}>
       {/* Decorative background circle */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-xl opacity-20 transform scale-150 -z-10 animate-pulse-slow"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-xl opacity-20 transform scale-150 -z-10"></div>
 
       <motion.div
         style={{
           rotateX: isHovered ? rotateX : 0,
           rotateY: isHovered ? rotateY : 0,
           transformStyle: "preserve-3d",
+          willChange: 'transform',
         }}
         animate={!isHovered ? {
           rotateX: [0, 5, 0, -5, 0],
           rotateY: [0, -5, 0, 5, 0],
-          y: [0, -10, 0, -5, 0], // Floating effect
+          y: [0, -10, 0, -5, 0],
         } : {}}
         transition={{
           duration: 6,
@@ -89,6 +90,10 @@ export function ThreeDCard({ card, activeIndex, totalCards, onSelectIndex }: Thr
            <img 
             src={card.image} 
             alt={card.title}
+            width={384}
+            height={240}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>
@@ -99,14 +104,6 @@ export function ThreeDCard({ card, activeIndex, totalCards, onSelectIndex }: Thr
             background: isHovered ? glareBackground : 'linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.2) 40%, transparent 60%)',
             opacity: 0.4,
             transform: "translateZ(40px)"
-          }}
-          animate={!isHovered ? {
-            backgroundPosition: ['0% 50%', '100% 50%']
-          } : {}}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse"
           }}
           className="absolute inset-0 rounded-2xl pointer-events-none mix-blend-overlay"
         />

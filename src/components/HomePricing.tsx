@@ -1,162 +1,192 @@
-import { CheckCircle, ShoppingBag, ArrowRight, CreditCard } from 'lucide-react';
+import { CheckCircle, ArrowRight, User, Building2, GraduationCap, Briefcase, Sparkles, Zap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'motion/react';
-import { useState } from 'react';
-import cardErigo from 'figma:asset/8a8785b99ff04d445dc392dd55c6829b81277634.png';
-import bambooTexture from 'figma:asset/39087a15108af2452e0a813a63d0bddd7bd0403a.png';
-
-// Basitleştirilmiş 3D Kart Bileşeni
-function PricingCard3D({ image, title, accentColor, texture = false }: { image: string, title: string, accentColor: string, texture?: boolean }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseX = useSpring(x, { stiffness: 500, damping: 100 });
-  const mouseY = useSpring(y, { stiffness: 500, damping: 100 });
-
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], ["15deg", "-15deg"]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-15deg", "15deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseXFromCenter = e.clientX - rect.left - width / 2;
-    const mouseYFromCenter = e.clientY - rect.top - height / 2;
-    x.set(mouseXFromCenter / width);
-    y.set(mouseYFromCenter / height);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <div className="w-full flex justify-center items-center">
-      <div className={`relative w-full max-w-[300px] aspect-[1.586/1] rounded-xl overflow-hidden shadow-sm border border-black/5 ${accentColor}`}>
-          {texture || !image ? (
-             <div 
-                className={`w-full h-full bg-cover bg-center ${!texture ? 'bg-white' : ''}`}
-                style={texture ? { backgroundImage: `url(${image})` } : {}}
-              >
-                {/* Logo Placeholder for Texture Cards & Classic */}
-                 <div className="absolute top-4 left-6 text-gray-800 font-bold text-sm md:text-lg opacity-80">VIALESS</div>
-                 <div className="absolute bottom-4 left-6 text-gray-800 text-[10px] md:text-xs opacity-70">
-                    <div className="font-bold">Ayşe Yılmaz</div>
-                    <div>Product Manager</div>
-                 </div>
-                 <div className="absolute bottom-4 right-6 w-6 h-6 md:w-8 md:h-8 rounded bg-gray-800/10"></div>
-              </div>
-          ) : (
-            <img src={image} alt={title} className="w-full h-full object-cover" />
-          )}
-      </div>
-    </div>
-  );
-}
+import { motion } from 'motion/react';
 
 export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () => void }) {
   const { t } = useLanguage();
 
-  const plans = [
+  const segments = [
     {
-      id: 'classic',
-      name: t.hp_classic_name,
-      price: '₺1.100',
-      description: t.hp_classic_desc,
-      features: [t.hp_classic_f1, t.hp_classic_f2, t.hp_classic_f3, t.hp_classic_f4],
-      image: '',
-      accentColor: 'bg-white border border-gray-200',
-      texture: false,
+      id: 'freemium',
+      icon: <User className="w-6 h-6" />,
+      secondIcon: <GraduationCap className="w-5 h-5" />,
+      name: t.hp_freemium_name,
+      badge: t.hp_freemium_badge,
+      badgeColor: 'bg-green-100 text-green-700',
+      audience: t.hp_freemium_audience,
+      description: t.hp_freemium_desc,
+      price: '₺0',
+      priceLabel: t.hp_freemium_price_label,
+      features: [
+        t.hp_freemium_f1,
+        t.hp_freemium_f2,
+        t.hp_freemium_f3,
+        t.hp_freemium_f4,
+        t.hp_freemium_f5,
+        t.hp_freemium_f6,
+        t.hp_freemium_f7,
+      ],
+      cta: t.hp_freemium_cta,
+      ctaLink: 'https://app.vialess.me',
+      external: true,
+      accentFrom: 'from-emerald-500',
+      accentTo: 'to-teal-500',
+      cardBg: 'bg-white',
+      borderColor: 'border-gray-200 hover:border-emerald-300',
+      iconBg: 'bg-emerald-50 text-emerald-600',
+      ctaBg: 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20',
     },
     {
-      id: 'bamboo',
-      name: t.hp_bamboo_name,
-      price: '₺1.350',
-      description: t.hp_bamboo_desc,
-      features: [t.hp_bamboo_f1, t.hp_bamboo_f2, t.hp_bamboo_f3, t.hp_bamboo_f4],
-      image: bambooTexture,
-      accentColor: 'bg-amber-50 border border-amber-100',
-      texture: true,
+      id: 'trial',
+      icon: <Building2 className="w-6 h-6" />,
+      secondIcon: <Briefcase className="w-5 h-5" />,
+      name: t.hp_trial_name,
+      badge: t.hp_trial_badge,
+      badgeColor: 'bg-[#6c63ff]/10 text-[#6c63ff]',
+      audience: t.hp_trial_audience,
+      description: t.hp_trial_desc,
+      price: t.hp_trial_price,
+      priceLabel: t.hp_trial_price_label,
+      features: [
+        t.hp_trial_f1,
+        t.hp_trial_f2,
+        t.hp_trial_f3,
+        t.hp_trial_f4,
+        t.hp_trial_f5,
+        t.hp_trial_f6,
+      ],
+      cta: t.hp_trial_cta,
+      ctaLink: 'https://vialess.me/tr/company/vialess',
+      external: true,
+      accentFrom: 'from-[#6c63ff]',
+      accentTo: 'to-purple-500',
+      cardBg: 'bg-white',
+      borderColor: 'border-gray-200 hover:border-[#6c63ff]/40',
+      iconBg: 'bg-[#6c63ff]/10 text-[#6c63ff]',
+      ctaBg: 'bg-[#6c63ff] hover:bg-[#5a52d5] text-white shadow-lg shadow-[#6c63ff]/20',
     },
-    {
-      id: 'metal',
-      name: t.hp_metal_name,
-      price: '₺2.500',
-      description: t.hp_metal_desc,
-      features: [t.hp_metal_f1, t.hp_metal_f2, t.hp_metal_f3, t.hp_metal_f4],
-      image: cardErigo,
-      accentColor: 'bg-gray-900 border border-gray-800',
-      texture: false,
-    }
   ];
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-        {/* Background blobs */}
-       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px] pointer-events-none"></div>
-       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* Background blobs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700 mb-6">
+            <Sparkles className="w-4 h-4 text-[#6c63ff]" />
+            {t.hp_section_badge}
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.hp_section_title}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t.hp_section_desc}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan) => (
-            <div key={plan.id} className="group relative flex flex-col p-8 bg-white border border-gray-200 rounded-[2rem] transition-colors duration-300">
-              
-              {/* 3D Card Area - Daha ferah */}
-              <div className="mb-8 flex justify-center scale-90 sm:scale-100">
-                <PricingCard3D 
-                  image={plan.image} 
-                  title={plan.name} 
-                  accentColor={plan.id === 'metal' ? 'shadow-gray-900/50' : 'shadow-gray-400/30'}
-                  texture={plan.texture}
-                />
+        {/* Two Segment Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {segments.map((segment, index) => (
+            <motion.div
+              key={segment.id}
+              className={`group relative flex flex-col p-8 ${segment.cardBg} border ${segment.borderColor} rounded-[2rem] transition-all duration-300 hover:shadow-xl`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+            >
+              {/* Top Accent Line */}
+              <div className={`absolute top-0 left-8 right-8 h-1 bg-gradient-to-r ${segment.accentFrom} ${segment.accentTo} rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+
+              {/* Badge */}
+              <div className="mb-6">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${segment.badgeColor}`}>
+                  <Zap className="w-3 h-3" />
+                  {segment.badge}
+                </span>
               </div>
 
-              {/* Header & Price - Daha kompakt ve modern */}
-              <div className="flex flex-col gap-2 mb-8">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">{plan.description}</p>
-                  </div>
-                  <div className="text-left sm:text-right">
-                    <span className="block text-3xl font-bold text-gray-900 tracking-tight">{plan.price}</span>
+              {/* Icon & Title */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`w-12 h-12 rounded-xl ${segment.iconBg} flex items-center justify-center`}>
+                  {segment.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">{segment.name}</h3>
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className={`w-5 h-5 rounded ${segment.iconBg} flex items-center justify-center`}>
+                      {segment.secondIcon}
+                    </div>
+                    <span className="text-sm text-gray-500">{segment.audience}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Features - Çizgisiz, temiz liste */}
-              <div className="flex-grow mb-8">
-                 <ul className="space-y-4">
-                    {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
-                            <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#6c63ff]/10 group-hover:text-[#6c63ff] transition-colors">
-                                <CheckCircle className="w-3.5 h-3.5" />
-                            </div>
-                            <span className="leading-tight">{feature}</span>
-                        </li>
-                    ))}
-                 </ul>
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                {segment.description}
+              </p>
+
+              {/* Price */}
+              <div className="mb-6 pb-6 border-b border-gray-100">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-bold text-gray-900">{segment.price}</span>
+                  <span className="text-sm text-gray-500">{segment.priceLabel}</span>
+                </div>
               </div>
 
-              {/* Button - Minimal, solid */}
-              <button 
-                className="w-full py-4 rounded-2xl font-medium text-sm bg-gray-50 text-gray-900 hover:bg-[#6c63ff] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                onClick={onNavigateToPricing}
+              {/* Features */}
+              <div className="flex-grow mb-8">
+                <ul className="space-y-3">
+                  {segment.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-600">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${segment.iconBg}`}>
+                        <CheckCircle className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="leading-tight">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* CTA Button */}
+              <a
+                href={segment.ctaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-4 rounded-2xl font-medium text-sm ${segment.ctaBg} transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer`}
               >
-                {t.hp_cta_buy}
+                {segment.cta}
                 <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+              </a>
+            </motion.div>
           ))}
         </div>
+
+        {/* Bottom link to full pricing */}
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <button
+            onClick={onNavigateToPricing}
+            className="inline-flex items-center gap-2 text-[#6c63ff] font-medium hover:underline underline-offset-4 transition-all cursor-pointer"
+          >
+            {t.hp_see_all_plans}
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { Check, TrendingUp, Zap, Building2, UserCircle2, GraduationCap, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -11,7 +11,7 @@ export function TargetAudience() {
       id: 'sales',
       title: t.ta_sales_title,
       description: t.ta_sales_desc,
-      image: 'https://images.unsplash.com/photo-1758691736764-2a88e313b1f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYWxlcyUyMHRlYW0lMjBidXNpbmVzcyUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcxNDAyNzU3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
       icon: TrendingUp,
       link: '/solutions/sales',
       features: [
@@ -24,7 +24,7 @@ export function TargetAudience() {
       id: 'startups',
       title: t.ta_startups_title,
       description: t.ta_startups_desc,
-      image: 'https://images.unsplash.com/photo-1758873268663-5a362616b5a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwbW9kZXJuJTIwb2ZmaWNlJTIwdGVhbSUyMGNvbGxhYm9yYXRpb258ZW58MXx8fHwxNzcxNDAyNzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
       icon: Zap,
       link: '/solutions/startups',
       features: [
@@ -37,7 +37,7 @@ export function TargetAudience() {
       id: 'enterprises',
       title: t.ta_enterprises_title,
       description: t.ta_enterprises_desc,
-      image: 'https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBib2FyZHJvb20lMjBtZWV0aW5nJTIwYnVzaW5lc3N8ZW58MXx8fHwxNzcxNDAyNzY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
       icon: Building2,
       link: '/solutions/enterprises',
       features: [
@@ -50,7 +50,7 @@ export function TargetAudience() {
       id: 'individuals',
       title: t.ta_individuals_title,
       description: t.ta_individuals_desc,
-      image: 'https://images.unsplash.com/photo-1765648580890-732fa6d769c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcmVlbGFuY2VyJTIwd29ya2luZyUyMGxhcHRvcCUyMGNhZmUlMjBtb2Rlcm58ZW58MXx8fHwxNzcxNDAyNzcwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
       icon: UserCircle2,
       link: '/solutions/individuals',
       features: [
@@ -63,7 +63,7 @@ export function TargetAudience() {
       id: 'students',
       title: t.ta_students_title,
       description: t.ta_students_desc,
-      image: 'https://images.unsplash.com/photo-1762512346990-22d810fe4252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudCUyMHN0dWR5aW5nJTIwbGlicmFyeSUyMG1vZGVybnxlbnwxfHx8fDE3NzE0MDI3NzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
       icon: GraduationCap,
       link: '/solutions/students',
       features: [
@@ -110,6 +110,10 @@ export function TargetAudience() {
                     <img 
                       src={segment.image} 
                       alt={segment.title} 
+                      width={400}
+                      height={192}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Gradient Overlay for Text Readability */}
@@ -118,7 +122,7 @@ export function TargetAudience() {
                     {/* Title on Image */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                       <div className="flex items-center gap-3 mb-1">
-                        <div className="p-1.5 bg-white/20 backdrop-blur-md rounded-lg text-white">
+                        <div className="p-1.5 bg-white/20 rounded-lg text-white">
                           <segment.icon className="w-5 h-5" />
                         </div>
                         <h3 className="text-xl font-bold text-white leading-tight">

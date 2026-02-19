@@ -1,14 +1,14 @@
 import { Quote } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const caseStudies = [
   {
     company: 'TechVision A.Ş.',
     ceo: 'Ahmet Yılmaz',
     role: 'CEO',
-    image: 'https://images.unsplash.com/photo-1580643375398-5174902ebcec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMENFTyUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NTgwMTMxMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23e5e7eb'/%3E%3C/svg%3E",
     quote: 'Vialess ile ekiplerimizin kartvizitlerini ortak havuzda topladık ve CRM entegrasyonuyla veri kaybını önledik.',
     problem: 'Şirketimizde 200+ çalışan farklı etkinliklerde toplanan kartvizitleri kişisel arşivlerinde tutuyordu. Bu durum potansiyel müşteri verilerinin kaybına ve takip edilememesine yol açıyordu.',
     solution: 'Vialess dijital kartvizit platformu sayesinde tüm ekip üyelerine NFC kartlar ve mobil uygulama sağlandı. OCR özelliği ile toplanan kağıt kartvizitler ortak CRM sistemine aktarıldı.',
@@ -23,7 +23,7 @@ const caseStudies = [
     company: 'GlobalTrade Ltd.',
     ceo: 'Elif Demir',
     role: 'Genel Müdür',
-    image: 'https://images.unsplash.com/photo-1758518727888-ffa196002e59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NTc4MDI4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23e5e7eb'/%3E%3C/svg%3E",
     quote: 'Uluslararası fuarlarda dil bariyerini aşmak ve hızlı bilgi paylaşımı için Vialess mükemmel bir çözüm oldu.',
     problem: 'Yurtdışı fuarlarda farklı dillerde kartvizit basmak maliyetliydi ve bilgi güncellemesi neredeyse imkansızdı. Ayrıca kağıt kartvizitler fuarlar sonrası kayboluyordu.',
     solution: 'Vialess ile çok dilli dijital kartvizitler oluşturuldu. NFC kartlar sayesinde anlık bilgi paylaşımı gerçekleşti. Mobil uygulamadan profil bilgileri her an güncellenebilir hale geldi.',

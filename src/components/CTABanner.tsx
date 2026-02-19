@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles, Users, Zap, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useLanguage } from '../context/LanguageContext';
 
 export function CTABanner() {
@@ -11,9 +11,9 @@ export function CTABanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-[#111827] overflow-hidden px-6 py-16 sm:px-16 sm:py-24 shadow-2xl">
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-[#6c63ff]/30 rounded-full blur-[100px] pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="absolute inset-0 opacity-[0.12] pointer-events-none mix-blend-soft-light" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "256px 256px" }}></div>
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-[#6c63ff]/30 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
             
@@ -66,7 +66,7 @@ export function CTABanner() {
                   
                   <Link
                     to="/support"
-                    className="w-full sm:w-auto px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all border border-white/10 flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white rounded-xl font-bold text-lg hover:bg-white/15 transition-all border border-white/10 flex items-center justify-center gap-2"
                   >
                     <Users className="w-5 h-5" />
                     <span>{t.cta_request_demo}</span>
@@ -88,26 +88,22 @@ export function CTABanner() {
 
             {/* Right Stats */}
             <motion.div 
-              className="lg:w-auto"
+              className="lg:w-auto w-full"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full sm:w-48 text-center sm:text-left hover:bg-white/10 transition-colors">
-                  <div className="text-3xl font-bold text-white mb-1">30K+</div>
-                  <div className="text-white/70 text-sm">{t.cta_stat_users}</div>
-                </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full sm:w-48 text-center sm:text-left hover:bg-white/10 transition-colors">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white/8 border border-white/10 p-6 rounded-2xl text-center hover:bg-white/12 transition-colors">
                   <div className="text-3xl font-bold text-white mb-1">40+</div>
                   <div className="text-white/70 text-sm">{t.cta_stat_companies}</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full sm:w-48 text-center sm:text-left hover:bg-white/10 transition-colors">
-                  <div className="text-3xl font-bold text-white mb-1">%98</div>
+                <div className="bg-white/8 border border-white/10 p-6 rounded-2xl text-center hover:bg-white/12 transition-colors">
+                  <div className="text-3xl font-bold text-white mb-1">%100</div>
                   <div className="text-white/70 text-sm">{t.cta_stat_satisfaction}</div>
                 </div>
-                <div className="bg-gradient-to-br from-[#6c63ff]/20 to-purple-500/20 backdrop-blur-md border border-[#6c63ff]/30 p-6 rounded-2xl w-full sm:w-48 flex items-center justify-center text-center">
+                <div className="col-span-2 bg-gradient-to-br from-[#6c63ff]/20 to-purple-500/20 border border-[#6c63ff]/30 p-6 rounded-2xl flex items-center justify-center text-center">
                   <div>
                     <div className="text-white font-semibold mb-1">{t.cta_join_us}</div>
                     <div className="text-white/60 text-xs">{t.cta_be_part}</div>

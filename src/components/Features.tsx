@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Check, Sparkles, ArrowRight, Shield, RefreshCw, UserCircle, QrCode, IdCard, Users, BarChart3, Lock, Eye, CloudUpload, Bell, Smartphone, Zap, ScanLine, MapPin, Tags, Mail, Video, Building2, BookUser } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 
 // Features component with multilingual support
@@ -13,38 +13,59 @@ export function Features() {
   const [activePoint, setActivePoint] = useState(0);
   const [activeSecurityPoint, setActiveSecurityPoint] = useState(0);
   const [activeSyncPoint, setActiveSyncPoint] = useState(0);
+  
+  // Visibility-based timer pausing
+  const sectionRef = useRef<HTMLElement>(null);
+  const isVisibleRef = useRef(false);
 
-  // Auto-advance timers for each section
   useEffect(() => {
-    const digitalCardPointsLength = 4; // Digital ID, Multiple Digital Identities, QR Share, Statistics
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance timers — skip ticks when off-screen
+  useEffect(() => {
+    const digitalCardPointsLength = 4;
     const timer = setInterval(() => {
-      setActivePoint((prev) => (prev + 1) % digitalCardPointsLength);
+      if (isVisibleRef.current) {
+        setActivePoint((prev) => (prev + 1) % digitalCardPointsLength);
+      }
     }, 4500);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    const securityPointsLength = 3; // Encryption, Privacy, Backup
+    const securityPointsLength = 3;
     const timer = setInterval(() => {
-      setActiveSecurityPoint((prev) => (prev + 1) % securityPointsLength);
+      if (isVisibleRef.current) {
+        setActiveSecurityPoint((prev) => (prev + 1) % securityPointsLength);
+      }
     }, 4500);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    const syncPointsLength = 2; // Email Signature, Online Meeting Background
+    const syncPointsLength = 2;
     const timer = setInterval(() => {
-      setActiveSyncPoint((prev) => (prev + 1) % syncPointsLength);
+      if (isVisibleRef.current) {
+        setActiveSyncPoint((prev) => (prev + 1) % syncPointsLength);
+      }
     }, 4500);
     return () => clearInterval(timer);
   }, []);
 
   // Images for the Digital Business Card sub-points
   const digitalCardImages = [
-    "https://images.unsplash.com/photo-1753036051291-cfc20d052c24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaWRlbnRpdHklMjBjYXJkJTIwc21hcnRwaG9uZSUyMG1vY2t1cHxlbnwxfHx8fDE3NzE0MDI3MTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1619462729211-c8fd019ceae3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdWx0aXBsZSUyMHVzZXIlMjBwcm9maWxlcyUyMGFwcCUyMGludGVyZmFjZXxlbnwxfHx8fDE3NzE0MDI3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1609675036792-7498858bfb9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBwaG9uZSUyMHNjYW5uaW5nJTIwcXIlMjBjb2RlfGVufDF8fHx8MTc3MTMxNzkxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmFseXRpY3MlMjBkYXNoYm9hcmQlMjBzdGF0aXN0aWNzJTIwbW9iaWxlfGVufDF8fHx8MTc3MTQwMjczMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E"
   ];
 
   const digitalCardPoints = [
@@ -72,9 +93,9 @@ export function Features() {
 
   // Images and points for Security section
   const securityImages = [
-    "https://images.unsplash.com/photo-1682637275957-8e62180efd1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwZW5jcnlwdGlvbiUyMHNlY3VyaXR5JTIwbG9ja3xlbnwxfHx8fDE3NzA3MTYzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    "https://images.unsplash.com/photo-1768839720936-87ce3adf2d08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwcHJpdmFjeSUyMHByb3RlY3Rpb24lMjBkaWdpdGFsfGVufDF8fHx8MTc3MDcxNjMyMHww&ixlib=rb-4.1.0&q=80&w=1080",
-    "https://images.unsplash.com/photo-1722300556146-312253ce4159?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGJhY2t1cCUyMHNlY3VyZSUyMHNlcnZlcnxlbnwxfHx8fDE3NzA3MTYzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
   ];
 
   const securityPoints = [
@@ -97,8 +118,8 @@ export function Features() {
 
   // Images and points for Sync section
   const syncImages = [
-    "https://images.unsplash.com/photo-1683117927786-f146451082fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbWFpbCUyMHNpZ25hdHVyZSUyMHByb2Zlc3Npb25hbCUyMG1vYmlsZXxlbnwxfHx8fDE3NzE0MDI3NDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1758874572744-26aa02a8f5c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMG1lZXRpbmclMjB2aXJ0dWFsJTIwYmFja2dyb3VuZCUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NzE0MDI3NDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
   ];
 
   const syncPoints = [
@@ -116,9 +137,9 @@ export function Features() {
 
   // Images and points for Contacts section (New Generation Contact Book)
   const contactsImages = [
-    "https://images.unsplash.com/photo-1704030459012-bfbe0d55fec6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNhcmQlMjBzY2FubmluZyUyMGFwcCUyMG9jcnxlbnwxfHx8fDE3NzE0MDI3MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1711399339353-f79e536828f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWV0aW5nJTIwY29udGV4dCUyMGxvY2F0aW9uJTIwdGltZXN0YW1wfGVufDF8fHx8MTc3MDg4NzcyOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1730818027577-49ebf4f3d832?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcmdhbml6ZWQlMjBjb250YWN0cyUyMGFwcCUyMHNtYXJ0cGhvbmV8ZW58MXx8fHwxNzcxNDAyNzQwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
   ];
 
   const contactsPoints = [
@@ -140,7 +161,7 @@ export function Features() {
   ];
 
   return (
-    <section id="ozellikler" className="py-24 bg-white relative overflow-hidden">
+    <section id="ozellikler" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
        {/* Background Elements */}
        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none"></div>
        
@@ -239,6 +260,10 @@ export function Features() {
                          <ImageWithFallback 
                             src={digitalCardImages[activePoint]}
                             alt={digitalCardPoints[activePoint].title}
+                            width={360}
+                            height={640}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                       </motion.div>
@@ -253,6 +278,10 @@ export function Features() {
                <ImageWithFallback 
                   src={digitalCardImages[activePoint]}
                   alt={digitalCardPoints[activePoint].title}
+                  width={360}
+                  height={640}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
             </div>
@@ -329,6 +358,10 @@ export function Features() {
                           <ImageWithFallback 
                             src={contactsImages[activeSecurityPoint]}
                             alt={contactsPoints[activeSecurityPoint].title}
+                            width={400}
+                            height={711}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                         </motion.div>
@@ -343,6 +376,10 @@ export function Features() {
                 <ImageWithFallback 
                   src={contactsImages[activeSecurityPoint]}
                   alt={contactsPoints[activeSecurityPoint].title}
+                  width={400}
+                  height={711}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -418,6 +455,10 @@ export function Features() {
                           <ImageWithFallback 
                             src={syncImages[activeSyncPoint]}
                             alt={syncPoints[activeSyncPoint].title}
+                            width={400}
+                            height={711}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                         </motion.div>
@@ -432,6 +473,10 @@ export function Features() {
                 <ImageWithFallback 
                   src={syncImages[activeSyncPoint]}
                   alt={syncPoints[activeSyncPoint].title}
+                  width={400}
+                  height={711}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

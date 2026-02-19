@@ -1,5 +1,5 @@
 import { Smartphone, ArrowRight, Apple, CheckCircle, User, Camera, Users, Share2, BarChart3, Globe, ShieldCheck, Zap, MapPin, Tag } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { useLanguage } from "../../context/LanguageContext";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 

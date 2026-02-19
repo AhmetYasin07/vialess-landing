@@ -1,6 +1,6 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 interface Step {
   number: string;

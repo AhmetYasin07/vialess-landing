@@ -1,4 +1,3 @@
-import { motion, useAnimationFrame, useMotionValue, useTransform } from 'motion/react';
 import { useState } from 'react';
 
 // Imported images - 12 selected companies
@@ -30,63 +29,25 @@ const companies = [
   { name: 'Sancaktepe Belediyesi', image: imgSancaktepe },
 ];
 
-// Marquee Helper Logic
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
-
-interface MarqueeProps {
-  children: React.ReactNode;
-  baseVelocity?: number;
-}
-
-function Marquee({ children, baseVelocity = 0.3 }: MarqueeProps) {
-  const baseX = useMotionValue(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useAnimationFrame((t, delta) => {
-    const timeDelta = delta / 1000;
-    const hoverFactor = isHovered ? 0.05 : 1;
-    // Changed sign to positive to make it move right
-    const moveBy = baseVelocity * hoverFactor * timeDelta;
-    baseX.set(baseX.get() + moveBy);
-  });
-
-  const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
-
+function CompanyLogo({ company }: { company: typeof companies[0] }) {
   return (
-    <div 
-      className="flex overflow-hidden w-full cursor-default"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <motion.div className="flex flex-shrink-0" style={{ x }}>
-        {children}
-      </motion.div>
-    </div>
-  );
-}
-
-interface CompanyLogoProps {
-  company: typeof companies[0];
-}
-
-function CompanyLogo({ company }: CompanyLogoProps) {
-  return (
-    <div className="group flex-shrink-0 mx-8 h-20 flex items-center justify-center">
-      <div className="relative w-40 h-20 flex items-center justify-center">
-        <img 
-          src={company.image} 
-          alt={company.name}
-          className="max-w-full max-h-full object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-        />
-      </div>
+    <div className="group flex-shrink-0 mx-8 w-40 h-20 flex items-center justify-center">
+      <img 
+        src={company.image} 
+        alt={company.name}
+        width={160}
+        height={80}
+        loading="lazy"
+        decoding="async"
+        className="max-w-full max-h-full object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+      />
     </div>
   );
 }
 
 export function HomeReferences() {
+  const [isPaused, setIsPaused] = useState(false);
+
   return (
     <section className="pt-16 pb-8">
       <div className="w-full">
@@ -100,20 +61,52 @@ export function HomeReferences() {
           </h3>
         </div>
 
-        {/* Marquee */}
-        <div className="relative">
+        {/* CSS-driven Marquee */}
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
           
-          <Marquee baseVelocity={0.3}>
-            {/* Duplicate companies 4 times for seamless loop */}
-            {[...companies, ...companies, ...companies, ...companies].map((company, idx) => (
-              <CompanyLogo key={idx} company={company} />
-            ))}
-          </Marquee>
+          <div className="flex overflow-hidden w-full">
+            <div 
+              className="flex flex-shrink-0 refs-marquee"
+              style={{ 
+                animationPlayState: isPaused ? 'paused' : 'running',
+              }}
+            >
+              {companies.map((company, idx) => (
+                <CompanyLogo key={idx} company={company} />
+              ))}
+            </div>
+            <div 
+              className="flex flex-shrink-0 refs-marquee"
+              aria-hidden="true"
+              style={{ 
+                animationPlayState: isPaused ? 'paused' : 'running',
+              }}
+            >
+              {companies.map((company, idx) => (
+                <CompanyLogo key={idx} company={company} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes refs-scroll {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .refs-marquee {
+          animation: refs-scroll 60s linear infinite;
+          will-change: transform;
+        }
+      `}} />
     </section>
   );
 }

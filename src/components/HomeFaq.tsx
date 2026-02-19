@@ -10,6 +10,7 @@ export function HomeFaq() {
       items: [
         { question: t.faq_q1, answer: t.faq_a1 },
         { question: t.faq_q2, answer: t.faq_a2 },
+        { question: t.faq_q5, answer: t.faq_a5 },
       ]
     },
     {

@@ -12,21 +12,21 @@ export function Testimonials() {
       role: t.testim_review_1_role,
       company: "TechSolutions",
       content: t.testim_review_1_content,
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23e5e7eb'/%3E%3C/svg%3E"
     },
     {
       name: "Mehmet Demir",
       role: t.testim_review_2_role,
       company: "GlobalCorp",
       content: t.testim_review_2_content,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23e5e7eb'/%3E%3C/svg%3E"
     },
     {
       name: "Zeynep Kaya",
       role: t.testim_review_3_role,
       company: "CreativeStudio",
       content: t.testim_review_3_content,
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23e5e7eb'/%3E%3C/svg%3E"
     }
   ];
 

@@ -51,7 +51,7 @@ export function MobileStartModal({ isOpen, onClose }: MobileStartModalProps) {
                 {t.popup_mobile_desc}
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                 {/* App Store */}
                 <a
                   href="https://apps.apple.com" 

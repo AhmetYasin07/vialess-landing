@@ -70,7 +70,8 @@ export default function InteractiveNFCDemo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center"
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\"%3E%3Crect width=\"800\" height=\"600\" fill=\"%23e5e7eb\"/%3E%3C/svg%3E')" }}
                     >
                       <div className="absolute inset-0 bg-black/40 flex flex-col items-center pt-20 text-white">
                         <div className="text-6xl font-thin tracking-tighter">14:30</div>
@@ -88,7 +89,7 @@ export default function InteractiveNFCDemo() {
                       {/* Profil Başlığı */}
                       <div className="h-32 bg-[#6c63ff] relative">
                          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-white rounded-full p-1 shadow-lg">
-                           <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200" alt="Profile" className="w-full h-full rounded-full object-cover" />
+                           <div className="w-full h-full rounded-full bg-gray-300"></div>
                          </div>
                       </div>
                       

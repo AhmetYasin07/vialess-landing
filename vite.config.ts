@@ -9,6 +9,7 @@
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
         'vaul@1.1.2': 'vaul',
+        'sonner@2.0.3': 'sonner',
         'recharts@2.15.2': 'recharts',
         'react-resizable-panels@2.1.7': 'react-resizable-panels',
         'react-hook-form@7.55.0': 'react-hook-form',
@@ -23,6 +24,7 @@
         'figma:asset/d2ab04666fdc0a9f5dbb4686856f7b813c60180c.png': path.resolve(__dirname, './src/assets/d2ab04666fdc0a9f5dbb4686856f7b813c60180c.png'),
         'figma:asset/d2152b414c4da4ce744adce5f36820004f3db0dc.png': path.resolve(__dirname, './src/assets/d2152b414c4da4ce744adce5f36820004f3db0dc.png'),
         'figma:asset/d06e0b7556ed96ddac22a26edd9f97900746c9ee.png': path.resolve(__dirname, './src/assets/d06e0b7556ed96ddac22a26edd9f97900746c9ee.png'),
+        'figma:asset/ccd1627fb190a43628d89bb1df7fb53bb6cafed9.png': path.resolve(__dirname, './src/assets/ccd1627fb190a43628d89bb1df7fb53bb6cafed9.png'),
         'figma:asset/cc2d0a7e4ae580b3861430308b19c93a5ae112b4.png': path.resolve(__dirname, './src/assets/cc2d0a7e4ae580b3861430308b19c93a5ae112b4.png'),
         'figma:asset/ca4b24f6295b190ba1b76f89dba33d95fba6d4c7.png': path.resolve(__dirname, './src/assets/ca4b24f6295b190ba1b76f89dba33d95fba6d4c7.png'),
         'figma:asset/c91f19e6d773f3b55ab5cdbabed4301b4463981a.png': path.resolve(__dirname, './src/assets/c91f19e6d773f3b55ab5cdbabed4301b4463981a.png'),
