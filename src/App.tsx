@@ -1,57 +1,87 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense, Component, ReactNode } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router';
 import { Menu, X, Globe, ChevronDown, Building2, UserCircle2, Scan, Users2, ShieldCheck, Contact, Mail, Video, Workflow, TrendingUp, GraduationCap, CreditCard, Smartphone, Zap, BarChart3 } from 'lucide-react';
 import PngLogo from './imports/PngLogo';
 import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { ImpactStats } from './components/ImpactStats';
-import { HowItWorks } from './components/HowItWorks';
-import { AppDemo } from './components/AppDemo';
-import { HomePricing } from './components/HomePricing';
-import { HomeFaq } from './components/HomeFaq';
-import { TargetAudience } from './components/TargetAudience';
-import { HomeShowroom } from './components/HomeShowroom';
-import { DesignYourCard } from './components/DesignYourCard';
-import { CTABanner } from './components/CTABanner';
 import { MobileStartModal } from './components/MobileStartModal';
-import { HomeReferences } from './components/HomeReferences';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import { Toaster } from 'sonner';
-
-import ShowroomPage from './pages/ShowroomPage';
-import ProductsPage from './pages/ProductsPage';
-import PricingPage from './pages/PricingPage';
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage';
-import AboutPage from './pages/AboutPage';
-import EnterprisePage from './pages/EnterprisePage';
-import SupportPage from './pages/SupportPage';
-import SalesSolutionsPage from './pages/SalesSolutionsPage';
-import StartupSolutionsPage from './pages/StartupSolutionsPage';
-import EnterpriseSolutionsPage from './pages/EnterpriseSolutionsPage';
-import IndividualSolutionsPage from './pages/IndividualSolutionsPage';
-import StudentSolutionsPage from './pages/StudentSolutionsPage';
-import AnalyticsPage from './pages/AnalyticsPage';
-import CRMIntegrationsPage from './pages/CRMIntegrationsPage';
-import DijitalProfilPage from './pages/features/DijitalProfilPage';
-import KartvizitTarayiciPage from './pages/features/KartvizitTarayiciPage';
-import IliskiYonetimiPage from './pages/features/IliskiYonetimiPage';
-import QrNfcPaylasimPage from './pages/features/QrNfcPaylasimPage';
-import EkipYonetimiPage from './pages/features/EkipYonetimiPage';
-import AnalitikRaporlamaPage from './pages/features/AnalitikRaporlamaPage';
-import EpostaImzasiPage from './pages/features/EpostaImzasiPage';
-import ZoomArkaPlanlaPage from './pages/features/ZoomArkaPlanlaPage';
-import MarkaKimlikYonetimiPage from './pages/features/MarkaKimlikYonetimiPage';
-import EntegrasyonlarPage from './pages/features/EntegrasyonlarPage';
-import GuvenlikKvkkPage from './pages/features/GuvenlikKvkkPage';
-import CokluProfilPage from './pages/features/CokluProfilPage';
+import { Toaster } from 'sonner@2.0.3';
 import { Footer } from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
-import MobileAppPage from './pages/products/MobileAppPage';
-import WebPanelPage from './pages/products/WebPanelPage';
-import NfcCardsPage from './pages/products/NfcCardsPage';
-import FeaturesHubPage from './pages/FeaturesHubPage';
-import Demo1Page from './pages/Demo1Page';
+// ===== Lazy-loaded HOMEPAGE sections (below-fold) =====
+// These are code-split so they don't block initial paint / LCP
+const Features = lazy(() => import('./components/Features').then(m => ({ default: m.Features })));
+const ImpactStats = lazy(() => import('./components/ImpactStats').then(m => ({ default: m.ImpactStats })));
+const HowItWorks = lazy(() => import('./components/HowItWorks').then(m => ({ default: m.HowItWorks })));
+const AppDemo = lazy(() => import('./components/AppDemo').then(m => ({ default: m.AppDemo })));
+const HomePricing = lazy(() => import('./components/HomePricing').then(m => ({ default: m.HomePricing })));
+const HomeFaq = lazy(() => import('./components/HomeFaq').then(m => ({ default: m.HomeFaq })));
+const TargetAudience = lazy(() => import('./components/TargetAudience').then(m => ({ default: m.TargetAudience })));
+const HomeShowroom = lazy(() => import('./components/HomeShowroom').then(m => ({ default: m.HomeShowroom })));
+const DesignYourCard = lazy(() => import('./components/DesignYourCard').then(m => ({ default: m.DesignYourCard })));
+const CTABanner = lazy(() => import('./components/CTABanner').then(m => ({ default: m.CTABanner })));
+
+// Error boundary for lazy-loaded routes — catches dynamic import failures gracefully
+class LazyErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <p className="text-gray-500 mb-4">Bu sayfa yüklenirken bir hata oluştu.</p>
+          <button
+            onClick={() => { this.setState({ hasError: false }); window.location.reload(); }}
+            className="px-6 py-2 bg-[#6c63ff] text-white rounded-lg hover:bg-[#5a52d5] transition-colors"
+          >
+            Tekrar Dene
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// Lightweight skeleton placeholder for below-fold sections
+function SectionSkeleton() {
+  return <div className="w-full py-24 flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-gray-300 border-t-[#6c63ff] animate-spin" /></div>;
+}
+
+// Lazy-loaded route pages — only downloaded when user navigates to them
+const ShowroomPage = lazy(() => import('./pages/ShowroomPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const EnterprisePage = lazy(() => import('./pages/EnterprisePage'));
+const SupportPage = lazy(() => import('./pages/SupportPage'));
+const SalesSolutionsPage = lazy(() => import('./pages/SalesSolutionsPage'));
+const StartupSolutionsPage = lazy(() => import('./pages/StartupSolutionsPage'));
+const EnterpriseSolutionsPage = lazy(() => import('./pages/EnterpriseSolutionsPage'));
+const IndividualSolutionsPage = lazy(() => import('./pages/IndividualSolutionsPage'));
+const StudentSolutionsPage = lazy(() => import('./pages/StudentSolutionsPage'));
+const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage'));
+const CRMIntegrationsPage = lazy(() => import('./pages/CRMIntegrationsPage'));
+const DijitalProfilPage = lazy(() => import('./pages/features/DijitalProfilPage'));
+const KartvizitTarayiciPage = lazy(() => import('./pages/features/KartvizitTarayiciPage'));
+const IliskiYonetimiPage = lazy(() => import('./pages/features/IliskiYonetimiPage'));
+const QrNfcPaylasimPage = lazy(() => import('./pages/features/QrNfcPaylasimPage'));
+const EkipYonetimiPage = lazy(() => import('./pages/features/EkipYonetimiPage'));
+const AnalitikRaporlamaPage = lazy(() => import('./pages/features/AnalitikRaporlamaPage'));
+const EpostaImzasiPage = lazy(() => import('./pages/features/EpostaImzasiPage'));
+const ZoomArkaPlanlaPage = lazy(() => import('./pages/features/ZoomArkaPlanlaPage'));
+const MarkaKimlikYonetimiPage = lazy(() => import('./pages/features/MarkaKimlikYonetimiPage'));
+const EntegrasyonlarPage = lazy(() => import('./pages/features/EntegrasyonlarPage'));
+const GuvenlikKvkkPage = lazy(() => import('./pages/features/GuvenlikKvkkPage'));
+const CokluProfilPage = lazy(() => import('./pages/features/CokluProfilPage'));
+const MobileAppPage = lazy(() => import('./pages/products/MobileAppPage'));
+const WebPanelPage = lazy(() => import('./pages/products/WebPanelPage'));
+const NfcCardsPage = lazy(() => import('./pages/products/NfcCardsPage'));
+const FeaturesHubPage = lazy(() => import('./pages/FeaturesHubPage'));
+const Demo1Page = lazy(() => import('./pages/Demo1Page'));
 
 type PageType = 'home' | 'showroom' | 'products' | 'pricing' | 'blog' | 'blog-post' | 'about' | 'enterprise' | 'support' | 'solutions-sales' | 'solutions-startups' | 'solutions-enterprises' | 'solutions-individuals' | 'solutions-students';
 
@@ -66,9 +96,8 @@ function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [location.pathname]);
+  // ScrollToTop component handles scroll restoration logic now.
+  // No duplicate useEffect here.
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -109,9 +138,10 @@ function AppContent() {
   
   return (
     <div className="min-h-screen font-sans text-gray-900 bg-[#f5f5f5]">
+      <ScrollToTop />
       {/* Header / Navigation - FIXED, NO ANIMATION */}
       <header 
-        className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm"
+        className="sticky top-0 z-50 bg-white/98 border-b border-gray-200 h-16 shadow-sm"
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex justify-between items-center h-full">
@@ -385,20 +415,24 @@ function AppContent() {
                 </div>
               </div>
               
-              <Link to="/pricing" className={navLinkClass}>
-                {t.menu_pricing}
+              <Link to="/showroom" className={navLinkClass}>
+                {t.menu_showroom || (language === 'tr' ? 'Showroom' : 'Showroom')}
               </Link>
               
-              <Link 
-                to="/showroom" 
-                className={navLinkClass}
-                title="Referanslar ve Müşteri Hikayeleri"
-              >
-                {t.menu_references}
+              <Link to="/pricing" className={navLinkClass}>
+                {t.menu_pricing || (language === 'tr' ? 'Fiyatlar' : 'Pricing')}
+              </Link>
+              
+              <Link to="/blog" className={navLinkClass}>
+                {language === 'tr' ? 'Blog' : 'Blog'}
+              </Link>
+              
+              <Link to="/about" className={navLinkClass}>
+                {language === 'tr' ? 'Hakkımızda' : 'About'}
               </Link>
               
               <Link to="/support" className={navLinkClass}>
-                {t.menu_contact}
+                {t.menu_contact || (language === 'tr' ? 'İletişim' : 'Contact')}
               </Link>
             </div>
 
@@ -424,7 +458,7 @@ function AppContent() {
 
                 {/* Dropdown Menu */}
                 <div className="absolute top-full right-0 pt-2 w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                  <div className="bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden p-2">
+                  <div className="bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden p-2 flex flex-col gap-1">
                     <a
                       href="https://app.vialess.me"
                       target="_blank"
@@ -539,14 +573,20 @@ function AppContent() {
                   </div>
                 </div>
                 
-                <Link to="/pricing" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
-                  {t.menu_pricing}
-                </Link>
                 <Link to="/showroom" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
-                  {t.menu_showroom}
+                  {t.menu_showroom || (language === 'tr' ? 'Showroom' : 'Showroom')}
+                </Link>
+                <Link to="/pricing" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
+                  {t.menu_pricing || (language === 'tr' ? 'Fiyatlar' : 'Pricing')}
+                </Link>
+                <Link to="/blog" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
+                  {language === 'tr' ? 'Blog' : 'Blog'}
+                </Link>
+                <Link to="/about" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
+                  {language === 'tr' ? 'Hakkımızda' : 'About'}
                 </Link>
                 <Link to="/support" onClick={closeMobileMenu} className="px-4 py-2 text-left text-gray-700 hover:bg-[#6c63ff]/10 hover:text-[#6c63ff] rounded-lg transition-colors font-medium">
-                  {t.menu_contact}
+                  {t.menu_contact || (language === 'tr' ? 'İletişim' : 'Contact')}
                 </Link>
                 
                 <div className="h-px bg-gray-100 my-2"></div>
@@ -574,6 +614,7 @@ function AppContent() {
 
       {/* Main Content */}
       <main>
+        <LazyErrorBoundary>
         <Routes>
           <Route path="/" element={
             <>
@@ -582,88 +623,241 @@ function AppContent() {
                 onNavigateToPricing={() => navigate('/pricing')}
                 onOpenMobilePopup={() => setShowMobileStartPopup(true)}
               />
-              <Features />
-              <TargetAudience />
-              <HomeShowroom />
-              <DesignYourCard />
-              <ImpactStats />
-              <HowItWorks />
-              <AppDemo />
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <Features />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <HowItWorks />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <TargetAudience />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <ImpactStats />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <HomeShowroom />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <DesignYourCard />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <AppDemo />
+                </Suspense>
+              </div>
               {/* <Testimonials /> - Hidden: no customer reviews yet */}
-              <HomePricing onNavigateToPricing={() => navigate('/pricing')} />
-              <HomeFaq />
-              <CTABanner />
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <HomePricing onNavigateToPricing={() => navigate('/pricing')} />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <CTABanner />
+                </Suspense>
+              </div>
+              <div className="cv-auto">
+                <Suspense fallback={<SectionSkeleton />}>
+                  <HomeFaq />
+                </Suspense>
+              </div>
             </>
           } />
-          <Route path="/demo_1" element={<Demo1Page />} />
-          <Route path="/showroom" element={
-            <ShowroomPage 
-              onNavigateToProducts={() => navigate('/products')}
-              onNavigateToBlog={() => navigate('/blog')}
-            />
+          <Route path="/demo_1" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <Demo1Page />
+            </Suspense>
           } />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/showroom" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <ShowroomPage 
+                onNavigateToProducts={() => navigate('/products')}
+                onNavigateToBlog={() => navigate('/blog')}
+              />
+            </Suspense>
+          } />
+          <Route path="/products" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <ProductsPage />
+            </Suspense>
+          } />
+          <Route path="/pricing" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <PricingPage />
+            </Suspense>
+          } />
           <Route path="/blog" element={
-            <BlogPage 
-              onNavigateToPost={(postId: string) => navigate(`/blog/${postId}`)}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <BlogPage 
+                onNavigateToPost={(postId: string) => navigate(`/blog/${postId}`)}
+              />
+            </Suspense>
           } />
           <Route path="/blog/:postId" element={
-            <BlogPostPage 
-              onBack={() => navigate('/blog')}
-              onNavigateToPost={(postId: string) => navigate(`/blog/${postId}`)}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <BlogPostPage 
+                onBack={() => navigate('/blog')}
+                onNavigateToPost={(postId: string) => navigate(`/blog/${postId}`)}
+              />
+            </Suspense>
           } />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/enterprise" element={<EnterprisePage />} />
-          <Route path="/support" element={<SupportPage />} />
+          <Route path="/about" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <AboutPage />
+            </Suspense>
+          } />
+          <Route path="/enterprise" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <EnterprisePage />
+            </Suspense>
+          } />
+          <Route path="/support" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <SupportPage />
+            </Suspense>
+          } />
           <Route path="/solutions/sales" element={
-            <SalesSolutionsPage
-              onNavigateToPricing={() => navigate('/pricing')}
-              onNavigateToContact={() => navigate('/support')}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <SalesSolutionsPage
+                onNavigateToPricing={() => navigate('/pricing')}
+                onNavigateToContact={() => navigate('/support')}
+              />
+            </Suspense>
           } />
           <Route path="/solutions/startups" element={
-            <StartupSolutionsPage
-              onNavigateToPricing={() => navigate('/pricing')}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <StartupSolutionsPage
+                onNavigateToPricing={() => navigate('/pricing')}
+              />
+            </Suspense>
           } />
           <Route path="/solutions/enterprises" element={
-            <EnterpriseSolutionsPage
-              onNavigateToPricing={() => navigate('/pricing')}
-              onNavigateToContact={() => navigate('/support')}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <EnterpriseSolutionsPage
+                onNavigateToPricing={() => navigate('/pricing')}
+                onNavigateToContact={() => navigate('/support')}
+              />
+            </Suspense>
           } />
           <Route path="/solutions/individuals" element={
-            <IndividualSolutionsPage
-              onNavigateToPricing={() => navigate('/pricing')}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <IndividualSolutionsPage
+                onNavigateToPricing={() => navigate('/pricing')}
+              />
+            </Suspense>
           } />
           <Route path="/solutions/students" element={
-            <StudentSolutionsPage
-              onNavigateToPricing={() => navigate('/pricing')}
-            />
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <StudentSolutionsPage
+                onNavigateToPricing={() => navigate('/pricing')}
+              />
+            </Suspense>
           } />
-          <Route path="/analytics" element={<AnalyticsPage />} />
-          <Route path="/crm-integrations" element={<CRMIntegrationsPage />} />
-          <Route path="/ozellikler/dijital-profil" element={<DijitalProfilPage />} />
-          <Route path="/ozellikler/kartvizit-tarayici" element={<KartvizitTarayiciPage />} />
-          <Route path="/ozellikler/iliski-yonetimi" element={<IliskiYonetimiPage />} />
-          <Route path="/ozellikler/qr-nfc-paylasim" element={<QrNfcPaylasimPage />} />
-          <Route path="/ozellikler/ekip-yonetimi" element={<EkipYonetimiPage />} />
-          <Route path="/ozellikler/analitik-raporlama" element={<AnalitikRaporlamaPage />} />
-          <Route path="/ozellikler/e-posta-imzasi" element={<EpostaImzasiPage />} />
-          <Route path="/ozellikler/zoom-arka-planlari" element={<ZoomArkaPlanlaPage />} />
-          <Route path="/ozellikler/marka-kimlik-yonetimi" element={<MarkaKimlikYonetimiPage />} />
-          <Route path="/ozellikler/entegrasyonlar" element={<EntegrasyonlarPage />} />
-          <Route path="/ozellikler/guvenlik-kvkk" element={<GuvenlikKvkkPage />} />
-          <Route path="/ozellikler/coklu-profil" element={<CokluProfilPage />} />
-          <Route path="/urunler/mobil-uygulama" element={<MobileAppPage />} />
-          <Route path="/urunler/kurumsal-web-paneli" element={<WebPanelPage />} />
-          <Route path="/urunler/nfc-kartlar" element={<NfcCardsPage />} />
-          <Route path="/ozellikler" element={<FeaturesHubPage />} />
+          <Route path="/analytics" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <AnalyticsPage />
+            </Suspense>
+          } />
+          <Route path="/crm-integrations" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <CRMIntegrationsPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/dijital-profil" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <DijitalProfilPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/kartvizit-tarayici" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <KartvizitTarayiciPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/iliski-yonetimi" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <IliskiYonetimiPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/qr-nfc-paylasim" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <QrNfcPaylasimPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/ekip-yonetimi" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <EkipYonetimiPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/analitik-raporlama" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <AnalitikRaporlamaPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/e-posta-imzasi" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <EpostaImzasiPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/zoom-arka-planlari" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <ZoomArkaPlanlaPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/marka-kimlik-yonetimi" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <MarkaKimlikYonetimiPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/entegrasyonlar" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <EntegrasyonlarPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/guvenlik-kvkk" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <GuvenlikKvkkPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler/coklu-profil" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <CokluProfilPage />
+            </Suspense>
+          } />
+          <Route path="/urunler/mobil-uygulama" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <MobileAppPage />
+            </Suspense>
+          } />
+          <Route path="/urunler/kurumsal-web-paneli" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <WebPanelPage />
+            </Suspense>
+          } />
+          <Route path="/urunler/nfc-kartlar" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <NfcCardsPage />
+            </Suspense>
+          } />
+          <Route path="/ozellikler" element={
+            <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+              <FeaturesHubPage />
+            </Suspense>
+          } />
         </Routes>
+        </LazyErrorBoundary>
       </main>
 
       {/* Footer */}

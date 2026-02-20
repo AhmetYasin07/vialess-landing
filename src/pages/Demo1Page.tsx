@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { ArrowRight, Smartphone, Globe, ShieldCheck, Zap, Share2, BarChart3, QrCode, X, Check, ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Button } from '../components/ui/button';
 import StoryTellingSection from '../components/StoryTellingSection';
 import LogoMarquee from '../components/LogoMarquee';

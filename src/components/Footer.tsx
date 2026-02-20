@@ -1,5 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, Globe, ChevronDown, MessageCircle, Mail, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useLanguage } from '../context/LanguageContext';
 import LogoBeyaz from '../imports/Vector-295-170';
 
@@ -25,11 +25,11 @@ export function Footer({ onNavigateToShowroom, onNavigateTo }: FooterProps) {
           <div className="lg:col-span-2 space-y-6">
              <div>
                 {/* Modern Vialess Logo */}
-                <Link to="/" className="inline-flex items-center gap-3 mb-8 group">
-                  <div className="w-24 h-10">
+                <Link to="/" className="inline-flex items-center gap-4 mb-8 group">
+                  <div className="w-10 h-8 flex-shrink-0">
                     <LogoBeyaz />
                   </div>
-                  <span className="text-white text-2xl font-bold">Vialess</span>
+                  <span className="text-white text-2xl font-bold leading-none">Vialess</span>
                 </Link>
                 <p className="text-gray-400 text-base leading-relaxed max-w-md mb-8">
                   {t.footer_value_prop}

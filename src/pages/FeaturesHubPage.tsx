@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Search, Smartphone, Building2, Globe, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useLanguage } from '../context/LanguageContext';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 

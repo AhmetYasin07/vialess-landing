@@ -2,10 +2,12 @@ import { Share2, Plus, Users, Sparkles, ArrowRight, Check, Download } from 'luci
 import { useLanguage } from '../context/LanguageContext';
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { MobileStartModal } from './MobileStartModal';
 
 export function HowItWorks() {
   const { t } = useLanguage();
   const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [showMobileStartModal, setShowMobileStartModal] = useState(false);
 
   const steps = [
     {
@@ -123,9 +125,7 @@ export function HowItWorks() {
                     {/* Badge */}
                     <div className="flex items-center justify-start mb-4">
                       <span
-                        className={`${step.badgeColor} text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg ${
-                          isPremium ? 'animate-pulse' : ''
-                        }`}
+                        className={`${step.badgeColor} text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg`}
                       >
                         {step.badge}
                       </span>
@@ -220,16 +220,21 @@ export function HowItWorks() {
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
         >
-          <div className="bg-gradient-to-br from-[#5b54d6] via-[#6c63ff] to-[#4a47b8] rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-            <div className="relative z-10">
-              <button className="bg-white text-[#6c63ff] px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 group cursor-pointer">
-                <Download className="w-5 h-5 group-hover:animate-bounce" />
-                {t.how_cta_button}
-              </button>
-            </div>
-          </div>
+          <button
+            onClick={() => setShowMobileStartModal(true)}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-gray-200 hover:border-[#6c63ff] rounded-xl font-bold text-lg text-gray-900 hover:text-[#6c63ff] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
+          >
+            <Download className="w-5 h-5 group-hover:animate-bounce" />
+            {t.how_cta_button}
+          </button>
         </motion.div>
       </div>
+
+      {/* Mobile Start Modal */}
+      <MobileStartModal
+        isOpen={showMobileStartModal}
+        onClose={() => setShowMobileStartModal(false)}
+      />
     </section>
   );
 }

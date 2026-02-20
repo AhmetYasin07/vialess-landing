@@ -6,7 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 const cards = [
   {
-    image: 'https://images.unsplash.com/photo-1765392412355-0913f7c91c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicnVzaGVkJTIwbWV0YWwlMjB0ZXh0dXJlJTIwZGFya3xlbnwxfHx8fDE3NjcyNTI1Njd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Vialess Premium Metal Kart',
     material: 'Metal',
     sector: 'Danışmanlık',
@@ -14,7 +14,7 @@ const cards = [
     features: ['nfc', 'water', 'eco']
   },
   {
-    image: 'https://images.unsplash.com/photo-1762017740727-86f6ad9eab18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXR0ZSUyMGJsYWNrJTIwdGV4dHVyZSUyMG1pbmltYWx8ZW58MXx8fHwxNzY3MjUyNTY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Vialess Matte Black Edition',
     material: 'PVC',
     sector: 'Teknoloji',
@@ -22,7 +22,7 @@ const cards = [
     features: ['nfc', 'water']
   },
   {
-    image: 'https://images.unsplash.com/photo-1545873509-33e944ca7655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwZm9pbCUyMHRleHR1cmV8ZW58MXx8fHwxNzY3MjM0NTgyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Vialess Gold Exclusive',
     material: 'Metal',
     sector: 'Finans',
@@ -30,7 +30,7 @@ const cards = [
     features: ['nfc', 'water']
   },
   {
-    image: 'https://images.unsplash.com/photo-1525947088131-b701cd0f6dc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwd29vZCUyMHRleHR1cmV8ZW58MXx8fHwxNzY3MTMyNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
     alt: 'Vialess Eco Wood',
     material: 'Ahşap',
     sector: 'Sürdürülebilir',
@@ -121,11 +121,11 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
         {/* Premium CTA Bölümü */}
         <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0f0b15] px-8 py-24 sm:px-16 sm:py-32 text-center isolate shadow-2xl">
           {/* Advanced Background Effects */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] brightness-100 contrast-150 mix-blend-overlay"></div>
+          <div className="absolute inset-0 opacity-[0.12] pointer-events-none mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "256px 256px" }}></div>
           
           {/* Glowing Orbs */}
-          <div className="absolute top-0 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#6c63ff]/20 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 translate-y-1/2 w-[500px] h-[500px] bg-[#ff3366]/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#6c63ff]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 translate-y-1/2 w-[500px] h-[500px] bg-[#ff3366]/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent pointer-events-none border border-white/5 rounded-[2.5rem]" />
 

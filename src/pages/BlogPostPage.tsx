@@ -1,5 +1,5 @@
 import { ArrowLeft, Calendar, User, Clock, Share2, ArrowRight } from 'lucide-react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Badge } from '../components/ui/badge';
 import { blogPosts } from '../data/blog-posts';

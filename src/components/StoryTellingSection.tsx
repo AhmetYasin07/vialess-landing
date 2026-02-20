@@ -13,7 +13,7 @@ const slides = [
     color: "bg-[#edeee0]",
     textColor: "text-[#420055]",
     icon: <Zap className="w-12 h-12 text-[#6900ea]" />,
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop", // Placeholder for Figma assets
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const slides = [
     color: "bg-[#e8dff5]",
     textColor: "text-[#420055]",
     icon: <Layers className="w-12 h-12 text-[#6900ea]" />,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const slides = [
     color: "bg-[#f3e8ff]",
     textColor: "text-[#420055]",
     icon: <BarChart3 className="w-12 h-12 text-[#6900ea]" />,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const slides = [
     color: "bg-[#edeee0]",
     textColor: "text-[#420055]",
     icon: <QrCode className="w-12 h-12 text-[#6900ea]" />,
-    image: "https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const slides = [
     color: "bg-[#e0e7ff]",
     textColor: "text-[#1e1b4b]",
     icon: <Scan className="w-12 h-12 text-[#4338ca]" />,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ const slides = [
     color: "bg-[#f0f9ff]",
     textColor: "text-[#0c4a6e]",
     icon: <MapPin className="w-12 h-12 text-[#0284c7]" />,
-    image: "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   },
   {
     id: 7,
@@ -73,7 +73,7 @@ const slides = [
     color: "bg-[#fafafa]",
     textColor: "text-[#420055]",
     icon: <Smartphone className="w-12 h-12 text-[#6900ea]" />,
-    image: "https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=1000&auto=format&fit=crop",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect width='1000' height='750' fill='%23e5e7eb'/%3E%3C/svg%3E",
   }
 ];
 

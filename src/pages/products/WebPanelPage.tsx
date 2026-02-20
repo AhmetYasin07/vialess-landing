@@ -1,5 +1,5 @@
 import { Building2, ArrowRight, CheckCircle, Users, Settings, Mail, Video, CreditCard, BarChart3, FileSpreadsheet } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { useLanguage } from '../../context/LanguageContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { motion } from 'motion/react';

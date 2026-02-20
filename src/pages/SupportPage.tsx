@@ -1,7 +1,7 @@
-import { Search, ChevronDown, Mail, Facebook, Twitter, Instagram, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Search, ChevronDown, Mail, CheckCircle, AlertCircle, User, QrCode, X } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useState, useMemo } from 'react';
-import { toast } from 'sonner';
+import { toast } from 'sonner@2.0.3';
 
 const faqCategories = [
   {
@@ -39,6 +39,7 @@ export default function SupportPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [showQrModal, setShowQrModal] = useState(false);
 
   // Filter FAQs based on search query
   const filteredFaqs = useMemo(() => {
@@ -71,59 +72,47 @@ export default function SupportPage() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden bg-white pt-24 pb-32">
+      <section className="relative overflow-hidden bg-white pt-20 pb-16">
         {/* Modern Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
-             <div className="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-[#6c63ff]/5 blur-[120px]" />
-             <div className="absolute top-[10%] -right-[10%] w-[500px] h-[500px] rounded-full bg-[#8780fd]/10 blur-[100px]" />
+             <div className="absolute -top-[20%] left-[20%] w-[500px] h-[500px] rounded-full bg-[#6c63ff]/5 blur-[120px]" />
+             <div className="absolute top-[10%] right-[20%] w-[400px] h-[400px] rounded-full bg-[#8780fd]/10 blur-[100px]" />
           </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="text-left">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-sm font-semibold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <span className="w-2 h-2 rounded-full bg-[#6c63ff]" />
-                Destek Merkezi
-              </span>
-              
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6 leading-[1.1]">
-                Nasıl yardımcı olabiliriz?
-              </h1>
-              
-              <p className="text-xl text-gray-500 mb-12 max-w-lg leading-relaxed font-normal">
-                Aklınıza takılan soruların yanıtlarını bulun veya ekibimizle iletişime geçin.
-              </p>
-              
-              <div className="max-w-xl relative group">
-                {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#6c63ff] to-[#8780fd] rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-                
-                <div className="relative bg-white rounded-2xl shadow-xl shadow-gray-200/50 flex items-center p-2 border border-gray-100 transition-transform duration-300 focus-within:scale-[1.01]">
-                  <Search className="w-6 h-6 text-gray-400 ml-4 shrink-0" />
-                  <input
-                    type="text"
-                    placeholder="Örn: NFC kart kurulumu..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-14 pl-4 pr-4 text-lg bg-transparent border-none focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-400"
-                  />
-                  <div className="hidden sm:block pr-2">
-                    <kbd className="hidden sm:inline-flex h-8 items-center gap-1 rounded border border-gray-200 bg-gray-50 px-2 font-mono text-[10px] font-medium text-gray-500 opacity-100">
-                      <span className="text-xs">⌘</span>K
-                    </kbd>
-                  </div>
-                </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-sm font-semibold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span className="w-2 h-2 rounded-full bg-[#6c63ff]" />
+            Destek Merkezi
+          </span>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4 leading-[1.1]">
+            Nasıl yardımcı olabiliriz?
+          </h1>
+          
+          <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed font-normal">
+            Aklınıza takılan soruların yanıtlarını bulun veya ekibimizle iletişime geçin.
+          </p>
+          
+          <div className="max-w-2xl mx-auto relative group">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#6c63ff] to-[#8780fd] rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+            
+            <div className="relative bg-white rounded-2xl shadow-xl shadow-gray-200/50 flex items-center p-2 border border-gray-100 transition-transform duration-300 focus-within:scale-[1.01]">
+              <Search className="w-6 h-6 text-gray-400 ml-4 shrink-0" />
+              <input
+                type="text"
+                placeholder="Örn: NFC kart kurulumu..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-14 pl-4 pr-4 text-lg bg-transparent border-none focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-400"
+              />
+              <div className="hidden sm:block pr-2">
+                <kbd className="hidden sm:inline-flex h-8 items-center gap-1 rounded border border-gray-200 bg-gray-50 px-2 font-mono text-[10px] font-medium text-gray-500 opacity-100">
+                  <span className="text-xs">⌘</span>K
+                </kbd>
               </div>
-            </div>
-
-            <div className="relative hidden lg:block">
-               <ImageWithFallback 
-                 src="https://images.unsplash.com/photo-1692316647214-f8dc224626b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHJlbmRlciUyMGFic3RyYWN0JTIwZ2xhc3MlMjBzcGhlcmUlMjBwdXJwbGUlMjBncmFkaWVudHxlbnwxfHx8fDE3NjU5NzIwMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                 alt="3D Abstract Support Sphere"
-                 className="w-full max-w-md mx-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700 ease-out"
-               />
             </div>
           </div>
         </div>
@@ -259,38 +248,87 @@ export default function SupportPage() {
             </div>
 
             <div>
-              <div className="bg-gray-50 rounded-2xl p-6 sticky top-24 border border-gray-100">
-                <h4 className="text-gray-900 mb-4 font-bold">İletişim Bilgileri</h4>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-[#6c63ff] mt-1" />
-                    <div>
-                      <p className="text-sm text-gray-500">E-posta</p>
-                      <a href="mailto:destek@vialess.com.tr" className="text-[#6c63ff] hover:text-[#5a52d5] font-medium">
-                        destek@vialess.com.tr
-                      </a>
+              <div className="bg-white rounded-2xl p-3 sticky top-24 border border-gray-100 shadow-sm">
+                <div className="flex flex-col gap-2">
+                  {/* Email Item */}
+                  <a 
+                    href="mailto:destek@vialess.com.tr" 
+                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors text-gray-600 hover:text-gray-900 group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#6c63ff]/10 group-hover:text-[#6c63ff] transition-colors">
+                      <Mail className="w-4 h-4" />
                     </div>
-                  </div>
-                </div>
-                
-                <h4 className="text-gray-900 mb-4 font-bold">Sosyal Medya</h4>
-                <div className="flex gap-3">
+                    <span className="text-sm font-medium">Bize E-posta Gönderin</span>
+                  </a>
 
-                  <a href="https://twitter.com/vialess" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#6c63ff]/10 text-[#6c63ff] rounded-full flex items-center justify-center hover:bg-[#6c63ff] hover:text-white transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="https://instagram.com/vialess" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#6c63ff]/10 text-[#6c63ff] rounded-full flex items-center justify-center hover:bg-[#6c63ff] hover:text-white transition-colors">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  <a href="https://linkedin.com/company/vialess" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#6c63ff]/10 text-[#6c63ff] rounded-full flex items-center justify-center hover:bg-[#6c63ff] hover:text-white transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
+                  {/* Social/QR Button */}
+                  <button 
+                    onClick={() => setShowQrModal(true)}
+                    className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors text-gray-600 hover:text-gray-900 w-full group text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#6c63ff]/10 group-hover:text-[#6c63ff] transition-colors">
+                        <QrCode className="w-4 h-4" />
+                      </div>
+                      <span className="text-sm font-medium">Sosyal Medyada Biz</span>
+                    </div>
+                    <ChevronDown className="w-4 h-4 text-gray-400 -rotate-90 group-hover:text-gray-600 transition-colors" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      {showQrModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div 
+            className="absolute inset-0 bg-gray-900/20 backdrop-blur-sm transition-opacity" 
+            onClick={() => setShowQrModal(false)}
+          />
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="absolute top-4 right-4 z-10">
+              <button 
+                onClick={() => setShowQrModal(false)}
+                className="p-2 bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            
+            <div className="p-8 flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-[#6c63ff]/10 rounded-full flex items-center justify-center text-[#6c63ff] mb-6">
+                <QrCode className="w-8 h-8" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Sosyal Medyada Biz
+              </h3>
+              <p className="text-sm text-gray-500 mb-8 px-4 leading-relaxed">
+                Vialess profilimize ulaşmak için QR kodu taratın veya butona tıklayın.
+              </p>
+              
+              <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm mb-8">
+                <img 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vialess.me/company/vialess&bgcolor=ffffff&color=1f2937&margin=0"
+                  alt="Vialess QR"
+                  className="w-48 h-48 mix-blend-multiply"
+                />
+              </div>
+              
+              <a 
+                href="https://vialess.me/company/vialess" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-3.5 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/20 hover:shadow-[#6c63ff]/40"
+              >
+                <User className="w-5 h-5" />
+                Profili Ziyaret Et
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

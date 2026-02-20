@@ -38,17 +38,18 @@ function figmaAssetPlugin() {
     resolveId(source: string) {
       if (source.startsWith('figma:asset/')) {
         const filename = source.replace('figma:asset/', '');
-        const assetPath = path.resolve(__dirname, 'public', 'assets', filename);
-        if (fs.existsSync(assetPath)) {
-          return assetPath;
-        }
-        return { id: '\0figma-asset-placeholder:' + filename, external: false };
+        return '\0figma-asset:' + filename;
       }
       return null;
     },
     load(id: string) {
-      if (id.startsWith('\0figma-asset-placeholder:')) {
-        const filename = id.replace('\0figma-asset-placeholder:', '');
+      if (id.startsWith('\0figma-asset:')) {
+        const filename = id.replace('\0figma-asset:', '');
+        const assetPath = path.resolve(__dirname, 'public', 'assets', filename);
+        if (fs.existsSync(assetPath)) {
+          // Return the public URL instead of importing the file as a module
+          return `export default "/assets/${filename}"`;
+        }
         console.warn(`[figma-asset] Asset bulunamadı: public/assets/${filename} — placeholder kullanılıyor`);
         return `export default "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='12'%3E${filename.slice(0, 8)}...%3C/text%3E%3C/svg%3E"`;
       }

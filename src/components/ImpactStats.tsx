@@ -50,14 +50,14 @@ export function ImpactStats() {
       
       {/* Marquee Section */}
       <div className="relative rotate-[-3deg] my-24 z-10">
-        <div className="py-6 relative bg-[#6c63ff]/10 backdrop-blur-sm border-y border-[#6c63ff]/20">
+        <div className="py-6 relative bg-[#6c63ff]/10 border-y border-[#6c63ff]/20">
           <span className="absolute -top-6 left-8 md:left-24 px-4 py-2 rounded-full shadow-lg -rotate-6 text-[#6c63ff] font-semibold text-base border border-[#6c63ff]/20 bg-[#f5f3ff]">
             {t.impact_marquee}
           </span>
           <div className="relative overflow-hidden">
             <div className="flex whitespace-nowrap overflow-hidden select-none">
               <div className="animate-marquee flex-shrink-0 flex items-center gap-8 py-2 min-w-full">
-                {[...marqueeItems, ...marqueeItems].map((item, idx) => (
+                {marqueeItems.map((item, idx) => (
                   <span 
                     key={idx} 
                     className={`text-2xl md:text-[28px] font-semibold ${
@@ -69,7 +69,7 @@ export function ImpactStats() {
                 ))}
               </div>
               <div className="animate-marquee flex-shrink-0 flex items-center gap-8 py-2 min-w-full" aria-hidden="true">
-                {[...marqueeItems, ...marqueeItems].map((item, idx) => (
+                {marqueeItems.map((item, idx) => (
                   <span 
                     key={idx} 
                     className={`text-2xl md:text-[28px] font-semibold ${

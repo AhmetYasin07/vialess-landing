@@ -18,7 +18,7 @@ export function AppDemo() {
         t.demo_mobile_f4,
         t.demo_mobile_f5
       ],
-      image: 'https://images.unsplash.com/photo-1759505017950-25e0733b9e68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2UlMjBtb2Rlcm4lMjBjbGVhbnxlbnwxfHx8fDE3NzE0MDI3NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
       cta: t.demo_mobile_cta
     },
     web: {
@@ -31,7 +31,7 @@ export function AppDemo() {
         t.demo_web_f4,
         t.demo_web_f5
       ],
-      image: 'https://images.unsplash.com/photo-1699040309386-11c615ed64d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBwdXJwbGUlMjBtb2Rlcm58ZW58MXx8fHwxNzcxNDAyNzU0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
       cta: t.demo_web_cta
     }
   };
@@ -118,6 +118,10 @@ export function AppDemo() {
                  <ImageWithFallback
                    src={demoContent[activeTab].image}
                    alt={demoContent[activeTab].title}
+                   width={640}
+                   height={480}
+                   loading="lazy"
+                   decoding="async"
                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                  />
               </div>

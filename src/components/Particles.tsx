@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 
 import './Particles.css';
@@ -118,6 +118,19 @@ const Particles = ({
 }: ParticlesProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const isVisibleRef = useRef(true);
+
+  // IntersectionObserver to pause rAF when off-screen
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+      { rootMargin: '100px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -204,6 +217,10 @@ const Particles = ({
 
     const update = (t: number) => {
       animationFrameId = requestAnimationFrame(update);
+
+      // Skip rendering when off-screen
+      if (!isVisibleRef.current) return;
+
       const delta = t - lastTime;
       lastTime = t;
       elapsed += delta * speed;
