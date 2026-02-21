@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Smartphone, Monitor } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { createPortal } from 'react-dom';
 
 interface MobileStartModalProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ interface MobileStartModalProps {
 export function MobileStartModal({ isOpen, onClose }: MobileStartModalProps) {
   const { t } = useLanguage();
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-4">
@@ -97,4 +98,6 @@ export function MobileStartModal({ isOpen, onClose }: MobileStartModalProps) {
       )}
     </AnimatePresence>
   );
+
+  return createPortal(modalContent, document.body);
 }

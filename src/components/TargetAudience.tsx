@@ -11,7 +11,7 @@ export function TargetAudience() {
       id: 'sales',
       title: t.ta_sales_title,
       description: t.ta_sales_desc,
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
+      image: "https://images.unsplash.com/photo-1696861273647-92dfe8bb697c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHNhbGVzJTIwcHJvZmVzc2lvbmFsJTIwbmV0d29ya2luZyUyMGhhbmRzaGFrZXxlbnwxfHx8fDE3NzE1NzgzMDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       icon: TrendingUp,
       link: '/solutions/sales',
       features: [
@@ -24,7 +24,7 @@ export function TargetAudience() {
       id: 'startups',
       title: t.ta_startups_title,
       description: t.ta_startups_desc,
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
+      image: "https://images.unsplash.com/photo-1737573296361-75315239293a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwdGVhbSUyMGNvd29ya2luZyUyMGNyZWF0aXZlJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3MTU3ODMwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       icon: Zap,
       link: '/solutions/startups',
       features: [
@@ -37,7 +37,7 @@ export function TargetAudience() {
       id: 'enterprises',
       title: t.ta_enterprises_title,
       description: t.ta_enterprises_desc,
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
+      image: "https://images.unsplash.com/photo-1769740333462-9a63bfa914bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBlbnRlcnByaXNlJTIwdGVhbSUyMGJvYXJkcm9vbSUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NzE1NzgzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       icon: Building2,
       link: '/solutions/enterprises',
       features: [
@@ -50,7 +50,7 @@ export function TargetAudience() {
       id: 'individuals',
       title: t.ta_individuals_title,
       description: t.ta_individuals_desc,
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
+      image: "https://images.unsplash.com/photo-1748209252552-30cf9cd32909?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcmVlbGFuY2VyJTIwY3JlYXRpdmUlMjBwcm9mZXNzaW9uYWwlMjB3b3JraW5nJTIwbGFwdG9wJTIwY2FmZXxlbnwxfHx8fDE3NzE1NzgzMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       icon: UserCircle2,
       link: '/solutions/individuals',
       features: [
@@ -63,7 +63,7 @@ export function TargetAudience() {
       id: 'students',
       title: t.ta_students_title,
       description: t.ta_students_desc,
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='640' height='480' fill='%23e5e7eb'/%3E%3C/svg%3E",
+      image: "https://images.unsplash.com/photo-1759093886711-a6cfc14e1b7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudCUyMGNhbXB1cyUyMG5ldHdvcmtpbmclMjBldmVudHxlbnwxfHx8fDE3NzE1NzgzMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       icon: GraduationCap,
       link: '/solutions/students',
       features: [

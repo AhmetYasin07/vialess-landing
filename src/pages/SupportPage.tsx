@@ -1,6 +1,6 @@
 import { Search, ChevronDown, Mail, CheckCircle, AlertCircle, User, QrCode, X } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { toast } from 'sonner@2.0.3';
 
 const faqCategories = [
@@ -41,6 +41,26 @@ export default function SupportPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [showQrModal, setShowQrModal] = useState(false);
 
+  // Highlight matching text in search results
+  const highlightText = (text: string, query: string) => {
+    if (!query.trim()) return text;
+
+    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    return (
+      <>
+        {parts.map((part, index) => 
+          part.toLowerCase() === query.toLowerCase() ? (
+            <strong key={index} className="font-bold text-gray-900 bg-yellow-100/60 rounded px-0.5">
+              {part}
+            </strong>
+          ) : (
+            <span key={index}>{part}</span>
+          )
+        )}
+      </>
+    );
+  };
+
   // Filter FAQs based on search query
   const filteredFaqs = useMemo(() => {
     if (!searchQuery.trim()) return faqCategories;
@@ -69,6 +89,37 @@ export default function SupportPage() {
       setTimeout(() => setFormStatus('idle'), 3000);
     }, 1500);
   };
+
+  // Load Chat Widget
+  useEffect(() => {
+    // ⚠️ IMPORTANT: Chat widget disabled for security reasons
+    // API keys should NEVER be exposed in frontend code!
+    // 
+    // Proper implementation requires:
+    // 1. Store API key in backend environment variables
+    // 2. Create a backend endpoint (e.g., /api/chat/init)
+    // 3. Frontend fetches config from your backend
+    // 4. Backend validates and returns sanitized config
+    //
+    // Example backend endpoint:
+    // app.get('/api/chat/init', (req, res) => {
+    //   res.json({
+    //     wsUrl: process.env.CHAT_WS_URL,
+    //     sessionToken: generateSecureToken(req.user),
+    //     theme: { ... }
+    //   });
+    // });
+    //
+    // Then load widget with secure config:
+    // const loadChatWidget = async () => {
+    //   const config = await fetch('/api/chat/init').then(r => r.json());
+    //   window.ChatWidgetConfig = config;
+    //   const script = document.createElement('script');
+    //   script.src = 'https://chat-widget-amber-six.vercel.app/loader.js';
+    //   document.body.appendChild(script);
+    // };
+    // loadChatWidget();
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -148,7 +199,7 @@ export default function SupportPage() {
                               onClick={() => setOpenFaq(isOpen ? null : faqId)}
                               className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100/80 transition-colors"
                             >
-                              <span className="font-medium text-gray-900 pr-6">{faq.q}</span>
+                              <span className="font-medium text-gray-900 pr-6">{highlightText(faq.q, searchQuery)}</span>
                               <span
                                 className={`text-[#6c63ff] text-xl flex-shrink-0 transition-transform duration-300 select-none ${
                                   isOpen ? 'rotate-45' : ''
@@ -164,7 +215,7 @@ export default function SupportPage() {
                             >
                               <div className="overflow-hidden">
                                 <div className="px-6 pb-5 text-gray-600 leading-relaxed">
-                                  {faq.a}
+                                  {highlightText(faq.a, searchQuery)}
                                 </div>
                               </div>
                             </div>
@@ -176,74 +227,56 @@ export default function SupportPage() {
                 ))
               )}
 
-              <div className="bg-white rounded-2xl p-8 mt-12 relative overflow-hidden border border-gray-200 shadow-sm">
+              <div className="bg-gradient-to-br from-[#6c63ff] to-[#8780fd] rounded-2xl p-8 mt-12 relative overflow-hidden shadow-xl">
                 {/* Decoration */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#6c63ff]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
                 
-                <h3 className="text-gray-900 mb-6 relative z-10">Bizimle İletişime Geçin</h3>
-                
-                {formStatus === 'success' ? (
-                  <div className="bg-green-50 rounded-xl p-8 text-center border border-green-200 animate-in fade-in zoom-in duration-300">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
-                      <CheckCircle className="w-8 h-8" />
-                    </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h4>
-                    <p className="text-gray-600">En kısa sürede size dönüş yapacağız. Teşekkür ederiz.</p>
-                    <button 
-                      onClick={() => setFormStatus('idle')}
-                      className="mt-6 px-6 py-2 bg-[#6c63ff] text-white rounded-lg font-semibold hover:bg-[#5a52d5] transition-colors"
-                    >
-                      Yeni Mesaj Gönder
-                    </button>
+                <div className="relative z-10 text-center">
+                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20">
+                    <Mail className="w-8 h-8 text-white" />
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                         <input
-                          type="text"
-                          placeholder="Ad Soyad"
-                          value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6c63ff]/20 focus:border-[#6c63ff] bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 transition-all"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <input
-                          type="email"
-                          placeholder="E-posta"
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6c63ff]/20 focus:border-[#6c63ff] bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 transition-all"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <textarea
-                      placeholder="Mesajınız"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6c63ff]/20 focus:border-[#6c63ff] bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 transition-all"
-                      required
-                    />
-                    <button 
-                      type="submit" 
-                      disabled={formStatus === 'submitting'}
-                      className="w-full py-3 bg-[#6c63ff] text-white rounded-lg hover:bg-[#5a52d5] transition-colors font-semibold disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                  
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    Bizimle İletişime Geçin
+                  </h3>
+                  
+                  <p className="text-white/90 mb-8 max-w-md mx-auto leading-relaxed">
+                    Sorularınız veya önerileriniz için dijital kartvizitimizi ziyaret edin. Size hemen yardımcı olalım!
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a 
+                      href="https://vialess.me/tr/company/vialess" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#6c63ff] rounded-xl font-semibold hover:bg-white/95 transition-all shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5"
                     >
-                      {formStatus === 'submitting' ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Gönderiliyor...
-                        </>
-                      ) : (
-                        'Gönder'
-                      )}
-                    </button>
-                  </form>
-                )}
+                      <User className="w-5 h-5" />
+                      İletişime Geç
+                      <div className="absolute -inset-1 bg-white/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
+                    </a>
+                    
+                    <a 
+                      href="mailto:destek@vialess.com.tr"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all shadow-lg hover:-translate-y-0.5"
+                    >
+                      <Mail className="w-5 h-5" />
+                      E-posta Gönder
+                    </a>
+                  </div>
+                  
+                  <div className="mt-8 pt-8 border-t border-white/20">
+                    <p className="text-white/70 text-sm mb-4">veya QR kodu taratın</p>
+                    <div className="inline-flex items-center justify-center p-3 bg-white rounded-xl shadow-lg">
+                      <img 
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://vialess.me/tr/company/vialess&bgcolor=ffffff&color=6c63ff&margin=0"
+                        alt="Vialess QR"
+                        className="w-28 h-28"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -281,12 +314,12 @@ export default function SupportPage() {
         </div>
       </section>
       {showQrModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
           <div 
-            className="absolute inset-0 bg-gray-900/20 backdrop-blur-sm transition-opacity" 
+            className="absolute inset-0 bg-gray-900/50 backdrop-blur-md" 
             onClick={() => setShowQrModal(false)}
           />
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200">
             <div className="absolute top-4 right-4 z-10">
               <button 
                 onClick={() => setShowQrModal(false)}

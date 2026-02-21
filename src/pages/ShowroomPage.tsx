@@ -39,8 +39,8 @@ export default function ShowroomPage({ onNavigateToProducts, onNavigateToBlog }:
       {/* Referanslar Bölümü */}
       <References onNavigateToBlog={onNavigateToBlog} />
 
-      {/* Vaka Çalışmaları */}
-      <CaseStudies />
+      {/* Vaka Çalışmaları - Geçici olarak gizlendi */}
+      {/* <CaseStudies /> */}
 
       {/* Kart Showroom'u */}
       <CardShowroom onNavigateToProducts={onNavigateToProducts} />

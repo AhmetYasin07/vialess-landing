@@ -39,7 +39,6 @@ import imgBiatra from 'figma:asset/b9ded05f2643ba129f46f4ebc54c40e3d4b56a7c.png'
 import imgEMR from 'figma:asset/7adc831595693b482853efc03d24113a3ce430e1.png';
 import imgOzuBusiness from 'figma:asset/63425bab7f13fdb7a1ea1062d2211fd71513e84e.png';
 
-
 const testimonials = [
   { company: 'Özyeğin Üniversitesi', icon: GraduationCap, image: imgOzyegin },
   { company: 'Ozu ES', icon: Users, image: imgOzuES },
@@ -189,7 +188,7 @@ export function References({ onNavigateToBlog }: ReferencesProps) {
             <div key={rowIndex} className="relative mask-linear-fade">
                <Marquee 
                  direction={rowIndex % 2 === 0 ? -1 : 1} 
-                 baseVelocity={1} // Reduced speed
+                 baseVelocity={1}
                >
                  {/* 
                     We duplicate the items 4 times to ensure we have enough content 
@@ -206,7 +205,7 @@ export function References({ onNavigateToBlog }: ReferencesProps) {
         {/* CTA Butonu */}
         <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <button 
-            onClick={onNavigateToBlog}
+            onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP', '_blank')}
             className="px-8 py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors shadow-lg shadow-purple-500/30 font-medium"
           >
             Siz de Vialess ailesine katılın
