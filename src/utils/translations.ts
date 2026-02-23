@@ -99,7 +99,7 @@ export const translations = {
 
     // Feature Page Badges
     badge_mobile_feature: "Mobil Uygulama Özelliği",
-    badge_corporate_feature: "Kurumsal Platform Özelliği",
+    badge_corporate_feature: "Kurumsal Platform Özelli��i",
     badge_all_platforms: "Tüm Platformlarda",
 
     menu_products_features: "Ürünler ve Özellikler",
@@ -614,7 +614,7 @@ export const translations = {
     student_emotional_desc:
       "Profesyonellik, kağıt CV'lerle başlamıyor. Net, güncel ve erişilebilir bir kimlikle başlıyor.",
     student_cta_title: "Kariyerine Bugünden Başla",
-    student_cta_btn: "Try Free",
+    student_cta_btn: "Ücretsiz Dene",
     student_cta_sub:
       "Öğrenciler için ücretsiz ve hızlı kurulum",
     

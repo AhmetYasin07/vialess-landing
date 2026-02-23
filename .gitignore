@@ -1,5 +1,10 @@
 node_modules
 
+# Ortam değişkenleri — API key ve gizli bilgiler
+.env
+.env.local
+.env.production
+
 # -------------------------------------------------------
 # Görsel optimizasyon araçları — repoya gönderilmez
 # -------------------------------------------------------

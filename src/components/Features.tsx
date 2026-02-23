@@ -1,9 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import { Check, Sparkles, ArrowRight, Shield, RefreshCw, UserCircle, QrCode, IdCard, Users, BarChart3, Lock, Eye, CloudUpload, Bell, Smartphone, Zap, ScanLine, MapPin, Tags, Mail, Video, Building2, BookUser } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Sparkles, ArrowRight, UserCircle, QrCode, IdCard, Users, BarChart3, Lock, Eye, CloudUpload, ScanLine, MapPin, Tags, Mail, Video, Building2, BookUser } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
+import onlineMeetingImage from 'figma:asset/8f838fb3b201b207901de91e3325fdbbd65b8077.png';
+import multipleProfileImage from 'figma:asset/0e5917e26cb3ac81d50d93ab37f2fd1d310d076c.png';
+import cardScannerImage from 'figma:asset/2b53a4d3e1dce2b83a17e70b67c8cf79fb516f27.png';
+import emailSignatureImage from 'figma:asset/eb1ba554062da9f67f53ec45714046538933324c.png';
+import cardReaderImage from 'figma:asset/30d407462c683d2033f595448f9405da80fdb4fe.png';
+import analyticsImage from 'figma:asset/68d4ac64ea56c477a1fd33b5b3c1bf5900aba33e.png';
+import multipleDigitalIdImage from 'figma:asset/a17c0f87543c3926c75ab878f791cdfb55409622.png';
+import multipleProfileNewImage from 'figma:asset/4a7bd06f8a58df8cecabb3e715abc21eb0ff1026.png';
+import digitalIdImage from 'figma:asset/08d78951bfbb062bdd7f903ef22069f8bfc237c7.png';
+import qrShareImage from 'figma:asset/62a2286500cf6d6818feb37f740283596926e0d5.png';
 
 // Features component with multilingual support
 export function Features() {
@@ -13,6 +22,11 @@ export function Features() {
   const [activePoint, setActivePoint] = useState(0);
   const [activeSecurityPoint, setActiveSecurityPoint] = useState(0);
   const [activeSyncPoint, setActiveSyncPoint] = useState(0);
+  
+  // User interaction flags to pause auto-advance
+  const [userInteractedDigital, setUserInteractedDigital] = useState(false);
+  const [userInteractedContacts, setUserInteractedContacts] = useState(false);
+  const [userInteractedSync, setUserInteractedSync] = useState(false);
   
   // Visibility-based timer pausing
   const sectionRef = useRef<HTMLElement>(null);
@@ -29,8 +43,10 @@ export function Features() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-advance timers — skip ticks when off-screen
+  // Auto-advance timers — skip ticks when off-screen or user interacted
   useEffect(() => {
+    if (userInteractedDigital) return; // Kullanıcı müdahale ettiyse timer başlatma
+    
     const digitalCardPointsLength = 4;
     const timer = setInterval(() => {
       if (isVisibleRef.current) {
@@ -38,9 +54,11 @@ export function Features() {
       }
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [userInteractedDigital]);
 
   useEffect(() => {
+    if (userInteractedContacts) return; // Kullanıcı müdahale ettiyse timer başlatma
+    
     const securityPointsLength = 3;
     const timer = setInterval(() => {
       if (isVisibleRef.current) {
@@ -48,9 +66,11 @@ export function Features() {
       }
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [userInteractedContacts]);
 
   useEffect(() => {
+    if (userInteractedSync) return; // Kullanıcı müdahale ettiyse timer başlatma
+    
     const syncPointsLength = 2;
     const timer = setInterval(() => {
       if (isVisibleRef.current) {
@@ -58,14 +78,14 @@ export function Features() {
       }
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [userInteractedSync]);
 
   // Images for the Digital Business Card sub-points
   const digitalCardImages = [
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E"
+    digitalIdImage,
+    multipleDigitalIdImage,
+    qrShareImage,
+    analyticsImage
   ];
 
   const digitalCardPoints = [
@@ -118,8 +138,8 @@ export function Features() {
 
   // Images and points for Sync section
   const syncImages = [
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    emailSignatureImage,
+    onlineMeetingImage,
   ];
 
   const syncPoints = [
@@ -137,9 +157,9 @@ export function Features() {
 
   // Images and points for Contacts section (New Generation Contact Book)
   const contactsImages = [
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
+    cardReaderImage,
+    "https://images.unsplash.com/photo-1736117705737-28851abf2860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXAlMjBsb2NhdGlvbiUyMHBpbnMlMjBjb250YWN0JTIwZ3JvdXBpbmd8ZW58MXx8fHwxNzcxODUwNTE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "https://images.unsplash.com/photo-1621930032188-2e4f2b8959c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YWclMjBsYWJlbCUyMG9yZ2FuaXplJTIwY2F0ZWdvcml6ZSUyMGRpZ2l0YWx8ZW58MXx8fHwxNzcxODUwNTE3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   ];
 
   const contactsPoints = [
@@ -208,8 +228,14 @@ export function Features() {
                       {digitalCardPoints.map((point, index) => (
                         <div 
                           key={index}
-                          onMouseEnter={() => setActivePoint(index)}
-                          onClick={() => setActivePoint(index)}
+                          onMouseEnter={() => {
+                            setActivePoint(index);
+                            setUserInteractedDigital(true);
+                          }}
+                          onClick={() => {
+                            setActivePoint(index);
+                            setUserInteractedDigital(true);
+                          }}
                           className={`group relative pl-0 md:pl-16 transition-all duration-300 cursor-pointer rounded-2xl p-3 md:py-4 md:pr-4 ${activePoint === index ? 'opacity-100 bg-purple-50/60' : 'opacity-60 hover:opacity-80 hover:bg-gray-50/50'}`}
                         >
                            {/* Timeline Dot */}
@@ -242,48 +268,34 @@ export function Features() {
             {/* Right: Sticky Image */}
             <div className="flex-1 hidden lg:block">
               <div className="sticky top-32 h-[480px] flex items-center justify-center">
-                <div className="relative w-full max-w-[360px] aspect-[9/16]">
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 to-blue-100 rounded-[3rem] blur-3xl opacity-50"></div>
-                  
-                  {/* Frame */}
-                  <div className="relative h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activePoint}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="absolute inset-0 w-full h-full"
-                      >
-                         <ImageWithFallback 
-                            src={digitalCardImages[activePoint]}
-                            alt={digitalCardPoints[activePoint].title}
-                            width={360}
-                            height={640}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
+                <div className="relative w-full max-w-[420px]">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activePoint}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="w-full"
+                    >
+                      <img 
+                        src={digitalCardImages[activePoint]}
+                        alt={digitalCardPoints[activePoint].title}
+                        className="w-full h-[520px] object-contain rounded-2xl"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
 
             {/* Mobile Image (Active Only) */}
-            <div className="lg:hidden w-full max-w-[360px] mx-auto aspect-[9/16] relative rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
-               <ImageWithFallback 
-                  src={digitalCardImages[activePoint]}
-                  alt={digitalCardPoints[activePoint].title}
-                  width={360}
-                  height={640}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
+            <div className="lg:hidden w-full max-w-[320px] mx-auto">
+              <img 
+                src={digitalCardImages[activePoint]}
+                alt={digitalCardPoints[activePoint].title}
+                className="w-full h-[360px] object-contain rounded-2xl"
+              />
             </div>
 
           </div>
@@ -310,8 +322,14 @@ export function Features() {
                       {contactsPoints.map((point, index) => (
                         <div 
                           key={index}
-                          onMouseEnter={() => setActiveSecurityPoint(index)}
-                          onClick={() => setActiveSecurityPoint(index)}
+                          onMouseEnter={() => {
+                            setActiveSecurityPoint(index);
+                            setUserInteractedContacts(true);
+                          }}
+                          onClick={() => {
+                            setActiveSecurityPoint(index);
+                            setUserInteractedContacts(true);
+                          }}
                           className={`group relative pl-0 md:pl-16 transition-all duration-300 cursor-pointer rounded-2xl p-4 md:py-5 md:pr-5 ${activeSecurityPoint === index ? 'opacity-100 bg-green-50/60' : 'opacity-60 hover:opacity-80 hover:bg-gray-50/50'}`}
                         >
                            <div className={`absolute left-0 md:left-3 w-10 h-10 rounded-full border-2 hidden md:flex items-center justify-center bg-white transition-colors duration-300 z-10 ${activeSecurityPoint === index ? 'border-green-500 text-green-500 shadow-md shadow-green-200' : 'border-gray-200 text-gray-300'}`}>
@@ -342,45 +360,34 @@ export function Features() {
 
               {/* Left: Sticky Image */}
               <div className="flex-1 hidden lg:block">
-                <div className="sticky top-32 h-[600px] flex items-center justify-center">
-                  <div className="relative w-full max-w-[400px] aspect-[9/16]">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-[3rem] blur-3xl opacity-50"></div>
-                    <div className="relative h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={activeSecurityPoint}
-                          initial={{ opacity: 0, scale: 1.05 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4 }}
-                          className="absolute inset-0 w-full h-full"
-                        >
-                          <ImageWithFallback 
-                            src={contactsImages[activeSecurityPoint]}
-                            alt={contactsPoints[activeSecurityPoint].title}
-                            width={400}
-                            height={711}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
+                <div className="sticky top-32 h-[520px] flex items-center justify-center">
+                  <div className="relative w-full max-w-[420px]">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeSecurityPoint}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="w-full"
+                      >
+                        <img 
+                          src={contactsImages[activeSecurityPoint]}
+                          alt={contactsPoints[activeSecurityPoint].title}
+                          className={`w-full h-[520px] object-contain rounded-2xl ${activeSecurityPoint === 0 ? 'shadow-2xl shadow-purple-400/20' : ''}`}
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
 
               {/* Mobile Image */}
-              <div className="lg:hidden w-full max-w-[400px] mx-auto aspect-[9/16] relative rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
-                <ImageWithFallback 
+              <div className="lg:hidden w-full max-w-[320px] mx-auto">
+                <img 
                   src={contactsImages[activeSecurityPoint]}
                   alt={contactsPoints[activeSecurityPoint].title}
-                  width={400}
-                  height={711}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-[360px] object-contain rounded-2xl ${activeSecurityPoint === 0 ? 'shadow-2xl shadow-purple-400/20' : ''}`}
                 />
               </div>
           </div>
@@ -407,8 +414,14 @@ export function Features() {
                       {syncPoints.map((point, index) => (
                         <div 
                           key={index}
-                          onMouseEnter={() => setActiveSyncPoint(index)}
-                          onClick={() => setActiveSyncPoint(index)}
+                          onMouseEnter={() => {
+                            setActiveSyncPoint(index);
+                            setUserInteractedSync(true);
+                          }}
+                          onClick={() => {
+                            setActiveSyncPoint(index);
+                            setUserInteractedSync(true);
+                          }}
                           className={`group relative pl-0 md:pl-16 transition-all duration-300 cursor-pointer rounded-2xl p-4 md:py-5 md:pr-5 ${activeSyncPoint === index ? 'opacity-100 bg-blue-50/60' : 'opacity-60 hover:opacity-80 hover:bg-gray-50/50'}`}
                         >
                            <div className={`absolute left-0 md:left-3 w-10 h-10 rounded-full border-2 hidden md:flex items-center justify-center bg-white transition-colors duration-300 z-10 ${activeSyncPoint === index ? 'border-blue-500 text-blue-500 shadow-md shadow-blue-200' : 'border-gray-200 text-gray-300'}`}>
@@ -439,45 +452,34 @@ export function Features() {
 
               {/* Right: Sticky Image */}
               <div className="flex-1 hidden lg:block">
-                <div className="sticky top-32 h-[600px] flex items-center justify-center">
-                  <div className="relative w-full max-w-[400px] aspect-[9/16]">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-[3rem] blur-3xl opacity-50"></div>
-                    <div className="relative h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={activeSyncPoint}
-                          initial={{ opacity: 0, scale: 1.05 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4 }}
-                          className="absolute inset-0 w-full h-full"
-                        >
-                          <ImageWithFallback 
-                            src={syncImages[activeSyncPoint]}
-                            alt={syncPoints[activeSyncPoint].title}
-                            width={400}
-                            height={711}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
+                <div className="sticky top-32 h-[520px] flex items-center justify-center">
+                  <div className="relative w-full max-w-[480px]">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeSyncPoint}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="w-full"
+                      >
+                        <img 
+                          src={syncImages[activeSyncPoint]}
+                          alt={syncPoints[activeSyncPoint].title}
+                          className={`w-full h-[520px] object-contain rounded-2xl ${activeSyncPoint === 0 ? 'shadow-2xl shadow-gray-400/30' : ''}`}
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
 
               {/* Mobile Image */}
-              <div className="lg:hidden w-full max-w-[400px] mx-auto aspect-[9/16] relative rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
-                <ImageWithFallback 
+              <div className="lg:hidden w-full mx-auto max-w-[320px]">
+                <img 
                   src={syncImages[activeSyncPoint]}
                   alt={syncPoints[activeSyncPoint].title}
-                  width={400}
-                  height={711}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-[360px] object-contain rounded-2xl ${activeSyncPoint === 0 ? 'shadow-2xl shadow-gray-400/30' : ''}`}
                 />
               </div>
           </div>

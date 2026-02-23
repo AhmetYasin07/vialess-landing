@@ -1,7 +1,5 @@
-import { Search, ChevronDown, Mail, CheckCircle, AlertCircle, User, QrCode, X } from 'lucide-react';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { useState, useMemo, useEffect } from 'react';
-import { toast } from 'sonner@2.0.3';
+import { Search, ChevronDown, Mail, User, QrCode, X } from 'lucide-react';
+import { useState, useMemo } from 'react';
 
 const faqCategories = [
   {
@@ -37,8 +35,6 @@ const faqCategories = [
 export default function SupportPage() {
   const [openFaq, setOpenFaq] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [showQrModal, setShowQrModal] = useState(false);
 
   // Highlight matching text in search results
@@ -74,52 +70,6 @@ export default function SupportPage() {
       )
     })).filter(category => category.faqs.length > 0);
   }, [searchQuery]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-      toast.success('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.');
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Reset status after a delay
-      setTimeout(() => setFormStatus('idle'), 3000);
-    }, 1500);
-  };
-
-  // Load Chat Widget
-  useEffect(() => {
-    // ⚠️ IMPORTANT: Chat widget disabled for security reasons
-    // API keys should NEVER be exposed in frontend code!
-    // 
-    // Proper implementation requires:
-    // 1. Store API key in backend environment variables
-    // 2. Create a backend endpoint (e.g., /api/chat/init)
-    // 3. Frontend fetches config from your backend
-    // 4. Backend validates and returns sanitized config
-    //
-    // Example backend endpoint:
-    // app.get('/api/chat/init', (req, res) => {
-    //   res.json({
-    //     wsUrl: process.env.CHAT_WS_URL,
-    //     sessionToken: generateSecureToken(req.user),
-    //     theme: { ... }
-    //   });
-    // });
-    //
-    // Then load widget with secure config:
-    // const loadChatWidget = async () => {
-    //   const config = await fetch('/api/chat/init').then(r => r.json());
-    //   window.ChatWidgetConfig = config;
-    //   const script = document.createElement('script');
-    //   script.src = 'https://chat-widget-amber-six.vercel.app/loader.js';
-    //   document.body.appendChild(script);
-    // };
-    // loadChatWidget();
-  }, []);
 
   return (
     <div className="min-h-screen">

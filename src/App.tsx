@@ -85,8 +85,6 @@ const Demo1Page = lazy(() => import('./pages/Demo1Page'));
 const DistanceSalesAgreementPage = lazy(() => import('./pages/DistanceSalesAgreementPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 
-type PageType = 'home' | 'showroom' | 'products' | 'pricing' | 'blog' | 'blog-post' | 'about' | 'enterprise' | 'support' | 'solutions-sales' | 'solutions-startups' | 'solutions-enterprises' | 'solutions-individuals' | 'solutions-students';
-
 function AppContent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showMobileStartPopup, setShowMobileStartPopup] = useState(false);
@@ -882,12 +880,18 @@ function AppContent() {
 }
 
 export default function App() {
-  // Chat Widget Integration - DISABLED (uncomment when you have a valid API key)
-  /*
+  // Chat Widget Integration
   useEffect(() => {
+    const apiKey = import.meta.env.VITE_CHATBOT_API_KEY as string;
+
+    if (!apiKey) {
+      console.info('Chat widget not loaded: VITE_CHATBOT_API_KEY is not set in .env');
+      return;
+    }
+
     // Configure chat widget
     (window as any).ChatWidgetConfig = {
-      apiKey: "YOUR_REAL_API_KEY_HERE",
+      apiKey: apiKey,
       wsUrl: "wss://backend-production-451f.up.railway.app/chat",
       theme: {
         primaryColor: "#6c63ff",
@@ -904,6 +908,9 @@ export default function App() {
     const script = document.createElement('script');
     script.src = "https://chat-widget-amber-six.vercel.app/loader.js";
     script.async = true;
+    script.onerror = () => {
+      console.warn('Chat widget failed to load - please check your network connection');
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -914,7 +921,6 @@ export default function App() {
       }
     };
   }, []);
-  */
 
   return (
     <LanguageProvider>
