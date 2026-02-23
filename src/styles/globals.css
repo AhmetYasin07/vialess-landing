@@ -143,3 +143,13 @@ p {
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
+
+/* ===== Hide scrollbar for carousel ===== */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

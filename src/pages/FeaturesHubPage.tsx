@@ -148,6 +148,13 @@ export default function FeaturesHubPage() {
 
         {/* All Features Grid */}
         <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            {activeFilter === 'all' && !searchQuery && 'Tüm Özellikler'}
+            {activeFilter === 'mobile' && 'Mobil Özellikler'}
+            {activeFilter === 'corporate' && 'Kurumsal Özellikler'}
+            {activeFilter === 'general' && 'Genel Özellikler'}
+            {searchQuery && `Arama Sonuçları (${filteredFeatures.length})`}
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredFeatures.map((feature, index) => (
               <Link

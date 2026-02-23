@@ -1,70 +1,77 @@
-import { InteractiveShowroomCard } from './InteractiveShowroomCard';
-import { Smartphone, Droplet, Leaf, Filter } from 'lucide-react';
-import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
-
-const cards = [
-  {
-    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    alt: 'Vialess Premium Metal Kart',
-    material: 'Metal',
-    sector: 'Danışmanlık',
-    customization: 'Lazer gravür logo, metalik doku',
-    features: ['nfc', 'water', 'eco']
-  },
-  {
-    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    alt: 'Vialess Matte Black Edition',
-    material: 'PVC',
-    sector: 'Teknoloji',
-    customization: 'Mat siyah yüzey, spot UV baskı',
-    features: ['nfc', 'water']
-  },
-  {
-    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    alt: 'Vialess Gold Exclusive',
-    material: 'Metal',
-    sector: 'Finans',
-    customization: '24K altın kaplama görünüm, premium hissiyat',
-    features: ['nfc', 'water']
-  },
-  {
-    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720'%3E%3Crect width='1080' height='720' fill='%23e5e7eb'/%3E%3C/svg%3E",
-    alt: 'Vialess Eco Wood',
-    material: 'Ahşap',
-    sector: 'Sürdürülebilir',
-    customization: 'Doğal ahşap dokusu, çevre dostu',
-    features: ['nfc', 'eco']
-  }
-];
-
-const featureIcons = {
-  nfc: { icon: Smartphone, label: 'NFC & QR Kod', color: 'bg-purple-100 text-purple-600' },
-  water: { icon: Droplet, label: 'Suya Dayanıklı', color: 'bg-blue-100 text-blue-600' },
-  eco: { icon: Leaf, label: 'Çevre Dostu', color: 'bg-green-100 text-green-600' }
-};
 
 interface CardShowroomProps {
   onNavigateToProducts: () => void;
 }
 
 export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
-  const [selectedMaterial, setSelectedMaterial] = useState<string>('Tümü');
-  const [selectedSector, setSelectedSector] = useState<string>('Tümü');
+  const { t } = useLanguage();
 
-  const materials = ['Tümü', ...Array.from(new Set(cards.map(c => c.material)))];
-  const sectors = ['Tümü', ...Array.from(new Set(cards.map(c => c.sector)))];
-
-  const filteredCards = useMemo(() => {
-    return cards.filter(card => {
-      const materialMatch = selectedMaterial === 'Tümü' || card.material === selectedMaterial;
-      const sectorMatch = selectedSector === 'Tümü' || card.sector === selectedSector;
-      return materialMatch && sectorMatch;
-    });
-  }, [selectedMaterial, selectedSector]);
-
-  const { language } = useLanguage();
+  // 10 Premium Card Designs using High-Quality Unsplash Images
+  // These replace the empty Figma imports to ensure a stunning visual presentation.
+  const cards = [
+    {
+      id: 1,
+      name: "Vialess Obsidian",
+      image: "https://images.unsplash.com/photo-1718670013988-c6e3edb92345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkYXJrJTIwYnVzaW5lc3MlMjBjYXJkJTIwZGVzaWdufGVufDF8fHx8MTc3MTY2Njc4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Modern ve minimalist siyah tasarım"
+    },
+    {
+      id: 2,
+      name: "Vialess Titanium",
+      image: "https://images.unsplash.com/photo-1673687787025-491af34cbc5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbGVlayUyMG1ldGFsJTIwYnVzaW5lc3MlMjBjYXJkJTIwbW9ja3VwfGVufDF8fHx8MTc3MTY2Njc4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Fırçalanmış metal dokulu premium görünüm"
+    },
+    {
+      id: 3,
+      name: "Vialess Gold Elite",
+      image: "https://images.unsplash.com/photo-1570089025213-2713b1417c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVtaXVtJTIwZ29sZCUyMGx1eHVyeSUyMGJ1c2luZXNzJTIwY2FyZHxlbnwxfHx8fDE3NzE2NjY3ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Lüks ve prestij arayanlar için altın detaylar"
+    },
+    {
+      id: 4,
+      name: "Vialess Matte Black",
+      image: "https://images.unsplash.com/photo-1628891439478-c613e85af7d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwbWF0dGUlMjBibGFjayUyMGNyZWRpdCUyMGNhcmR8ZW58MXx8fHwxNzcxNjY2Nzg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Sofistike mat siyah yüzey"
+    },
+    {
+      id: 5,
+      name: "Vialess Pure White",
+      image: "https://images.unsplash.com/photo-1682764330940-5802113eaaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwd2hpdGUlMjBidXNpbmVzcyUyMGNhcmQlMjBtb2NrdXB8ZW58MXx8fHwxNzcxNjY2Nzg3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Sade ve temiz beyaz tasarım"
+    },
+    {
+      id: 6,
+      name: "Vialess Cyber",
+      image: "https://images.unsplash.com/photo-1695634620462-6cd8fc36cb1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwY3liZXIlMjBuZmMlMjBjYXJkJTIwZGVzaWdufGVufDF8fHx8MTc3MTY2Njc4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Geleceğin teknolojisi, fütüristik çizgiler"
+    },
+    {
+      id: 7,
+      name: "Vialess Transparent",
+      image: "https://images.unsplash.com/photo-1757185161725-92fafe8a50fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmFuc3BhcmVudCUyMHBsYXN0aWMlMjBidXNpbmVzcyUyMGNhcmQlMjBkZXNpZ258ZW58MXx8fHwxNzcxNjY2Nzg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Şeffaf, yenilikçi ve dikkat çekici"
+    },
+    {
+      id: 8,
+      name: "Vialess Creative",
+      image: "https://images.unsplash.com/photo-1594678624395-0f07f6d190d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGNvbG9yZnVsJTIwYWJzdHJhY3QlMjBidXNpbmVzcyUyMGNhcmR8ZW58MXx8fHwxNzcxNjY2Nzg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Renkli ve sanatsal tasarım"
+    },
+    {
+      id: 9,
+      name: "Vialess Geometric",
+      image: "https://images.unsplash.com/photo-1697362352365-7f265bf9d77e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9tZXRyaWMlMjBwYXR0ZXJuJTIwY2FyZHxlbnwxfHx8fDE3NzE2NjY3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Geometrik desenlerle modern bir dokunuş"
+    },
+    {
+      id: 10,
+      name: "Vialess Tech",
+      image: "https://images.unsplash.com/photo-1758549079989-f84568285b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdoJTIwdGVjaCUyMHNtYXJ0JTIwY2FyZCUyMGRlc2lnbnxlbnwxfHx8fDE3NzE2NjY3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Teknoloji odaklı profesyonel tasarım"
+    }
+  ];
 
   return (
     <section className="py-20 bg-white">
@@ -89,32 +96,36 @@ export function CardShowroom({ onNavigateToProducts }: CardShowroomProps) {
           </p>
         </div>
 
-        {/* Minimalist Filter Bar */}
-        {/* Removed filter section as requested */}
-
-        {/* Kart Galerisi - Spacious Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-32">
-          {filteredCards.length === 0 ? (
-            <div className="col-span-full flex flex-col items-center justify-center py-32 text-center">
-              <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-                <Filter className="w-6 h-6 text-gray-300" />
+        {/* Kart Galerisi */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-32">
+          {cards.map((card, index) => (
+            <motion.div
+              key={card.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative flex flex-col h-full"
+            >
+              <div className="relative aspect-[1.586/1] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-gray-100 ring-1 ring-black/5 transform group-hover:-translate-y-2">
+                <img 
+                  src={card.image} 
+                  alt={card.name} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                
+                {/* Overlay with details */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <h3 className="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{card.name}</h3>
+                  <p className="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{card.description}</p>
+                </div>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">Sonuç Bulunamadı</h3>
-              <p className="text-gray-500">Seçtiğiniz kriterlere uygun kart tasarımı mevcut değil.</p>
-              <button 
-                onClick={() => {setSelectedMaterial('Tümü'); setSelectedSector('Tümü');}}
-                className="mt-4 text-[#6c63ff] hover:text-[#5a52d5] text-sm font-medium transition-colors"
-              >
-                Filtreleri Temizle
-              </button>
-            </div>
-          ) : filteredCards.map((card, index) => (
-            <InteractiveShowroomCard
-              key={index}
-              image={card.image}
-              alt={card.alt}
-              features={card.features}
-            />
+              
+              {/* Card Name Below - Visible when not hovering */}
+              <div className="mt-4 text-center">
+                <h3 className="font-semibold text-gray-900 group-hover:text-[#6c63ff] transition-colors">{card.name}</h3>
+              </div>
+            </motion.div>
           ))}
         </div>
 

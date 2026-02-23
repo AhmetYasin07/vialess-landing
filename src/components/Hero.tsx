@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense, Component, ReactNode } from "react";
+import { useState, useEffect, useRef, lazy, Suspense, Component, ReactNode, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Smartphone,
@@ -27,13 +27,39 @@ class ParticlesErrorBoundary extends Component<{ children: ReactNode }, { hasErr
   }
 }
 
+// Memoized Particles wrapper to prevent re-renders
+const ParticlesBackground = memo(() => {
+  return (
+    <div className="absolute inset-0 w-full h-full">
+      <ParticlesErrorBoundary>
+        <Suspense fallback={<div className="absolute inset-0 bg-gray-100"></div>}>
+          <Particles
+            particleColors={["#6c63ff", "#8780fd", "#a29bfe"]}
+            particleCount={typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 100}
+            particleSpread={12}
+            speed={0.06}
+            particleBaseSize={80}
+            moveParticlesOnHover={typeof window !== 'undefined' && window.innerWidth >= 1024}
+            particleHoverFactor={0.4}
+            alphaParticles={true}
+            disableRotation={false}
+            sizeRandomness={1.2}
+          />
+        </Suspense>
+      </ParticlesErrorBoundary>
+    </div>
+  );
+});
+
+ParticlesBackground.displayName = 'ParticlesBackground';
+
 interface HeroProps {
   onNavigateToProducts: () => void;
   onNavigateToPricing: () => void;
   onOpenMobilePopup?: () => void;
 }
 
-export function Hero({
+function HeroComponent({
   onNavigateToProducts,
   onNavigateToPricing,
   onOpenMobilePopup,
@@ -84,26 +110,7 @@ export function Hero({
   return (
     <div className="relative overflow-hidden bg-white min-h-[90vh] flex items-center">
       {/* OGL Particles Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <ParticlesErrorBoundary>
-          <Suspense fallback={<div className="absolute inset-0 bg-gray-100"></div>}>
-            <Particles
-              particleColors={["#6c63ff", "#8780fd", "#a29bfe"]}
-              particleCount={typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 100}
-              particleSpread={12}
-              speed={0.06}
-              particleBaseSize={80}
-              moveParticlesOnHover={typeof window !== 'undefined' && window.innerWidth >= 1024}
-              particleHoverFactor={0.4}
-              alphaParticles={true}
-              disableRotation={false}
-              sizeRandomness={1.2}
-              cameraDistance={18}
-              pixelRatio={Math.min(window.devicePixelRatio, 1.5)}
-            />
-          </Suspense>
-        </ParticlesErrorBoundary>
-      </div>
+      <ParticlesBackground />
 
       {/* Dynamic Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#e9d5ff_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
@@ -310,3 +317,9 @@ export function Hero({
     </div>
   );
 }
+
+// Export memoized Hero component
+const MemoizedHero = memo(HeroComponent);
+MemoizedHero.displayName = 'Hero';
+
+export { MemoizedHero as Hero };

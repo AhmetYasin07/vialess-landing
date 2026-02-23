@@ -1,150 +1,73 @@
-import { Smartphone, ArrowRight, Apple, CheckCircle, User, Camera, Users, Share2, BarChart3, Globe, ShieldCheck, Zap, MapPin, Tag } from "lucide-react";
+import { Smartphone, ArrowRight, Apple, UserCircle, Camera, Users, Zap, Users2 } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { useLanguage } from "../../context/LanguageContext";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
+import { HomeReferences } from "../../components/HomeReferences";
+import { useRef } from "react";
 
 export default function MobileAppPage() {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // FEATURES.md'den alınan gerçek özellikler
-  const coreFeatures = [
+  // Vialess App Screenshots
+  const appScreenshots = [
     {
-      category: "Hesap ve Oturum",
-      icon: ShieldCheck,
-      items: [
-        "Google / Apple ile giriş",
-        "Bireysel ve kurumsal kullanım senaryoları"
-      ]
+      id: 1,
+      image: "https://images.unsplash.com/photo-1664883247910-c83c54ccdd76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBtb2JpbGUlMjBhcHAlMjBzY3JlZW4lMjBtb2NrdXB8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      alt: "Profil Görünümü"
     },
     {
-      category: "Çoklu Profil",
-      icon: Users,
-      items: [
-        "Birden fazla profil oluşturma ve yönetme",
-        "İş, sosyal, freelance için ayrı profiller",
-        "Anlık profil değiştirme"
-      ]
+      id: 2,
+      image: "https://images.unsplash.com/photo-1762340281276-a0e1e3c60be7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwY29udGFjdCUyMHByb2ZpbGUlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      alt: "Kişiler"
     },
     {
-      category: "Profil İçerikleri",
-      icon: User,
-      items: [
-        "Profil fotoğrafı, temel bilgiler, hakkında",
-        "Telefon, e-posta, WhatsApp, Telegram",
-        "Sosyal medya profilleri (LinkedIn, Instagram, X)",
-        "Her türlü link (web, portföy, CV, katalog)",
-        "Ödeme bilgileri (IBAN)",
-        "Özel profil URL (vialess.me/...)",
-        "Profil bazlı SEO ayarları"
-      ]
+      id: 3,
+      image: "https://images.unsplash.com/photo-1768293336571-c48f8765a82d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBidXNpbmVzcyUyMGNhcmQlMjBkaWdpdGFsJTIwYXBwfGVufDF8fHx8MTc3MTg0MjA2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      alt: "Kartvizit Tarama"
     },
     {
-      category: "Paylaşım ve Görünürlük",
-      icon: Share2,
-      items: [
-        "Link, QR, WhatsApp, SMS, e-posta paylaşımı",
-        "Tarayıcı üzerinden profil görüntüleme",
-        "Hızlı aksiyonlar (arama, mail, sosyal)",
-        "Rehbere kaydetme (vCard)",
-        "Apple Wallet / Google Wallet ekleme"
-      ]
+      id: 4,
+      image: "https://images.unsplash.com/photo-1664883247910-c83c54ccdd76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBtb2JpbGUlMjBhcHAlMjBzY3JlZW4lMjBtb2NrdXB8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      alt: "Paylaşım"
     },
     {
-      category: "Kartvizit Tarama (OCR)",
-      icon: Camera,
-      items: [
-        "Fotoğraftan bilgi çekme ve dijital rehbere ekleme",
-        "Kaydetmeden önce düzenleme",
-        "Kaydettikten sonra da bilgi ekleme/çıkarma"
-      ]
-    },
-    {
-      category: "Tanışma Kayıtları",
-      icon: MapPin,
-      items: [
-        "Tanışma zamanı ve konumu ekleme",
-        "Tanışma notları ekleme",
-        "Sonradan manuel düzenleme"
-      ]
-    },
-    {
-      category: "Akıllı Rehber",
-      icon: Tag,
-      items: [
-        "Akıllı arama (isim, unvan, notlar)",
-        "Konum filtresi (il/ilçe/mahalle)",
-        "Tarih filtresi (tanışma zamanı)",
-        "Etiket (tag) ekleme",
-        "Manuel kişi ekleme",
-        "Fotoğraf ekleme"
-      ]
-    },
-    {
-      category: "Telefon Rehberi Entegrasyonu",
-      icon: Smartphone,
-      items: [
-        "iOS/Android rehberiyle senkronizasyon",
-        "Vialess kişilerini telefon uygulamasında görme"
-      ]
-    },
-    {
-      category: "NFC Kart Yönetimi",
-      icon: Zap,
-      items: [
-        "NFC kartı profille eşleştirme",
-        "NFC olmayan cihazlarda QR ile çalışma",
-        "Güvenli profil eşleştirme",
-        "Tek kartı farklı profillere yönlendirebilme"
-      ]
-    },
-    {
-      category: "Analitik",
-      icon: BarChart3,
-      items: [
-        "Ziyaretçi ve kaydedilme metrikleri",
-        "Günlük, haftalık, aylık kırılımlar",
-        "Gelecek: Tıklanma analizi ve konum verileri"
-      ]
-    },
-    {
-      category: "Çok Dillilik",
-      icon: Globe,
-      items: [
-        "Dil seçeneği desteği"
-      ]
+      id: 5,
+      image: "https://images.unsplash.com/photo-1762340281276-a0e1e3c60be7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwY29udGFjdCUyMHByb2ZpbGUlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      alt: "Analitik"
     }
   ];
 
   const relatedFeatures = [
     {
-      name: t.menu_feature_digital_profile,
+      name: "Dijital Profil",
       path: "/ozellikler/dijital-profil",
-      icon: "👤",
+      icon: UserCircle,
       desc: "Profesyonel dijital kimliğinizi oluşturun",
     },
     {
-      name: t.menu_feature_card_scanner,
+      name: "Kartvizit Tarayıcı",
       path: "/ozellikler/kartvizit-tarayici",
-      icon: "📸",
+      icon: Camera,
       desc: "AI destekli kartvizit tarama",
     },
     {
-      name: t.menu_feature_contact_mgmt,
+      name: "Kişi ve İlişki Yönetimi",
       path: "/ozellikler/iliski-yonetimi",
-      icon: "👥",
+      icon: Users,
       desc: "Akıllı rehber ve CRM",
     },
     {
-      name: t.menu_feature_qr_nfc,
+      name: "QR / NFC Paylaşım",
       path: "/ozellikler/qr-nfc-paylasim",
-      icon: "⚡",
+      icon: Zap,
       desc: "Hızlı paylaşım çözümleri",
     },
     {
-      name: t.menu_feature_multi_profile,
+      name: "Çoklu Profil",
       path: "/ozellikler/coklu-profil",
-      icon: "🔄",
+      icon: Users2,
       desc: "Birden fazla kimlik yönetimi",
     },
   ];
@@ -172,17 +95,8 @@ export default function MobileAppPage() {
             {t.product_mobile_hero_sub}
           </p>
 
-          {/* Product Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 mb-12 max-w-4xl mx-auto">
-            <img
-              src="https://images.unsplash.com/photo-1629697776809-f37ceac39e77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBtb2NrdXB8ZW58MXx8fHwxNzY2MDUxNjAwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Vialess Mobile App"
-              className="w-full h-auto"
-            />
-          </div>
-
           {/* Download Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <button
               onClick={() => navigate("/pricing")}
               className="px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center gap-2"
@@ -197,72 +111,74 @@ export default function MobileAppPage() {
           </div>
         </div>
 
-        {/* Tüm Özellikler - FEATURES.md'den */}
-        <section className="py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Mobil Uygulama - Tüm Özellikler
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              FEATURES.md dokümanına göre Vialess mobil uygulamasının sunduğu tüm yetenekler
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {coreFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:border-[#6c63ff] transition-all"
+        {/* App Screenshots Carousel - AppStore Style */}
+        <section className="py-12 mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Uygulama Görünümü</h2>
+          <div className="relative">
+            {/* Scroll Container */}
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide"
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
+            >
+              {appScreenshots.map((screenshot) => (
+                <div 
+                  key={screenshot.id}
+                  className="flex-shrink-0 snap-start first:ml-0"
+                  style={{ width: '280px' }}
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#6c63ff]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-[#6c63ff]" />
-                    </div>
-                    <h3 className="font-bold text-gray-900 text-lg">{feature.category}</h3>
+                  <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 bg-white aspect-[9/19.5]">
+                    <img
+                      src={screenshot.image}
+                      alt={screenshot.alt}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <ul className="space-y-2">
-                    {feature.items.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-center text-sm text-gray-600 mt-3 font-medium">{screenshot.alt}</p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            
+            {/* Gradient Overlays for scroll hint */}
+            <div className="absolute top-0 left-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+            <div className="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none" />
           </div>
         </section>
 
-        {/* İlgili Özellik Sayfaları */}
-        <section className="py-16">
+        {/* Detaylı Özellikler */}
+        <section className="py-16 mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             Detaylı Özellikler
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {relatedFeatures.map((feature, index) => (
-              <Link
-                key={index}
-                to={feature.path}
-                className="group block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-[#6c63ff] transition-all"
-              >
-                <div className="text-4xl mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-[#6c63ff] transition-colors">
-                  {feature.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {feature.desc}
-                </p>
-                <div className="flex items-center gap-2 text-sm text-[#6c63ff] font-medium">
-                  Detayları gör
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            ))}
+            {relatedFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Link
+                  key={index}
+                  to={feature.path}
+                  className="group block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-[#6c63ff] transition-all"
+                >
+                  <div className="w-12 h-12 bg-[#6c63ff]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#6c63ff]/20 transition-colors">
+                    <Icon className="w-6 h-6 text-[#6c63ff]" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-[#6c63ff] transition-colors">
+                    {feature.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3">
+                    {feature.desc}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-[#6c63ff] font-medium">
+                    Detayları gör
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
@@ -279,7 +195,7 @@ export default function MobileAppPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Freemium ile Ücretsiz Kullanın
               </h2>
-              <p className="text-xl text-[rgb(255,255,255)] mb-8 max-w-2xl mx-auto text-[20px]">
+              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
                 iOS ve Android cihazlarınızda ücretsiz
                 kullanmaya başlayın.
               </p>

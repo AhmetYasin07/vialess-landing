@@ -364,7 +364,7 @@ export default function ProductsPage() {
                     }`}
                   >
                     {pkg.price > 0 && <ShoppingBag className="w-4 h-4" />}
-                    {pkg.price > 0 ? 'Direkt Satın Al' : 'Paket Detayları'}
+                    {pkg.price > 0 ? 'Sipariş Ver' : 'Paket Detayları'}
                   </button>
                 </div>
               ))}

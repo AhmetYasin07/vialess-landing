@@ -124,12 +124,12 @@ export function Footer({ onNavigateToShowroom, onNavigateTo }: FooterProps) {
 
              {/* Legal */}
              <div>
-               <h4 className="text-white font-semibold mb-5 text-xs uppercase tracking-widest opacity-90">{t.footer_legal}</h4>
+               <h4 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider opacity-90">{t.footer_legal}</h4>
                <ul className="space-y-3.5">
-                 <li><a href="#" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
+                 <li><Link to="/gizlilik-politikasi" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_privacy}
-                 </a></li>
+                 </Link></li>
                  <li><a href="#" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_terms}
@@ -138,10 +138,10 @@ export function Footer({ onNavigateToShowroom, onNavigateTo }: FooterProps) {
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_kvkk}
                  </a></li>
-                 <li><a href="#" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
+                 <li><Link to="/uzaktan-satis-sozlesmesi" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_distance}
-                 </a></li>
+                 </Link></li>
                </ul>
              </div>
           </div>

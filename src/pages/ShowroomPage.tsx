@@ -1,6 +1,5 @@
 import { References } from '../components/References';
 import { CaseStudies } from '../components/CaseStudies';
-import { CardShowroom } from '../components/CardShowroom';
 
 interface ShowroomPageProps {
   onNavigateToProducts: () => void;
@@ -23,15 +22,15 @@ export default function ShowroomPage({ onNavigateToProducts, onNavigateToBlog }:
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-sm font-semibold mb-8 animate-fade-in-up">
             <span className="w-2 h-2 rounded-full bg-[#6c63ff]" />
-            Referanslar & Showroom
+            Referanslar
           </span>
           
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6 leading-[1.1]">
-            Referanslar ve Kart Showroom'u
+            Referanslarımız
           </h1>
           
           <p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto leading-relaxed font-normal">
-            Vialess ile çalışan markalar ve özel tasarım kart örnekleri
+            Vialess ile çalışan markalar ve başarı hikayeleri
           </p>
         </div>
       </section>
@@ -39,11 +38,8 @@ export default function ShowroomPage({ onNavigateToProducts, onNavigateToBlog }:
       {/* Referanslar Bölümü */}
       <References onNavigateToBlog={onNavigateToBlog} />
 
-      {/* Vaka Çalışmaları */}
-      <CaseStudies />
-
-      {/* Kart Showroom'u */}
-      <CardShowroom onNavigateToProducts={onNavigateToProducts} />
+      {/* Vaka Çalışmaları - Geçici olarak gizlendi */}
+      {/* <CaseStudies /> */}
     </div>
   );
 }
