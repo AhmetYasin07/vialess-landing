@@ -882,6 +882,40 @@ function AppContent() {
 }
 
 export default function App() {
+  // Chat Widget Integration - DISABLED (uncomment when you have a valid API key)
+  /*
+  useEffect(() => {
+    // Configure chat widget
+    (window as any).ChatWidgetConfig = {
+      apiKey: "YOUR_REAL_API_KEY_HERE",
+      wsUrl: "wss://backend-production-451f.up.railway.app/chat",
+      theme: {
+        primaryColor: "#6c63ff",
+        headerColor: "#6c63ff",
+        userMessageColor: "#6c63ff",
+        botMessageColor: "#f0f0f0",
+      },
+      position: "bottom-right",
+      title: "Chat Support",
+      subtitle: "We usually reply instantly",
+    };
+
+    // Load chat widget script
+    const script = document.createElement('script');
+    script.src = "https://chat-widget-amber-six.vercel.app/loader.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup on unmount
+      const existingScript = document.querySelector('script[src="https://chat-widget-amber-six.vercel.app/loader.js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+  */
+
   return (
     <LanguageProvider>
       <Router>

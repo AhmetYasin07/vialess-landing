@@ -35,15 +35,12 @@ const plans: PlanDef[] = [
     yearlyEquiv: null,
     description: 'Bireysel kullanıcılar için temel özellikler',
     features: [
-      { text: 'Sınırsız dijital kart oluşturma', included: true },
-      { text: 'Sınırsız kartvizit kaydetme', included: true },
-      { text: 'Sınırlı analitik', included: true },
+      { text: 'Dijital kart oluşturma', included: true },
+      { text: 'Kartvizit kaydetme', included: true },
+      { text: 'Temel kart tarama (OCR)', included: true },
       { text: 'Tek profil', included: true },
       { text: 'QR kod paylaşımı', included: true },
-      { text: 'Temel kart tarama (OCR)', included: true },
-      { text: 'Çoklu profil', included: false },
-      { text: 'Gelişmiş analitik', included: false },
-      { text: 'Veri dışa aktarma', included: false }
+      { text: 'Temel analitik', included: true }
     ],
     cta: 'Ücretsiz Başla',
     highlighted: false,
@@ -53,22 +50,22 @@ const plans: PlanDef[] = [
     id: 'pro_plan',
     name: 'Pro',
     icon: <Rocket className="w-5 h-5" />,
-    monthlyPrice: 5.99,
-    yearlyPrice: 59.90,
+    monthlyPrice: 3,
+    yearlyPrice: 30,
     periodLabel: '/ay',
     yearlyPeriodLabel: '/yıl',
-    yearlyEquiv: '~$4.99/ay',
+    yearlyEquiv: '~$2.5/ay',
     description: 'Profesyoneller için gelişmiş özellikler',
+    subtitle: 'Freemium + aşağıdaki özellikler',
     features: [
-      { text: 'Tüm ücretsiz özellikler', included: true },
       { text: 'Sınırsız profil oluşturma', included: true },
-      { text: 'Çoklu profil & SEO Link özelleştirme', included: true },
+      { text: 'Çoklu profil yönetimi', included: true },
+      { text: 'SEO Link özelleştirme', included: true },
       { text: 'Gelişmiş analitik ve raporlama', included: true },
-      { text: 'E-posta imzası ve Sanal arka plan', included: true },
-      { text: 'Kartvizit dışa aktarma (Excel, CSV)', included: true },
-      { text: 'Offline QR kod paylaşımı', included: true },
-      { text: 'Öncelikli destek', included: true },
-      { text: 'Reklamsız deneyim', included: true }
+      { text: 'E-posta imzası', included: true },
+      { text: 'Sanal arka plan', included: true },
+      { text: 'Veri dışa aktarma (Excel, CSV)', included: true },
+      { text: 'Öncelikli destek', included: true }
     ],
     cta: 'Pro Planı Seç',
     ctaYearly: 'Pro Yıllık Planı Seç',
@@ -78,21 +75,21 @@ const plans: PlanDef[] = [
     id: 'pro_plus_plan',
     name: 'Pro+',
     icon: <Crown className="w-5 h-5" />,
-    monthlyPrice: 11.99,
-    yearlyPrice: 119.90,
+    monthlyPrice: 5,
+    yearlyPrice: 50,
     periodLabel: '/ay',
     yearlyPeriodLabel: '/yıl',
-    yearlyEquiv: '~$9.99/ay',
+    yearlyEquiv: '~$4.17/ay',
     description: 'İleri düzey profesyoneller için premium paket',
+    subtitle: 'Pro + aşağıdaki özellikler',
     features: [
-      { text: 'Tüm Pro özellikler', included: true },
       { text: 'Premium tasarım şablonları', included: true },
       { text: 'Özel alan adı entegrasyonu', included: true },
       { text: 'Gelişmiş SEO araçları', included: true },
-      { text: 'Öncelikli özellik erişimi', included: true },
       { text: 'API erişimi (sınırlı)', included: true },
       { text: 'Video profil ekleme', included: true },
       { text: 'A/B test desteği', included: true },
+      { text: 'Öncelikli özellik erişimi', included: true },
       { text: 'Premium destek', included: true }
     ],
     cta: 'Pro+ Planı Seç',
@@ -104,15 +101,14 @@ const plans: PlanDef[] = [
     name: 'Business',
     icon: <Building2 className="w-5 h-5" />,
     monthlyPrice: null,
-    yearlyPrice: 99.90,
+    yearlyPrice: 35,
     periodLabel: '/kullanıcı/yıl',
     yearlyPeriodLabel: '/kullanıcı/yıl',
-    yearlyEquiv: '~$8.33/kullanıcı/ay',
+    yearlyEquiv: '~$2.92/kullanıcı/ay',
     description: 'Ekipler ve şirketler için kurumsal çözümler',
-    subtitle: 'Minimum 5 kullanıcı',
+    subtitle: 'Pro+ + aşağıdaki özellikler (Min. 5 kullanıcı)',
     features: [
-      { text: 'Tüm Pro+ özellikler', included: true },
-      { text: 'Vialess Business - Ekip kartvizit havuzu', included: true },
+      { text: 'Ekip kartvizit havuzu', included: true },
       { text: 'Ortak notlar ve etiketleme', included: true },
       { text: 'Toplu Excel aktarımı', included: true },
       { text: 'API entegrasyonu (tam erişim)', included: true },
@@ -256,12 +252,6 @@ function PlanCard({ plan }: { plan: PlanDef }) {
           </h3>
         </div>
 
-        {plan.subtitle && (
-          <p className={`text-xs mb-3 font-medium ${plan.highlighted ? 'text-[#a5b4fc]' : 'text-[#6c63ff]'}`}>
-            {plan.subtitle}
-          </p>
-        )}
-
         {/* Billing toggle inside card */}
         {hasToggle && (
           <div className={`inline-flex items-center p-0.5 rounded-lg mb-4 ${
@@ -342,6 +332,16 @@ function PlanCard({ plan }: { plan: PlanDef }) {
 
       <div className="flex-1 mb-6">
         <div className={`h-px w-full mb-6 ${plan.highlighted ? 'bg-white/10' : 'bg-gray-100'}`} />
+        
+        {/* Subtitle at the top of features */}
+        {plan.subtitle && (
+          <p className={`text-xs mb-4 font-semibold uppercase tracking-wide ${
+            plan.highlighted ? 'text-[#a5b4fc]' : 'text-[#6c63ff]'
+          }`}>
+            {plan.subtitle}
+          </p>
+        )}
+        
         <ul className="space-y-3">
           {plan.features.map((feature, idx) => (
             <li key={idx} className="flex items-start gap-2 text-xs group">
