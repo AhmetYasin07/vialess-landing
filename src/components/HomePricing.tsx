@@ -27,7 +27,7 @@ export function HomePricing({ onNavigateToPricing }: { onNavigateToPricing: () =
         t.hp_freemium_f7,
       ],
       cta: t.hp_freemium_cta,
-      ctaLink: 'https://app.vialess.me',
+      ctaLink: 'https://app.vialess.me/WfQk/yop39slc',
       external: true,
       accentFrom: 'from-emerald-500',
       accentTo: 'to-teal-500',

@@ -56,9 +56,12 @@ export function HomeReferences() {
         
         {/* Title */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-          <h3 className="text-xs uppercase tracking-widest font-normal text-gray-400">
-            Referanslarımız
+          <h3 className="text-xs uppercase tracking-widest font-normal text-gray-400 mb-3">
+            Referanslar
           </h3>
+          <p className="text-2xl md:text-3xl font-bold text-gray-900">
+            Her sektörün ortak ihtiyacı Vialess
+          </p>
         </div>
 
         {/* CSS-driven Marquee */}

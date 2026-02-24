@@ -1,4 +1,5 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import emailSignatureImage from 'figma:asset/eb1ba554062da9f67f53ec45714046538933324c.png';
 
 export default function EpostaImzasiPage() {
   return (
@@ -29,7 +30,7 @@ export default function EpostaImzasiPage() {
       ]}
       ctaText="E-posta İmzası Oluşturmaya Başlayın"
       ctaType="free"
-      imageUrl="https://images.unsplash.com/photo-1576859933856-c07ec7ddfe92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbWFpbCUyMHNpZ25hdHVyZSUyMGRlc2lnbnxlbnwxfHx8fDE3NjYxMjMxNDh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      featureImages={[emailSignatureImage]}
     />
   );
 }

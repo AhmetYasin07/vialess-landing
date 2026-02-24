@@ -22,15 +22,17 @@ interface FeaturePageProps {
   badgeType: 'mobile' | 'corporate' | 'all';
   title: string;
   subtitle: string;
-  whatItDoes: string[];
-  howItWorks: Step[];
-  whoItsFor: string | { title: string; description: string; icon?: any; color?: string }[];
-  benefits: Benefit[];
-  ctaText: string;
-  ctaType: 'free' | 'demo';
+  whatItDoes?: string[];
+  howItWorks?: Step[];
+  whoItsFor?: string | { title: string; description: string; icon?: any; color?: string }[];
+  benefits?: Benefit[];
+  ctaText?: string;
+  ctaType?: 'free' | 'demo';
   imageUrl?: string;
+  featureImages?: string[];
   demoComponent?: React.ReactNode;
   layoutVariant?: 'default' | 'graphic';
+  comingSoon?: boolean;
 }
 
 export function FeaturePageLayout({
@@ -38,16 +40,18 @@ export function FeaturePageLayout({
   badgeType,
   title,
   subtitle,
-  whatItDoes,
-  howItWorks,
+  whatItDoes = [],
+  howItWorks = [],
   whoItsFor,
-  benefits,
+  benefits = [],
   ctaText,
   ctaType,
   imageUrl,
   currentFeatureId,
+  featureImages,
   demoComponent,
-  layoutVariant = 'default'
+  layoutVariant = 'default',
+  comingSoon = false
 }: FeaturePageProps) {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -64,6 +68,63 @@ export function FeaturePageLayout({
     all: t.badge_all_platforms
   };
 
+  // Coming Soon View
+  if (comingSoon) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
+        <section className="relative overflow-hidden py-32">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#6c63ff]/5 via-transparent to-blue-500/5"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
+          
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${badgeColors[badgeType]} text-sm font-semibold mb-4`}>
+              {badgeLabels[badgeType]}
+            </div>
+            <div className="inline-block px-4 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium mb-6 ml-3">
+              {badge}
+            </div>
+            
+            {/* Coming Soon Badge */}
+            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-bold mb-8 shadow-lg">
+              YAKINDA
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+              {title}
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12">
+              {subtitle}
+            </p>
+
+            {/* Coming Soon Message */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-12 max-w-2xl mx-auto">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Bu Özellik Yakında Gelecek
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Bu özellik üzerinde aktif olarak çalışıyoruz. Yayınlandığında sizi haberdar edeceğiz.
+              </p>
+              <button 
+                onClick={() => navigate('/')}
+                className="px-8 py-4 bg-gradient-to-r from-[#6c63ff] to-[#8780fd] text-white rounded-xl font-semibold hover:shadow-xl transition-all inline-flex items-center gap-2"
+              >
+                Ana Sayfaya Dön
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {currentFeatureId && <FeatureDiscovery currentFeatureId={currentFeatureId} />}
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
       <section className={`relative overflow-hidden ${layoutVariant === 'graphic' ? 'bg-[#0f172a] py-32' : 'py-20'}`}>
@@ -76,7 +137,7 @@ export function FeaturePageLayout({
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${layoutVariant === 'graphic' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : badgeColors[badgeType]} text-sm font-semibold mb-4`}>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${layoutVariant === 'graphic' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : badgeColors[badgeType]} text-sm font-bold mb-4 antialiased`}>
               {badgeLabels[badgeType]}
             </div>
             <div className={`inline-block px-4 py-1 rounded-full ${layoutVariant === 'graphic' ? 'bg-slate-800 text-slate-400' : 'bg-gray-100 text-gray-600'} text-xs font-medium mb-6 ml-3`}>
@@ -94,8 +155,16 @@ export function FeaturePageLayout({
             <div className="mb-20">
               {demoComponent}
             </div>
+          ) : featureImages && featureImages.length > 0 ? (
+            <div className="mb-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {featureImages.map((img, idx) => (
+                <div key={idx} className="relative">
+                  <img src={img} alt={`${title} ${idx + 1}`} className="w-full h-auto object-contain" />
+                </div>
+              ))}
+            </div>
           ) : imageUrl && (
-            <div className={`relative rounded-2xl overflow-hidden shadow-2xl ${layoutVariant === 'graphic' ? 'border border-slate-700/50 shadow-indigo-500/10' : 'border border-gray-200'} mb-20`}>
+            <div className="relative mb-20">
               <img src={imageUrl} alt={title} className="w-full h-auto" />
             </div>
           )}

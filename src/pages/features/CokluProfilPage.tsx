@@ -1,11 +1,13 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import multipleProfileImage from 'figma:asset/0e5917e26cb3ac81d50d93ab37f2fd1d310d076c.png';
+import multipleProfileNewImage from 'figma:asset/4a7bd06f8a58df8cecabb3e715abc21eb0ff1026.png';
 
 export default function CokluProfilPage() {
   return (
     <FeaturePageLayout
       currentFeatureId="coklu-profil"
       badge="Çoklu Profil"
-      badgeType="all"
+      badgeType="mobile"
       title="Farklı Roller İçin Farklı Dijital Kimlikler"
       subtitle="Tek hesapta birden fazla profil oluşturun. Profesyonel, kişisel, freelance veya farklı iş kolları için ayrı kartlar yönetin."
       whatItDoes={[
@@ -29,6 +31,7 @@ export default function CokluProfilPage() {
       ]}
       ctaText="Çoklu Profil Oluşturmaya Başlayın"
       ctaType="free"
+      featureImages={[multipleProfileImage, multipleProfileNewImage]}
     />
   );
 }

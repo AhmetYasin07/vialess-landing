@@ -1,4 +1,6 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import cardScannerImage from 'figma:asset/2b53a4d3e1dce2b83a17e70b67c8cf79fb516f27.png';
+import cardReaderImage from 'figma:asset/30d407462c683d2033f595448f9405da80fdb4fe.png';
 
 export default function KartvizitTarayiciPage() {
   return (
@@ -29,7 +31,7 @@ export default function KartvizitTarayiciPage() {
       ]}
       ctaText="Kartvizit Tarayıcıyı Denemeye Başlayın"
       ctaType="free"
-      imageUrl="https://images.unsplash.com/photo-1726255294277-57c46883bd94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNhcmQlMjBzY2FubmVyfGVufDF8fHx8MTc2NjA4NTI1NXww&ixlib=rb-4.1.0&q=80&w=1080"
+      featureImages={[cardScannerImage, cardReaderImage]}
     />
   );
 }

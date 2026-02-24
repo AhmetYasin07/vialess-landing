@@ -1,4 +1,5 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import onlineMeetingImage from 'figma:asset/8f838fb3b201b207901de91e3325fdbbd65b8077.png';
 
 export default function ZoomArkaPlanlaPage() {
   return (
@@ -29,6 +30,7 @@ export default function ZoomArkaPlanlaPage() {
       ]}
       ctaText="Zoom Arka Planı Oluşturmaya Başlayın"
       ctaType="free"
+      featureImages={[onlineMeetingImage]}
     />
   );
 }
