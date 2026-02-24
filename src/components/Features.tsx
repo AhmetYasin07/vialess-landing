@@ -13,6 +13,8 @@ import multipleDigitalIdImage from 'figma:asset/a17c0f87543c3926c75ab878f791cdfb
 import multipleProfileNewImage from 'figma:asset/4a7bd06f8a58df8cecabb3e715abc21eb0ff1026.png';
 import digitalIdImage from 'figma:asset/08d78951bfbb062bdd7f903ef22069f8bfc237c7.png';
 import qrShareImage from 'figma:asset/62a2286500cf6d6818feb37f740283596926e0d5.png';
+import contextInfoImage from 'figma:asset/92608ab555dc6c16954878af8f52f2d5d48159ad.png';
+import organizationImage from 'figma:asset/8e3f7d495340fcc0f5817f8d7215ac05dd8ffd83.png';
 
 // Features component with multilingual support
 export function Features() {
@@ -158,8 +160,8 @@ export function Features() {
   // Images and points for Contacts section (New Generation Contact Book)
   const contactsImages = [
     cardReaderImage,
-    "https://images.unsplash.com/photo-1736117705737-28851abf2860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXAlMjBsb2NhdGlvbiUyMHBpbnMlMjBjb250YWN0JTIwZ3JvdXBpbmd8ZW58MXx8fHwxNzcxODUwNTE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1621930032188-2e4f2b8959c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YWclMjBsYWJlbCUyMG9yZ2FuaXplJTIwY2F0ZWdvcml6ZSUyMGRpZ2l0YWx8ZW58MXx8fHwxNzcxODUwNTE3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    contextInfoImage,
+    organizationImage,
   ];
 
   const contactsPoints = [
@@ -281,7 +283,7 @@ export function Features() {
                       <img 
                         src={digitalCardImages[activePoint]}
                         alt={digitalCardPoints[activePoint].title}
-                        className="w-full h-[520px] object-contain rounded-2xl"
+                        className="w-full h-auto max-h-[680px] object-contain"
                       />
                     </motion.div>
                   </AnimatePresence>
@@ -294,7 +296,7 @@ export function Features() {
               <img 
                 src={digitalCardImages[activePoint]}
                 alt={digitalCardPoints[activePoint].title}
-                className="w-full h-[360px] object-contain rounded-2xl"
+                className="w-full h-auto object-contain"
               />
             </div>
 
@@ -375,6 +377,7 @@ export function Features() {
                           src={contactsImages[activeSecurityPoint]}
                           alt={contactsPoints[activeSecurityPoint].title}
                           className={`w-full h-[520px] object-contain rounded-2xl ${activeSecurityPoint === 0 ? 'shadow-2xl shadow-purple-400/20' : ''}`}
+                          style={{ background: 'transparent' }}
                         />
                       </motion.div>
                     </AnimatePresence>

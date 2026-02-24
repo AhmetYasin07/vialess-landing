@@ -48,7 +48,7 @@ export const features: FeatureData[] = [
     id: 'coklu-profil',
     title: 'Çoklu Profil Yönetimi',
     description: 'İş ve kişisel kullanım için farklı profiller oluşturun ve yönetin.',
-    category: 'Genel',
+    category: 'Mobil',
     path: '/ozellikler/coklu-profil',
     icon: Users2,
     gradient: 'from-teal-500 to-teal-600'
@@ -124,15 +124,6 @@ export const features: FeatureData[] = [
     path: '/ozellikler/entegrasyonlar',
     icon: Workflow,
     gradient: 'from-orange-500 to-orange-600'
-  },
-  {
-    id: 'guvenlik-kvkk',
-    title: 'Güvenlik & KVKK',
-    description: 'Verileriniz kurumsal güvenlik standartlarında ve KVKK uyumlu saklanır.',
-    category: 'Genel',
-    path: '/ozellikler/guvenlik-kvkk',
-    icon: ShieldCheck,
-    gradient: 'from-red-500 to-red-600'
   }
 ];
 
@@ -148,8 +139,7 @@ const discoveryChain = [
   'e-posta-imzasi',
   'zoom-arka-planlari',
   'analitik-raporlama',
-  'entegrasyonlar',
-  'guvenlik-kvkk'
+  'entegrasyonlar'
 ];
 
 export function getFeatureRecommendations(currentId: string) {

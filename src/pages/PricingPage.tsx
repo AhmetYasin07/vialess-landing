@@ -1,4 +1,4 @@
-import { CheckCircle, X, ArrowRight, Sparkles, Crown, Building2, Rocket } from 'lucide-react';
+import { CheckCircle, X, ArrowRight, Sparkles, Crown, Building2, Rocket, Download, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { FaqSection } from '../components/FaqSection';
 
@@ -56,7 +56,7 @@ const plans: PlanDef[] = [
     yearlyPeriodLabel: '/yıl',
     yearlyEquiv: '~$2.5/ay',
     description: 'Profesyoneller için gelişmiş özellikler',
-    subtitle: 'Freemium + aşağıdaki özellikler',
+    subtitle: 'Freemium özellikler +',
     features: [
       { text: 'Sınırsız profil oluşturma', included: true },
       { text: 'Çoklu profil yönetimi', included: true },
@@ -101,10 +101,10 @@ const plans: PlanDef[] = [
     name: 'Business',
     icon: <Building2 className="w-5 h-5" />,
     monthlyPrice: null,
-    yearlyPrice: 35,
+    yearlyPrice: 40,
     periodLabel: '/kullanıcı/yıl',
     yearlyPeriodLabel: '/kullanıcı/yıl',
-    yearlyEquiv: '~$2.92/kullanıcı/ay',
+    yearlyEquiv: '~$3.33/kullanıcı/ay',
     description: 'Ekipler ve şirketler için kurumsal çözümler',
     subtitle: 'Pro+ + aşağıdaki özellikler (Min. 5 kullanıcı)',
     features: [
@@ -182,10 +182,61 @@ const pricingFaqs = [
 function formatPrice(price: number): string {
   if (price === 0) return '$0';
   // Format like $5.99, $59.90, $119.90
-  return `$${price % 1 === 0 ? price.toFixed(0) : price.toFixed(2).replace(/\.?0+$/, '')}`;
+  return `$${price % 1 === 0 ? price.toFixed(0) : price.toFixed(2).replace(/\\.?0+$/, '')}`;
 }
 
-function PlanCard({ plan }: { plan: PlanDef }) {
+// Free Download Modal Component
+function FreeDownloadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform animate-scale-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Icon */}
+        <div className="w-16 h-16 rounded-2xl bg-[#6c63ff]/10 flex items-center justify-center mx-auto mb-6">
+          <Smartphone className="w-8 h-8 text-[#6c63ff]" />
+        </div>
+
+        {/* Title */}
+        <h3 className="text-2xl font-bold text-gray-900 text-center mb-3">
+          Şu an her şey ücretsiz!
+        </h3>
+
+        {/* Description */}
+        <p className="text-gray-600 text-center mb-8">
+          Vialess'i indirip sınırsız şekilde kullanabilirsiniz
+        </p>
+
+        {/* Download Button */}
+        <a
+          href="https://app.vialess.me/WfQk/yop39slc"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full py-4 bg-[#6c63ff] text-white rounded-2xl font-semibold hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 flex items-center justify-center gap-2 mb-4"
+        >
+          <Download className="w-5 h-5" />
+          Uygulamayı İndir
+        </a>
+
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="w-full py-3 text-gray-600 hover:text-gray-900 font-medium transition-colors"
+        >
+          Kapat
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PlanCard({ plan, onOpenModal }: { plan: PlanDef; onOpenModal: () => void }) {
   const [billing, setBilling] = useState<BillingPeriod>('monthly');
   
   const hasToggle = !plan.isFree && !plan.forceYearly && plan.monthlyPrice !== null;
@@ -214,12 +265,19 @@ function PlanCard({ plan }: { plan: PlanDef }) {
         : plan.cta;
 
   const handleCta = () => {
-    if (plan.isFree) return;
-    if (plan.id === 'business_plan') {
-      alert('Kurumsal teklif formuna yönlendiriliyorsunuz...');
+    if (plan.isFree) {
+      onOpenModal();
       return;
     }
-    alert(`"${plan.name} ${isYearly ? '(Yıllık)' : '(Aylık)'}" planı için ödeme sayfasına yönlendiriliyorsunuz...`);
+    if (plan.id === 'business_plan') {
+      window.open('https://dashboard.vialess.me/auth/signup', '_blank');
+      return;
+    }
+    // Pro ve Pro+ için popup aç
+    if (plan.id === 'pro_plan' || plan.id === 'pro_plus_plan') {
+      onOpenModal();
+      return;
+    }
   };
 
   return (
@@ -384,6 +442,11 @@ function PlanCard({ plan }: { plan: PlanDef }) {
 }
 
 export default function PricingPage() {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <div className="min-h-screen">
       {/* Sayfa Başlığı */}
@@ -421,7 +484,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((plan) => (
-              <PlanCard key={plan.id} plan={plan} />
+              <PlanCard key={plan.id} plan={plan} onOpenModal={openModal} />
             ))}
           </div>
         </div>
@@ -474,6 +537,9 @@ export default function PricingPage() {
           }
         ]}
       />
+
+      {/* Free Download Modal */}
+      <FreeDownloadModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

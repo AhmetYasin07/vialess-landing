@@ -4,6 +4,11 @@ import { useLanguage } from "../../context/LanguageContext";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { HomeReferences } from "../../components/HomeReferences";
 import { useRef } from "react";
+import digitalIdImage from 'figma:asset/08d78951bfbb062bdd7f903ef22069f8bfc237c7.png';
+import cardScannerImage from 'figma:asset/2b53a4d3e1dce2b83a17e70b67c8cf79fb516f27.png';
+import multipleProfileNewImage from 'figma:asset/4a7bd06f8a58df8cecabb3e715abc21eb0ff1026.png';
+import qrShareImage from 'figma:asset/62a2286500cf6d6818feb37f740283596926e0d5.png';
+import analyticsImage from 'figma:asset/68d4ac64ea56c477a1fd33b5b3c1bf5900aba33e.png';
 
 export default function MobileAppPage() {
   const { t } = useLanguage();
@@ -14,28 +19,28 @@ export default function MobileAppPage() {
   const appScreenshots = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1664883247910-c83c54ccdd76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBtb2JpbGUlMjBhcHAlMjBzY3JlZW4lMjBtb2NrdXB8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: digitalIdImage,
       alt: "Profil Görünümü"
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1762340281276-a0e1e3c60be7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwY29udGFjdCUyMHByb2ZpbGUlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Kişiler"
-    },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1768293336571-c48f8765a82d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBidXNpbmVzcyUyMGNhcmQlMjBkaWdpdGFsJTIwYXBwfGVufDF8fHx8MTc3MTg0MjA2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: cardScannerImage,
       alt: "Kartvizit Tarama"
     },
     {
+      id: 3,
+      image: qrShareImage,
+      alt: "QR ile Paylaşım"
+    },
+    {
       id: 4,
-      image: "https://images.unsplash.com/photo-1664883247910-c83c54ccdd76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBtb2JpbGUlMjBhcHAlMjBzY3JlZW4lMjBtb2NrdXB8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Paylaşım"
+      image: multipleProfileNewImage,
+      alt: "Çoklu Profil Yönetimi"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1762340281276-a0e1e3c60be7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwY29udGFjdCUyMHByb2ZpbGUlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxODQyMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Analitik"
+      image: analyticsImage,
+      alt: "Analitik ve Raporlama"
     }
   ];
 
@@ -118,7 +123,7 @@ export default function MobileAppPage() {
             {/* Scroll Container */}
             <div 
               ref={scrollContainerRef}
-              className="flex gap-4 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide"
+              className="flex gap-6 overflow-x-scroll pb-4"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -128,16 +133,13 @@ export default function MobileAppPage() {
               {appScreenshots.map((screenshot) => (
                 <div 
                   key={screenshot.id}
-                  className="flex-shrink-0 snap-start first:ml-0"
-                  style={{ width: '280px' }}
+                  className="flex-shrink-0"
                 >
-                  <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 bg-white aspect-[9/19.5]">
-                    <img
-                      src={screenshot.image}
-                      alt={screenshot.alt}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <img
+                    src={screenshot.image}
+                    alt={screenshot.alt}
+                    className="w-[280px] h-[608px] object-cover rounded-3xl shadow-2xl"
+                  />
                   <p className="text-center text-sm text-gray-600 mt-3 font-medium">{screenshot.alt}</p>
                 </div>
               ))}

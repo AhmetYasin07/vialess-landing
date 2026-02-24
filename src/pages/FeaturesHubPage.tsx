@@ -15,6 +15,7 @@ export default function FeaturesHubPage() {
     { name: t.menu_feature_card_scanner, path: '/ozellikler/kartvizit-tarayici', category: 'mobile', icon: '📸', featured: true },
     { name: t.menu_feature_contact_mgmt, path: '/ozellikler/iliski-yonetimi', category: 'mobile', icon: '👥', featured: true },
     { name: t.menu_feature_qr_nfc, path: '/ozellikler/qr-nfc-paylasim', category: 'mobile', icon: '⚡', featured: false },
+    { name: t.menu_feature_multi_profile, path: '/ozellikler/coklu-profil', category: 'mobile', icon: '🔄', featured: false },
     
     // Corporate Features
     { name: t.menu_feature_team_mgmt, path: '/ozellikler/ekip-yonetimi', category: 'corporate', icon: '🏢', featured: true },
@@ -25,15 +26,13 @@ export default function FeaturesHubPage() {
     
     // General Features
     { name: t.menu_feature_integrations, path: '/ozellikler/entegrasyonlar', category: 'general', icon: '🔗', featured: false },
-    { name: t.menu_feature_security, path: '/ozellikler/guvenlik-kvkk', category: 'general', icon: '🔒', featured: false },
-    { name: t.menu_feature_multi_profile, path: '/ozellikler/coklu-profil', category: 'general', icon: '🔄', featured: false },
   ];
 
   const discoveryPath = [
     'Dijital Profil', 'QR/NFC Paylaşım', 'Çoklu Profil', 'Kartvizit Tarayıcı', 
     'Kişi & İlişki Yönetimi', 'Ekip Yönetimi', 'Marka & Kimlik Yönetimi', 
     'E-posta İmzası', 'Zoom Arka Planları', 'Analitik & Raporlama', 
-    'Entegrasyonlar', 'Güvenlik & KVKK'
+    'Entegrasyonlar'
   ];
 
   const filteredFeatures = allFeatures.filter(feature => {

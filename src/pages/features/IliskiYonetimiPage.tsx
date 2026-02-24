@@ -1,4 +1,7 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import cardReaderImage from 'figma:asset/30d407462c683d2033f595448f9405da80fdb4fe.png';
+import contextInfoImage from 'figma:asset/92608ab555dc6c16954878af8f52f2d5d48159ad.png';
+import organizationImage from 'figma:asset/8e3f7d495340fcc0f5817f8d7215ac05dd8ffd83.png';
 
 export default function IliskiYonetimiPage() {
   return (
@@ -29,7 +32,7 @@ export default function IliskiYonetimiPage() {
       ]}
       ctaText="İlişki Yönetimine Başlayın"
       ctaType="free"
-      imageUrl="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwbWFuYWdlbWVudCUyMGNybXxlbnwxfHx8fDE3NjYxMjMxNDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      featureImages={[cardReaderImage, contextInfoImage, organizationImage]}
     />
   );
 }

@@ -1,4 +1,6 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import digitalIdImage from 'figma:asset/08d78951bfbb062bdd7f903ef22069f8bfc237c7.png';
+import multipleDigitalIdImage from 'figma:asset/a17c0f87543c3926c75ab878f791cdfb55409622.png';
 
 export default function DijitalProfilPage() {
   return (
@@ -33,6 +35,7 @@ export default function DijitalProfilPage() {
       ]}
       ctaText="Dijital Profilinizi Oluşturmaya Başlayın"
       ctaType="free"
+      featureImages={[digitalIdImage, multipleDigitalIdImage]}
       demoComponent={
         <div className="bg-gray-900 rounded-2xl p-8 overflow-hidden relative shadow-2xl border-4 border-gray-800">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20"></div>

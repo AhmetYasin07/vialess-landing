@@ -154,7 +154,7 @@ function HeroComponent({
                       </div>
 
                     <a
-                      href="https://dashboard.vialess.me"
+                      href="https://dashboard.vialess.me/auth/signup"
                       onClick={(e) => {
                         if (typeof window !== 'undefined' && window.innerWidth < 1024 && onOpenMobilePopup) {
                           e.preventDefault();

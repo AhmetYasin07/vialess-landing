@@ -120,12 +120,10 @@ export default function WebPanelPage() {
   ];
 
   const relatedFeatures = [
-    { name: t.menu_feature_team_mgmt, path: '/ozellikler/ekip-yonetimi', icon: '🏢', desc: 'Merkezi ekip yönetimi' },
     { name: t.menu_feature_analytics, path: '/ozellikler/analitik-raporlama', icon: '📊', desc: 'Detaylı raporlama sistemi' },
     { name: t.menu_feature_brand_mgmt, path: '/ozellikler/marka-kimlik-yonetimi', icon: '🎨', desc: 'Marka kontrolü ve standartlar' },
     { name: t.menu_feature_email_sig, path: '/ozellikler/e-posta-imzasi', icon: '✉️', desc: 'Profesyonel e-posta imzaları' },
     { name: t.menu_feature_zoom_bg, path: '/ozellikler/zoom-arka-planlari', icon: '🎥', desc: 'Kurumsal arka planlar' },
-    { name: t.menu_feature_security, path: '/ozellikler/guvenlik-kvkk', icon: '🔒', desc: 'KVKK ve güvenlik' },
   ];
 
   return (

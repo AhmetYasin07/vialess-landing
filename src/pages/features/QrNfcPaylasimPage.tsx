@@ -1,4 +1,5 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
+import qrShareImage from 'figma:asset/62a2286500cf6d6818feb37f740283596926e0d5.png';
 
 export default function QrNfcPaylasimPage() {
   return (
@@ -29,6 +30,7 @@ export default function QrNfcPaylasimPage() {
       ]}
       ctaText="QR ve NFC Paylaşımı Deneyin"
       ctaType="free"
+      featureImages={[qrShareImage]}
     />
   );
 }
