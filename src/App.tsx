@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense, Component, ReactNode, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router';
-import { Menu, X, Globe, ChevronDown, Building2, UserCircle2, Scan, Users2, ShieldCheck, Contact, Mail, Video, Workflow, TrendingUp, GraduationCap, CreditCard, Smartphone, Zap, BarChart3 } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, Building2, UserCircle2, Scan, Users2, ShieldCheck, Contact, Mail, Video, Workflow, TrendingUp, GraduationCap, CreditCard, Smartphone, Zap, BarChart3, Apple } from 'lucide-react';
 import PngLogo from './imports/PngLogo';
 import { Hero } from './components/Hero';
 import { MobileStartModal } from './components/MobileStartModal';
@@ -84,8 +84,6 @@ const FeaturesHubPage = lazy(() => import('./pages/FeaturesHubPage'));
 const Demo1Page = lazy(() => import('./pages/Demo1Page'));
 const DistanceSalesAgreementPage = lazy(() => import('./pages/DistanceSalesAgreementPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-
-type PageType = 'home' | 'showroom' | 'products' | 'pricing' | 'blog' | 'blog-post' | 'about' | 'enterprise' | 'support' | 'solutions-sales' | 'solutions-startups' | 'solutions-enterprises' | 'solutions-individuals' | 'solutions-students';
 
 function AppContent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -262,12 +260,6 @@ function AppContent() {
                              {t.menu_features_general}
                           </div>
                           <div className="space-y-1">
-                             <Link to="/ozellikler/guvenlik-kvkk" onClick={closeAllMenus} className="flex items-center gap-2.5 p-2 -ml-2 hover:bg-gray-50 rounded-lg transition-colors text-left group/item">
-                               <div className="w-6 h-6 rounded bg-red-50 text-red-600 flex items-center justify-center">
-                                 <ShieldCheck className="w-3.5 h-3.5" />
-                               </div>
-                               <span className="text-sm text-gray-600 group-hover/item:text-gray-900 font-medium">{t.menu_feature_security}</span>
-                             </Link>
                              <Link to="/ozellikler/coklu-profil" onClick={closeAllMenus} className="flex items-center gap-2.5 p-2 -ml-2 hover:bg-gray-50 rounded-lg transition-colors text-left group/item">
                                <div className="w-6 h-6 rounded bg-teal-50 text-teal-600 flex items-center justify-center">
                                  <UserCircle2 className="w-3.5 h-3.5" />
@@ -457,40 +449,40 @@ function AppContent() {
                 <div className="absolute top-full right-0 pt-2 w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                   <div className="bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden p-2 flex flex-col gap-1">
                     <a
-                      href="https://app.vialess.me"
+                      href="https://app.vialess.me/WfQk/yop39slc"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-all text-left group/item border border-transparent hover:border-gray-100"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover/item:bg-blue-100 transition-colors mt-0.5">
-                        <Smartphone className="w-5 h-5" />
+                      <div className="w-10 h-10 rounded-xl bg-gray-900 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                        <Smartphone className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <span className="text-sm font-semibold text-gray-900 block">
-                          {language === 'tr' ? 'Mobil Uygulama' : 'Mobile App'}
-                        </span>
-                        <span className="text-xs text-gray-500 block mt-0.5">
-                          {language === 'tr' ? 'iOS ve Android için indir' : 'Download for iOS & Android'}
-                        </span>
+                        <div className="text-xs text-gray-500 group-hover/item:text-gray-600 transition-colors">
+                          İndir
+                        </div>
+                        <div className="font-semibold text-gray-900 text-sm">
+                          Mobil Uygulama
+                        </div>
                       </div>
                     </a>
 
                     <a
-                      href="https://panel.vialess.me"
+                      href="https://dashboard.vialess.me/auth/signup"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-all text-left group/item border border-transparent hover:border-gray-100"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover/item:bg-indigo-100 transition-colors mt-0.5">
-                        <Building2 className="w-5 h-5" />
+                      <div className="w-10 h-10 rounded-xl bg-gray-900 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                        <Building2 className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <span className="text-sm font-semibold text-gray-900 block">
-                          {language === 'tr' ? 'Web Paneli' : 'Web Panel'}
-                        </span>
-                        <span className="text-xs text-gray-500 block mt-0.5">
-                          {language === 'tr' ? 'Tarayıcıdan giriş yap' : 'Login via browser'}
-                        </span>
+                        <div className="text-xs text-gray-500 group-hover/item:text-gray-600 transition-colors">
+                          Sign up for
+                        </div>
+                        <div className="font-semibold text-gray-900 text-sm">
+                          Web Panel
+                        </div>
                       </div>
                     </a>
                   </div>
@@ -645,11 +637,11 @@ function AppContent() {
                 </Suspense>
               </div>
               {/* <Testimonials /> - Hidden: no customer reviews yet */}
-              <div className="cv-auto">
+              {/* <div className="cv-auto">
                 <Suspense fallback={<SectionSkeleton />}>
                   <HomePricing onNavigateToPricing={handleNavigateToPricing} />
                 </Suspense>
-              </div>
+              </div> */}
               <div className="cv-auto">
                 <Suspense fallback={<SectionSkeleton />}>
                   <CTABanner />
@@ -817,11 +809,7 @@ function AppContent() {
               <EntegrasyonlarPage />
             </Suspense>
           } />
-          <Route path="/ozellikler/guvenlik-kvkk" element={
-            <Suspense fallback={<LoadingSpinner />}>
-              <GuvenlikKvkkPage />
-            </Suspense>
-          } />
+          {/* Güvenlik-KVKK route kaldırıldı */}
           <Route path="/ozellikler/coklu-profil" element={
             <Suspense fallback={<LoadingSpinner />}>
               <CokluProfilPage />
@@ -884,9 +872,18 @@ function AppContent() {
 export default function App() {
   // Chat Widget Integration
   useEffect(() => {
+    // Get API key from environment variable (EXPERIFY_API_KEY)
+    const apiKey = import.meta.env.VITE_EXPERIFY_API_KEY;
+
+    // Only load chatbot if a real API key is provided
+    if (!apiKey) {
+      console.info('💬 Chatbot disabled: Add EXPERIFY_API_KEY to .env to enable chat support');
+      return;
+    }
+
     // Configure chat widget
     (window as any).ChatWidgetConfig = {
-      apiKey: import.meta.env.VITE_CHATBOT_API_KEY,
+      apiKey: apiKey,
       wsUrl: "wss://backend-production-451f.up.railway.app/chat",
       theme: {
         primaryColor: "#6c63ff",
@@ -904,7 +901,7 @@ export default function App() {
     script.src = "https://chat-widget-amber-six.vercel.app/loader.js";
     script.async = true;
     script.onerror = () => {
-      console.warn('Chat widget failed to load');
+      console.warn('Chat widget failed to load - please check your network connection');
     };
     document.body.appendChild(script);
 

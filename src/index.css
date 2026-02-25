@@ -2386,6 +2386,10 @@
     background-color: oklab(59.7343% .0379568 -.220456 / .1);
   }
 
+  .bg-\[\#6c63ff\]\/20 {
+    background-color: oklab(59.7343% .0379568 -.220456 / .2);
+  }
+
   .bg-\[\#6c63ff\]\/30 {
     background-color: oklab(59.7343% .0379568 -.220456 / .3);
   }
