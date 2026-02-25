@@ -1,5 +1,4 @@
 import { FeaturePageLayout } from '../../components/FeaturePageLayout';
-import cardScannerImage from 'figma:asset/2b53a4d3e1dce2b83a17e70b67c8cf79fb516f27.png';
 import cardReaderImage from 'figma:asset/30d407462c683d2033f595448f9405da80fdb4fe.png';
 
 export default function KartvizitTarayiciPage() {
@@ -31,7 +30,9 @@ export default function KartvizitTarayiciPage() {
       ]}
       ctaText="Kartvizit Tarayıcıyı Denemeye Başlayın"
       ctaType="free"
-      featureImages={[cardScannerImage, cardReaderImage]}
+      screenshots={[
+        { image: cardReaderImage, title: 'OCR ile Bilgi Çıkarma' }
+      ]}
     />
   );
 }

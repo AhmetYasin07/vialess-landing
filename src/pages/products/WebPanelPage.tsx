@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { useLanguage } from '../../context/LanguageContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { motion } from 'motion/react';
+import React from 'react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -26,6 +27,13 @@ const staggerContainer = {
 export default function WebPanelPage() {
   const { t } = useLanguage();
   const navigate = useNavigate();
+
+  // Kurumsal Çözümler butonuna scroll referansı
+  const featuresRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollToFeatures = () => {
+    featuresRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   // FEATURES.md'den alınan gerçek özellikler - Bölüm 2
   const businessFeatures = [
@@ -169,15 +177,17 @@ export default function WebPanelPage() {
               </motion.p>
 
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => navigate('/pricing')}
+                <a
+                  href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2"
                 >
                   İletişime Geç
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
                 <button
-                  onClick={() => navigate('/enterprise')}
+                  onClick={scrollToFeatures}
                   className="px-8 py-4 bg-white text-gray-900 border border-gray-200 rounded-xl font-semibold hover:border-[#6c63ff] hover:text-[#6c63ff] transition-all shadow-lg hover:shadow-xl"
                 >
                   Kurumsal Çözümler
@@ -188,7 +198,7 @@ export default function WebPanelPage() {
       </section>
 
       {/* Tüm Özellikler - FEATURES.md'den */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" ref={featuresRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -305,19 +315,23 @@ export default function WebPanelPage() {
             Kurumsal çözümlerimiz hakkında detaylı bilgi almak için bizimle iletişime geçin
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => navigate('/pricing')}
+            <a
+              href="https://dashboard.vialess.me/auth/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-[#6c63ff] rounded-xl font-semibold hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2"
             >
-              Fiyatlandırmayı Gör
+              Business Panele Git
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => navigate('/enterprise')}
+            </a>
+            <a
+              href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-[#6c63ff] transition-all"
             >
-              Kurumsal Çözümler
-            </button>
+              İletişime Geç
+            </a>
           </div>
         </div>
       </section>

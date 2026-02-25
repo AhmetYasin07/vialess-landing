@@ -31,7 +31,10 @@ export default function CokluProfilPage() {
       ]}
       ctaText="Çoklu Profil Oluşturmaya Başlayın"
       ctaType="free"
-      featureImages={[multipleProfileImage, multipleProfileNewImage]}
+      screenshots={[
+        { image: multipleProfileImage, title: 'Profiller Arası Geçiş' },
+        { image: multipleProfileNewImage, title: 'Yeni Profil Oluşturma' }
+      ]}
     />
   );
 }

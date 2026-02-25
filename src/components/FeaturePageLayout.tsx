@@ -1,6 +1,8 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useNavigate } from 'react-router';
+import { FeatureDiscovery } from './FeatureDiscovery';
+import { AppScreenshotShowcase } from './AppScreenshotShowcase';
 
 interface Step {
   number: string;
@@ -13,7 +15,10 @@ interface Benefit {
   description: string;
 }
 
-import { FeatureDiscovery } from './FeatureDiscovery';
+interface Screenshot {
+  image: string;
+  title: string;
+}
 
 interface FeaturePageProps {
   // New Prop
@@ -29,7 +34,9 @@ interface FeaturePageProps {
   ctaText?: string;
   ctaType?: 'free' | 'demo';
   imageUrl?: string;
+  currentFeatureId?: string;
   featureImages?: string[];
+  screenshots?: Screenshot[];
   demoComponent?: React.ReactNode;
   layoutVariant?: 'default' | 'graphic';
   comingSoon?: boolean;
@@ -49,6 +56,7 @@ export function FeaturePageLayout({
   imageUrl,
   currentFeatureId,
   featureImages,
+  screenshots,
   demoComponent,
   layoutVariant = 'default',
   comingSoon = false
@@ -155,13 +163,13 @@ export function FeaturePageLayout({
             <div className="mb-20">
               {demoComponent}
             </div>
+          ) : screenshots && screenshots.length > 0 ? (
+            <div className="mb-20">
+              <AppScreenshotShowcase screenshots={screenshots} />
+            </div>
           ) : featureImages && featureImages.length > 0 ? (
-            <div className="mb-20 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featureImages.map((img, idx) => (
-                <div key={idx} className="relative">
-                  <img src={img} alt={`${title} ${idx + 1}`} className="w-full h-auto object-contain" />
-                </div>
-              ))}
+            <div className="mb-20">
+              <AppScreenshotShowcase screenshots={featureImages.map((img, idx) => ({ image: img, title: `Görünüm ${idx + 1}` }))} />
             </div>
           ) : imageUrl && (
             <div className="relative mb-20">

@@ -10,7 +10,9 @@ export default function AnalitikRaporlamaPage() {
       title="Analitik ve Raporlama"
       subtitle="Kartlarınızın performansını ölçün, ekip istatistiklerini görüntüleyin ve raporları Excel/CSV formatında indirin."
       comingSoon={true}
-      featureImages={[analyticsImage]}
+      screenshots={[
+        { image: analyticsImage, title: 'Analitik Paneli' }
+      ]}
     />
   );
 }

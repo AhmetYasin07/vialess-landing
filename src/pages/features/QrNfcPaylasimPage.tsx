@@ -30,7 +30,9 @@ export default function QrNfcPaylasimPage() {
       ]}
       ctaText="QR ve NFC Paylaşımı Deneyin"
       ctaType="free"
-      featureImages={[qrShareImage]}
+      screenshots={[
+        { image: qrShareImage, title: 'QR Kod Paylaşımı' }
+      ]}
     />
   );
 }

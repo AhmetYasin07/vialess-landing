@@ -30,7 +30,9 @@ export default function ZoomArkaPlanlaPage() {
       ]}
       ctaText="Zoom Arka Planı Oluşturmaya Başlayın"
       ctaType="free"
-      featureImages={[onlineMeetingImage]}
+      screenshots={[
+        { image: onlineMeetingImage, title: 'Sanal Arka Plan Oluşturma' }
+      ]}
     />
   );
 }

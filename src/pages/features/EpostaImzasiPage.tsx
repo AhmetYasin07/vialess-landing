@@ -30,7 +30,9 @@ export default function EpostaImzasiPage() {
       ]}
       ctaText="E-posta İmzası Oluşturmaya Başlayın"
       ctaType="free"
-      featureImages={[emailSignatureImage]}
+      screenshots={[
+        { image: emailSignatureImage, title: 'E-posta İmzası Editörü' }
+      ]}
     />
   );
 }

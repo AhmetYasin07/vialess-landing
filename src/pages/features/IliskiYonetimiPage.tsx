@@ -32,7 +32,11 @@ export default function IliskiYonetimiPage() {
       ]}
       ctaText="İlişki Yönetimine Başlayın"
       ctaType="free"
-      featureImages={[cardReaderImage, contextInfoImage, organizationImage]}
+      screenshots={[
+        { image: cardReaderImage, title: 'Kişi Detayları' },
+        { image: contextInfoImage, title: 'Bağlam Bilgileri' },
+        { image: organizationImage, title: 'Organizasyon Yönetimi' }
+      ]}
     />
   );
 }
