@@ -1,6 +1,7 @@
 import { CheckCircle, X, ArrowRight, Sparkles, Crown, Building2, Rocket, Download, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { FaqSection } from '../components/FaqSection';
+import { DesignYourCard } from '../components/DesignYourCard';
 
 type BillingPeriod = 'monthly' | 'yearly';
 
@@ -47,14 +48,14 @@ const plans: PlanDef[] = [
     isFree: true
   },
   {
-    id: 'pro_plan',
-    name: 'Pro',
+    id: 'professional_plan',
+    name: 'Professional',
     icon: <Rocket className="w-5 h-5" />,
-    monthlyPrice: 3,
-    yearlyPrice: 30,
+    monthlyPrice: 3.49,
+    yearlyPrice: 34.9,
     periodLabel: '/ay',
     yearlyPeriodLabel: '/yıl',
-    yearlyEquiv: '~$2.5/ay',
+    yearlyEquiv: '~$2.91/ay',
     description: 'Profesyoneller için gelişmiş özellikler',
     subtitle: 'Freemium özellikler +',
     features: [
@@ -67,46 +68,21 @@ const plans: PlanDef[] = [
       { text: 'Veri dışa aktarma (Excel, CSV)', included: true },
       { text: 'Öncelikli destek', included: true }
     ],
-    cta: 'Pro Planı Seç',
-    ctaYearly: 'Pro Yıllık Planı Seç',
+    cta: 'Professional Planı Seç',
+    ctaYearly: 'Professional Yıllık Planı Seç',
     highlighted: true
-  },
-  {
-    id: 'pro_plus_plan',
-    name: 'Pro+',
-    icon: <Crown className="w-5 h-5" />,
-    monthlyPrice: 5,
-    yearlyPrice: 50,
-    periodLabel: '/ay',
-    yearlyPeriodLabel: '/yıl',
-    yearlyEquiv: '~$4.17/ay',
-    description: 'İleri düzey profesyoneller için premium paket',
-    subtitle: 'Pro +',
-    features: [
-      { text: 'Premium tasarım şablonları', included: true },
-      { text: 'Özel alan adı entegrasyonu', included: true },
-      { text: 'Gelişmiş SEO araçları', included: true },
-      { text: 'API erişimi (sınırlı)', included: true },
-      { text: 'Video profil ekleme', included: true },
-      { text: 'A/B test desteği', included: true },
-      { text: 'Öncelikli özellik erişimi', included: true },
-      { text: 'Premium destek', included: true }
-    ],
-    cta: 'Pro+ Planı Seç',
-    ctaYearly: 'Pro+ Yıllık Planı Seç',
-    highlighted: false
   },
   {
     id: 'business_plan',
     name: 'Business',
     icon: <Building2 className="w-5 h-5" />,
-    monthlyPrice: null,
-    yearlyPrice: 40,
-    periodLabel: '/kullanıcı/yıl',
-    yearlyPeriodLabel: '/kullanıcı/yıl',
-    yearlyEquiv: '~$3.33/kullanıcı/ay',
-    description: 'Ekipler ve şirketler için kurumsal çözümler (Min. 5 kullanıcı)',
-    subtitle: 'Pro+ +',
+    monthlyPrice: 4.49,
+    yearlyPrice: 44.9,
+    periodLabel: '/ay',
+    yearlyPeriodLabel: '/yıl',
+    yearlyEquiv: '~$3.74/ay',
+    description: 'Ekipler ve şirketler için kurumsal çözümler',
+    subtitle: 'Professional +',
     features: [
       { text: 'Ekip kartvizit havuzu', included: true },
       { text: 'Ortak notlar ve etiketleme', included: true },
@@ -117,9 +93,9 @@ const plans: PlanDef[] = [
       { text: 'KVKK uyumlu veri yönetimi', included: true },
       { text: 'Özel eğitim ve onboarding', included: true }
     ],
-    cta: 'Teklif Al',
-    highlighted: false,
-    forceYearly: true
+    cta: 'Business Planı Seç',
+    ctaYearly: 'Business Yıllık Planı Seç',
+    highlighted: false
   }
 ];
 
@@ -265,17 +241,14 @@ function PlanCard({ plan, onOpenModal }: { plan: PlanDef; onOpenModal: () => voi
         : plan.cta;
 
   const handleCta = () => {
-    if (plan.isFree) {
+    if (plan.isFree || plan.id === 'professional_plan') {
+      // Freemium ve Professional plan için popup aç
       onOpenModal();
       return;
     }
     if (plan.id === 'business_plan') {
-      window.open('https://dashboard.vialess.me/auth/signup', '_blank');
-      return;
-    }
-    // Pro ve Pro+ için popup aç
-    if (plan.id === 'pro_plan' || plan.id === 'pro_plus_plan') {
-      onOpenModal();
+      // Business plan için toplantı linki
+      window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2GvX49EgPAm5gRMGyfmppttT-LHWU3dKtd7kRRk388RKWY11qEg-E0-H1Ylg9n-Da4tv25qZXP', '_blank');
       return;
     }
   };
@@ -482,7 +455,7 @@ export default function PricingPage() {
       {/* Fiyat Tablosu */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map((plan) => (
               <PlanCard key={plan.id} plan={plan} onOpenModal={openModal} />
             ))}
@@ -490,41 +463,8 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* NFC Kartlar */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">Fiziksel NFC Kartlar</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Dijital kartvizitinizi fiziksel karta taşıyın. Dokunarak profil paylaşımının keyfini çıkarın.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {additionalProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h4>
-                <p className="text-sm text-gray-600 mb-6 flex-1">{product.description}</p>
-                <div className="flex items-end justify-between">
-                  <span className="text-3xl font-bold text-[#6c63ff]">{product.priceStr}</span>
-                  <button
-                    onClick={() => alert(`"${product.name}" siparişi için yönlendiriliyorsunuz...`)}
-                    className="px-6 py-2 bg-[#6c63ff]/10 text-[#6c63ff] rounded-lg hover:bg-[#6c63ff] hover:text-white transition-colors text-sm font-semibold flex items-center gap-2"
-                  >
-                    Sipariş Ver
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 font-medium">
-              Kurumsal siparişler için iletişime geçin
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* NFC Kartlar - Design Your Card Component */}
+      <DesignYourCard />
 
       {/* SSS */}
       <FaqSection

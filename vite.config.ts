@@ -1,10 +1,61 @@
 
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react-swc';
+  import tailwindcss from '@tailwindcss/vite';
   import path from 'path';
+  import fs from 'fs';
+
+  function stripVersionPlugin() {
+    return {
+      name: 'strip-import-versions',
+      enforce: 'pre' as const,
+      resolveId(this: any, source: string, importer: string | undefined) {
+        const scopedMatch = source.match(/^(@[^/]+\/[^@]+)@[\d.]+(.*)$/);
+        if (scopedMatch) {
+          return this.resolve(scopedMatch[1] + (scopedMatch[2] || ''), importer, { skipSelf: true });
+        }
+        const unscopedMatch = source.match(/^([^@./][^@]*)@[\d.]+(.*)$/);
+        if (unscopedMatch) {
+          return this.resolve(unscopedMatch[1] + (unscopedMatch[2] || ''), importer, { skipSelf: true });
+        }
+        return null;
+      },
+    };
+  }
+
+  function figmaAssetPlugin() {
+    return {
+      name: 'figma-asset-resolver',
+      enforce: 'pre' as const,
+      resolveId(source: string) {
+        if (source.startsWith('figma:asset/')) {
+          return '\0figma-asset:' + source.replace('figma:asset/', '');
+        }
+        return null;
+      },
+      load(id: string) {
+        if (!id.startsWith('\0figma-asset:')) return null;
+
+        const filename = id.replace('\0figma-asset:', '');
+        const srcAssetPath = path.resolve(__dirname, 'src', 'assets', filename);
+        const publicAssetPath = path.resolve(__dirname, 'public', 'assets', filename);
+
+        if (fs.existsSync(srcAssetPath)) {
+          return `export default "/src/assets/${filename}"`;
+        }
+
+        if (fs.existsSync(publicAssetPath)) {
+          return `export default "/assets/${filename}"`;
+        }
+
+        console.warn(`[figma-asset] Asset bulunamadı: ${filename} — placeholder kullanılıyor`);
+        return `export default "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='12'%3E${filename.slice(0, 8)}...%3C/text%3E%3C/svg%3E"`;
+      },
+    };
+  }
 
   export default defineConfig({
-    plugins: [react()],
+    plugins: [stripVersionPlugin(), figmaAssetPlugin(), react(), tailwindcss()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {

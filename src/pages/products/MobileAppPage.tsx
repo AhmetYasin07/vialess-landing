@@ -3,9 +3,8 @@ import { Link, useNavigate } from "react-router";
 import { useLanguage } from "../../context/LanguageContext";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { HomeReferences } from "../../components/HomeReferences";
-import { useRef } from "react";
+import { AppScreenshotShowcase } from "../../components/AppScreenshotShowcase";
 import digitalIdImage from 'figma:asset/08d78951bfbb062bdd7f903ef22069f8bfc237c7.png';
-import cardScannerImage from 'figma:asset/2b53a4d3e1dce2b83a17e70b67c8cf79fb516f27.png';
 import multipleProfileNewImage from 'figma:asset/4a7bd06f8a58df8cecabb3e715abc21eb0ff1026.png';
 import qrShareImage from 'figma:asset/62a2286500cf6d6818feb37f740283596926e0d5.png';
 import analyticsImage from 'figma:asset/68d4ac64ea56c477a1fd33b5b3c1bf5900aba33e.png';
@@ -13,34 +12,24 @@ import analyticsImage from 'figma:asset/68d4ac64ea56c477a1fd33b5b3c1bf5900aba33e
 export default function MobileAppPage() {
   const { t } = useLanguage();
   const navigate = useNavigate();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Vialess App Screenshots
   const appScreenshots = [
     {
-      id: 1,
       image: digitalIdImage,
-      alt: "Profil Görünümü"
+      title: "Profil Görünümü"
     },
     {
-      id: 2,
-      image: cardScannerImage,
-      alt: "Kartvizit Tarama"
-    },
-    {
-      id: 3,
       image: qrShareImage,
-      alt: "QR ile Paylaşım"
+      title: "QR ile Paylaşım"
     },
     {
-      id: 4,
       image: multipleProfileNewImage,
-      alt: "Çoklu Profil Yönetimi"
+      title: "Çoklu Profil Yönetimi"
     },
     {
-      id: 5,
       image: analyticsImage,
-      alt: "Analitik ve Raporlama"
+      title: "Analitik ve Raporlama"
     }
   ];
 
@@ -121,36 +110,7 @@ export default function MobileAppPage() {
         {/* App Screenshots Carousel - AppStore Style */}
         <section className="py-12 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Uygulama Görünümü</h2>
-          <div className="relative">
-            {/* Scroll Container */}
-            <div 
-              ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-scroll pb-4"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch'
-              }}
-            >
-              {appScreenshots.map((screenshot) => (
-                <div 
-                  key={screenshot.id}
-                  className="flex-shrink-0"
-                >
-                  <img
-                    src={screenshot.image}
-                    alt={screenshot.alt}
-                    className="w-[280px] h-[608px] object-cover rounded-3xl shadow-2xl"
-                  />
-                  <p className="text-center text-sm text-gray-600 mt-3 font-medium">{screenshot.alt}</p>
-                </div>
-              ))}
-            </div>
-            
-            {/* Gradient Overlays for scroll hint */}
-            <div className="absolute top-0 left-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-            <div className="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-          </div>
+          <AppScreenshotShowcase screenshots={appScreenshots} />
         </section>
 
         {/* Detaylı Özellikler */}

@@ -39,7 +39,7 @@ export function DesignYourCard() {
             <div>
               <div className="flex items-center gap-2 mb-4 text-[#6c63ff] font-medium">
                 <Palette className="w-5 h-5" />
-                <span>{t.design_available_this_week}</span>
+                <span>₺1.100'den başlayan fiyatlarla</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.design_your_logo_title}</h2>
               <p className="text-gray-600 text-lg">
@@ -70,9 +70,14 @@ export function DesignYourCard() {
               <p className="mt-3 text-sm text-gray-500 font-medium">{activeColor.name}</p>
             </div>
 
-            <button className="px-8 py-3 bg-[#6c63ff] text-white rounded-lg font-semibold hover:bg-[#5a52d5] transition-colors shadow-lg shadow-[#6c63ff]/20 cursor-pointer">
-              {t.design_cta}
-            </button>
+            <a
+              href="https://vialess.me/tr/products"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-[#6c63ff] text-white rounded-lg font-semibold hover:bg-[#5a52d5] transition-colors shadow-lg shadow-[#6c63ff]/20 cursor-pointer"
+            >
+              Sipariş Ver
+            </a>
           </div>
 
           {/* Card Preview */}
