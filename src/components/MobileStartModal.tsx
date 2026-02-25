@@ -55,7 +55,7 @@ export function MobileStartModal({ isOpen, onClose }: MobileStartModalProps) {
               <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                 {/* App Store */}
                 <a
-                  href="https://apps.apple.com" 
+                  href="https://apps.apple.com/tr/app/vialess/id6737811812?l=tr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-[#6c63ff]/30 hover:bg-gray-50 transition-all group text-center h-32"
@@ -68,7 +68,7 @@ export function MobileStartModal({ isOpen, onClose }: MobileStartModalProps) {
 
                 {/* Play Store */}
                 <a
-                  href="https://play.google.com" 
+                  href="https://play.google.com/store/apps/details?id=com.vialess"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-[#6c63ff]/30 hover:bg-gray-50 transition-all group text-center h-32"

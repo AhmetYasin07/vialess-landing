@@ -3,7 +3,11 @@ import { ArrowRight, Sparkles, Users, Zap, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { useLanguage } from '../context/LanguageContext';
 
-export function CTABanner() {
+interface CTABannerProps {
+  onOpenMobilePopup?: () => void;
+}
+
+export function CTABanner({ onOpenMobilePopup }: CTABannerProps) {
   const { t } = useLanguage();
   
   return (
@@ -47,14 +51,14 @@ export function CTABanner() {
                     <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45"></div>
                   </div>
                   
-                  <Link
-                    to="/pricing"
+                  <button
+                    onClick={onOpenMobilePopup}
                     className="w-full sm:w-auto px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-bold text-lg hover:bg-[#5a52d5] transition-all shadow-lg shadow-[#6c63ff]/25 hover:shadow-[#6c63ff]/40 flex items-center justify-center gap-2"
                   >
                     <Zap className="w-5 h-5" />
                     <span>{t.cta_start_free}</span>
                     <ArrowRight className="w-5 h-5" />
-                  </Link>
+                  </button>
                 </div>
 
                 {/* Request Demo Button with Tooltip */}

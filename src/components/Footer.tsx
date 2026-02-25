@@ -61,10 +61,10 @@ export function Footer({ onNavigateToShowroom, onNavigateTo }: FooterProps) {
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_product_web_panel}
                  </Link></li>
-                 <li><Link to="/urunler/nfc-kartlar" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
+                 <li><a href="https://vialess.me/products" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_product_nfc_cards}
-                 </Link></li>
+                 </a></li>
                  <li><Link to="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group">
                    <span className="w-0 h-px bg-[#6c63ff] group-hover:w-3 transition-all duration-300"></span>
                    {t.footer_pricing}

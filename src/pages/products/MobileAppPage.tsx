@@ -102,13 +102,15 @@ export default function MobileAppPage() {
 
           {/* Download Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <button
-              onClick={() => navigate("/pricing")}
+            <a
+              href="https://app.vialess.me/WfQk/yop39slc"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-[#6c63ff] text-white rounded-xl font-semibold hover:bg-[#5a52d5] transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center gap-2"
             >
               {t.product_cta_mobile}
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
             <div className="flex items-center gap-3 text-sm text-gray-600">
               <Apple className="w-5 h-5" />
               <span>iOS & Android</span>

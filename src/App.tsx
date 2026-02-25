@@ -201,7 +201,7 @@ function AppContent() {
                           <span className="text-xs text-gray-500 block mt-0.5">{t.menu_product_web_desc}</span>
                         </div>
                       </Link>
-                      <Link to="/urunler/nfc-kartlar" onClick={closeAllMenus} className="flex items-start gap-3 p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all text-left group/item border border-transparent hover:border-gray-100">
+                      <a href="https://vialess.me/products" target="_blank" rel="noopener noreferrer" onClick={closeAllMenus} className="flex items-start gap-3 p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all text-left group/item border border-transparent hover:border-gray-100">
                         <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center group-hover/item:bg-purple-100 transition-colors mt-0.5">
                           <CreditCard className="w-4 h-4" />
                         </div>
@@ -209,7 +209,7 @@ function AppContent() {
                           <span className="text-sm font-semibold text-gray-900 block">{t.menu_products_nfc_cards}</span>
                           <span className="text-xs text-gray-500 block mt-0.5">{t.menu_product_nfc_desc}</span>
                         </div>
-                      </Link>
+                      </a>
                     </div>
                   </div>
 
@@ -623,7 +623,7 @@ function AppContent() {
               </div>
               <div className="cv-auto">
                 <Suspense fallback={<SectionSkeleton />}>
-                  <ImpactStats />
+                  <ImpactStats onOpenMobilePopup={handleOpenMobilePopup} />
                 </Suspense>
               </div>
               <div className="cv-auto">
@@ -633,7 +633,7 @@ function AppContent() {
               </div>
               <div className="cv-auto">
                 <Suspense fallback={<SectionSkeleton />}>
-                  <AppDemo />
+                  {/* <AppDemo /> */}
                 </Suspense>
               </div>
               {/* <Testimonials /> - Hidden: no customer reviews yet */}
@@ -644,7 +644,7 @@ function AppContent() {
               </div> */}
               <div className="cv-auto">
                 <Suspense fallback={<SectionSkeleton />}>
-                  <CTABanner />
+                  <CTABanner onOpenMobilePopup={handleOpenMobilePopup} />
                 </Suspense>
               </div>
               <div className="cv-auto">

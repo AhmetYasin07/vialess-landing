@@ -29,7 +29,6 @@ export default function EkipYonetimiPage() {
       ]}
       ctaText="Ekip Yönetimi İçin Demo Talep Edin"
       ctaType="demo"
-      imageUrl="https://images.unsplash.com/photo-1648134859187-71dadc9f815a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwbWFuYWdlbWVudCUyMGRhc2hib2FyZHxlbnwxfHx8fDE3NjYxMjMxNDh8MA&ixlib=rb-4.1.0&q=80&w=1080"
     />
   );
 }

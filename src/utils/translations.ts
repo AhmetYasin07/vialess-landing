@@ -758,7 +758,7 @@ export const translations = {
     hs_desc_1: "Farklı materyaller, dokular ve baskı tekniklerini interaktif showroomumuzda keşfedin. Markanıza en uygun kartı",
     hs_desc_highlight: "beraber tasarlayalım.",
     hs_free_designs: "5+ siparişte özel tasarım",
-    hs_cta: "Showroom'u Keşfet →",
+    hs_cta: "Siparişini Oluştur →",
 
     // AboutPage
     about_title: "Hakkımızda",
@@ -1569,7 +1569,7 @@ export const translations = {
     hs_desc_1: "Explore different materials, textures, and printing techniques in our interactive showroom. Let's find the perfect card for your brand",
     hs_desc_highlight: "together.",
     hs_free_designs: "Custom design on 5+ orders",
-    hs_cta: "Explore Showroom →",
+    hs_cta: "Create Your Order →",
 
     // AboutPage
     about_title: "About Us",
