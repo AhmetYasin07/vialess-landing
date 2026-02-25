@@ -269,13 +269,15 @@ export function FeaturePageLayout({
                   ? 'Vialess ile bu özelliği ücretsiz denemeye başlayın. Kredi kartı gerekmez.'
                   : 'Ekibiniz için özel demo talep edin ve tüm özellikleri keşfedin.'}
               </p>
-              <button 
-                onClick={() => navigate(ctaType === 'free' ? '/pricing' : '/support')}
+              <a 
+                href={ctaType === 'free' ? 'https://vialess.me/tr/products' : '/support'}
+                target={ctaType === 'free' ? '_blank' : '_self'}
+                rel={ctaType === 'free' ? 'noopener noreferrer' : undefined}
                 className="px-8 py-4 bg-white text-[#6c63ff] rounded-xl font-semibold hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center gap-2"
               >
                 {ctaType === 'free' ? t.menu_try_free : 'Kurumsal Demo İste'}
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           </div>
         </div>
