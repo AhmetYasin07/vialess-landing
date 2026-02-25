@@ -81,7 +81,7 @@ const plans: PlanDef[] = [
     yearlyPeriodLabel: '/yıl',
     yearlyEquiv: '~$4.17/ay',
     description: 'İleri düzey profesyoneller için premium paket',
-    subtitle: 'Pro + aşağıdaki özellikler',
+    subtitle: 'Pro +',
     features: [
       { text: 'Premium tasarım şablonları', included: true },
       { text: 'Özel alan adı entegrasyonu', included: true },
@@ -105,8 +105,8 @@ const plans: PlanDef[] = [
     periodLabel: '/kullanıcı/yıl',
     yearlyPeriodLabel: '/kullanıcı/yıl',
     yearlyEquiv: '~$3.33/kullanıcı/ay',
-    description: 'Ekipler ve şirketler için kurumsal çözümler',
-    subtitle: 'Pro+ + aşağıdaki özellikler (Min. 5 kullanıcı)',
+    description: 'Ekipler ve şirketler için kurumsal çözümler (Min. 5 kullanıcı)',
+    subtitle: 'Pro+ +',
     features: [
       { text: 'Ekip kartvizit havuzu', included: true },
       { text: 'Ortak notlar ve etiketleme', included: true },
@@ -182,7 +182,7 @@ const pricingFaqs = [
 function formatPrice(price: number): string {
   if (price === 0) return '$0';
   // Format like $5.99, $59.90, $119.90
-  return `$${price % 1 === 0 ? price.toFixed(0) : price.toFixed(2).replace(/\\.?0+$/, '')}`;
+  return `$${price % 1 === 0 ? price.toFixed(0) : price.toFixed(2).replace(/\.?0+$/, '')}`;
 }
 
 // Free Download Modal Component
@@ -393,11 +393,11 @@ function PlanCard({ plan, onOpenModal }: { plan: PlanDef; onOpenModal: () => voi
         
         {/* Subtitle at the top of features */}
         {plan.subtitle && (
-          <p className={`text-xs mb-4 font-semibold uppercase tracking-wide ${
-            plan.highlighted ? 'text-[#a5b4fc]' : 'text-[#6c63ff]'
+          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium mb-4 ${
+            plan.highlighted ? 'bg-[#6c63ff]/20 text-[#a5b4fc]' : 'bg-[#6c63ff]/10 text-[#6c63ff]'
           }`}>
             {plan.subtitle}
-          </p>
+          </span>
         )}
         
         <ul className="space-y-3">
