@@ -17,3 +17,5 @@ src/migrate-optimized.mjs
 # Bunlar optimize edilerek src/public/assets/ içine taşınır.
 # Repoya sadece src/public/assets/ içindeki optimize görseller gider.
 src/assets/
+
+build/
