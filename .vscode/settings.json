@@ -7,6 +7,23 @@
         "/^cd src ; node optimize-images\\.mjs$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^cd \"c:\\\\Users\\\\premi\\\\Desktop\\\\Landing Figma\\\\Vialess_ Dijital Kimlik Platformu\\\\src\" ; node optimize-images\\.mjs$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python -c \"\nimport requests\nheaders = \\{\n    'User-Agent': 'Mozilla/5\\.0 \\(Windows NT 10\\.0; Win64; x64\\) AppleWebKit/537\\.36',\n    'Accept': 'text/html,application/xhtml\\+xml,application/xml;q=0\\.9,\\*/\\*;q=0\\.8',\n    'Accept-Language': 'en-US,en;q=0\\.9',\n\\}\nr = requests\\.get\\('https://cd\\.mfa\\.gov\\.tr/mission/international-organizations\\?clickedId=15', headers=headers, timeout=20\\)\nprint\\(r\\.status_code\\)\n# Print first 5000 chars to find structure\nprint\\(r\\.text\\[:5000\\]\\)\n\"\n$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "py": true,
+        "Get-Command": true,
+        "Test-Path": true,
+        "&\"C:\\Users\\premi\\AppData\\Local\\Microsoft\\WindowsApps\\python3.11.exe\"": true,
+        "where.exe": true,
+        "/^cmd /c \"python C:\\\\Users\\\\premi\\\\Desktop\\\\test_org\\.py\" 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }

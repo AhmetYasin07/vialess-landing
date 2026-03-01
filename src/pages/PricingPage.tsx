@@ -36,12 +36,13 @@ const plans: PlanDef[] = [
     yearlyEquiv: null,
     description: 'Bireysel kullanıcılar için temel özellikler',
     features: [
-      { text: 'Dijital kart oluşturma', included: true },
-      { text: 'Kartvizit kaydetme', included: true },
-      { text: 'Temel kart tarama (OCR)', included: true },
-      { text: 'Tek profil', included: true },
-      { text: 'QR kod paylaşımı', included: true },
-      { text: 'Temel analitik', included: true }
+      { text: '1 adet profil', included: true },
+      { text: 'Ayda 5 adet yapay zekalı kartvizit tarayıcı (%99 doğruluk)', included: true },
+      { text: 'Temel analiz', included: true },
+      { text: 'Sınırsız paylaşım', included: true },
+      { text: 'Sınırsız link ve sosyal medya ekle', included: true },
+      { text: 'Sınırsız kişi yönetimi', included: true },
+      { text: 'Ayda 3 adet tanışma konum ve zaman kaydı', included: true }
     ],
     cta: 'Ücretsiz Başla',
     highlighted: false,
@@ -122,32 +123,32 @@ const additionalProducts = [
 
 const pricingFaqs = [
   {
-    question: 'Planımı nasıl yükseltebilirim?',
-    answer: 'Vialess uygulamasından veya web panelinden "Hesabım" bölümüne giderek istediğiniz zaman planınızı yükseltebilirsiniz. Yükseltme anında aktif olur ve mevcut verileriniz korunur.'
+    question: 'Şu anda ücretli planlar aktif mi?',
+    answer: 'Hayır, şu anda tüm özellikler tamamen ücretsiz! Vialess\'i sınırsız şekilde kullanabilir, gelecekte sunulacak Professional ve Business planların fiyatlandırmasını görebilirsiniz.'
+  },
+  {
+    question: 'Professional ve Business planları ne zaman aktif olacak?',
+    answer: 'Premium planlarımız yakında aktif hale gelecek. Şimdi uygulamayı indirip tüm özellikleri ücretsiz kullanabilir, plan güncellemelerinden haberdar olabilirsiniz.'
+  },
+  {
+    question: 'Freemium plandan Professional\'a geçersem verilerim kaybolur mu?',
+    answer: 'Hayır, tüm verileriniz güvenle korunur. Ücretsiz planda oluşturduğunuz kartvizitler, taradığınız kartlar ve notlarınız Professional plana geçtiğinizde aynen devam eder.'
+  },
+  {
+    question: 'Professional ve Business planları arasındaki fark nedir?',
+    answer: 'Professional plan bireysel kullanıcılar için sınırsız profil, gelişmiş analitik ve özelleştirme sunarken; Business plan ekipler için kartvizit havuzu, ortak notlar, API entegrasyonu ve KVKK uyumlu veri yönetimi içerir.'
   },
   {
     question: 'Business plan için minimum kullanıcı sayısı var mı?',
-    answer: 'Business planımız minimum 5 kullanıcı ile başlamaktadır. Ekip büyüklüğünüze göre özel fiyatlandırma sunuyoruz. Satış ekibimizle iletişime geçerek size özel teklif alabilirsiniz.'
-  },
-  {
-    question: 'Ücretsiz plandan Pro\'ya geçersem verilerim kaybolur mu?',
-    answer: 'Hayır, tüm verileriniz güvenle korunur. Ücretsiz planda oluşturduğunuz kartvizitler, taradığınız kartlar ve notlarınız Pro plana geçtiğinizde aynen devam eder.'
-  },
-  {
-    question: 'Pro ve Pro+ arasındaki fark nedir?',
-    answer: 'Pro+ planı, Pro planın tüm özelliklerine ek olarak premium tasarım şablonları, özel alan adı entegrasyonu, gelişmiş SEO araçları, API erişimi ve öncelikli özellik erişimi sunar.'
-  },
-  {
-    question: 'Aboneliği iptal edebilir miyim?',
-    answer: 'Evet, istediğiniz zaman aboneliğinizi iptal edebilirsiniz. İptal sonrası mevcut dönem sonuna kadar premium özellikleri kullanmaya devam edersiniz, sonrasında ücretsiz plana geçersiniz.'
+    answer: 'Business planımız esnek kullanım sunar. Ekip büyüklüğünüze ve ihtiyaçlarınıza göre özel çözümler için satış ekibimizle görüşme planlayabilirsiniz.'
   },
   {
     question: 'Yıllık abonelikte avantaj var mı?',
-    answer: 'Evet! Yıllık abonelikte 10 aylık ücret ödeyerek 12 ay boyunca kullanabilirsiniz — yani 2 ay tamamen hediye. Bu tüm ücretli planlar için geçerlidir.'
+    answer: 'Evet! Yıllık ödemeyi tercih ederseniz 2 ay tamamen hediye kazanırsınız. Örneğin Professional yıllık plan $34.90 (aylık ~$2.91), Business yıllık $44.90 (aylık ~$3.74) olacak.'
   },
   {
     question: 'NFC kart satın alırken dijital plan gerekli mi?',
-    answer: 'NFC kartları kullanmak için Vialess hesabına ihtiyacınız var ancak ücretsiz plan yeterlidir. Pro özelliklerden faydalanmak isterseniz dilediğiniz zaman yükseltme yapabilirsiniz.'
+    answer: 'NFC kartları kullanmak için Vialess hesabına ihtiyacınız var ancak ücretsiz Freemium plan yeterlidir. Professional özelliklerden faydalanmak isterseniz dilediğiniz zaman yükseltme yapabilirsiniz.'
   },
   {
     question: 'Toplu kart siparişinde indirim var mı?',
