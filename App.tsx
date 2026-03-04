@@ -925,7 +925,7 @@ export default function App() {
         botMessageColor: "#f0f0f0",
       },
       position: "bottom-right",
-      title: "Chat Support",
+      title: "🐦 Viabird",
       subtitle: "We usually reply instantly",
     };
 
