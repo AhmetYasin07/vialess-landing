@@ -8,6 +8,9 @@ node_modules
 
 # -------------------------------------------------------
 # Görsel optimizasyon araçları — repoya gönderilmez
+
+# -------------------------------------------------------
+# Görsel optimizasyon araçları — repoya gönderilmez
 # -------------------------------------------------------
 src/optimize-images.mjs
 src/migrate-optimized.mjs
@@ -20,3 +23,4 @@ src/migrate-optimized.mjs
 src/assets/
 
 build/
+
