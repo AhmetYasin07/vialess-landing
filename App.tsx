@@ -5,7 +5,7 @@ import PngLogo from './imports/PngLogo';
 import { Hero } from './components/Hero';
 import { MobileStartModal } from './components/MobileStartModal';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import { Toaster } from 'sonner@2.0.3';
+import { Toaster } from 'sonner';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { LoadingSpinner } from './components/LoadingSpinner';
@@ -925,7 +925,7 @@ export default function App() {
         botMessageColor: "#f0f0f0",
       },
       position: "bottom-right",
-      title: "Chat Support",
+      title: "🐦 Viabird",
       subtitle: "We usually reply instantly",
     };
 

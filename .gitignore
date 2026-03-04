@@ -5,22 +5,3 @@ node_modules
 .env.local
 .env.production
 .env.development
-
-# -------------------------------------------------------
-# Görsel optimizasyon araçları — repoya gönderilmez
-
-# -------------------------------------------------------
-# Görsel optimizasyon araçları — repoya gönderilmez
-# -------------------------------------------------------
-src/optimize-images.mjs
-src/migrate-optimized.mjs
-**/optimize-images*.mjs
-**/migrate-optimized*.mjs
-
-# Ham (optimize edilmemiş) kaynak görsel klasörü — tümüyle ignore
-# Bunlar optimize edilerek src/public/assets/ içine taşınır.
-# Repoya sadece src/public/assets/ içindeki optimize görseller gider.
-src/assets/
-
-build/
-
