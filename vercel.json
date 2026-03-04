@@ -1,7 +1,7 @@
 {
-"framework": "vite",
-  "outputDirectory": "dist",
+  "framework": "vite",
   "outputDirectory": "build",
-"rewrites": [
-{ "source": "/(.*)", "destination": "/index.html" }
-]
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
