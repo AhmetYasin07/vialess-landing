@@ -912,7 +912,7 @@ export default function App() {
   // Chat Widget Integration - ALWAYS loads, suppresses errors
   useEffect(() => {
     // Use placeholder API key (backend will reject it but UI will show)
-    const apiKey = import.meta.env.VITE_EXPERIFY_API_KEY || 'demo-placeholder-key';
+    const apiKey = import.meta.env.VITE_CHATBOT_API_KEY || 'demo-placeholder-key';
 
     // Configure chat widget
     (window as any).ChatWidgetConfig = {
